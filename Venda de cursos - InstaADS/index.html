@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Instagram Ads in 30 Days | Online Course</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary-black: #000000;
+            --primary-yellow: #FFD700;
+            --primary-white: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        .bg-black {
+            background-color: var(--primary-black);
+        }
+
+        .bg-yellow {
+            background-color: var(--primary-yellow);
+        }
+
+        .text-yellow {
+            color: var(--primary-yellow);
+        }
+
+        .btn-yellow {
+            background-color: var(--primary-yellow);
+            color: var(--primary-black);
+            font-weight: 700;
+            border-radius: 30px;
+            padding: 12px 32px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-yellow:hover {
+            background-color: #e6c200;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-section {
+            min-height: 90vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .instructor-img {
+            border: 5px solid var(--primary-yellow);
+            border-radius: 50%;
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-yellow);
+            margin-bottom: 1rem;
+        }
+
+        .module-item {
+            border-left: 3px solid var(--primary-yellow);
+            padding-left: 15px;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-card {
+            border-radius: 10px;
+            border: none;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .pricing-card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .pricing-card:hover {
+            transform: scale(1.02);
+        }
+
+        .pricing-header {
+            background-color: var(--primary-black);
+            color: white;
+            padding: 20px 0;
+        }
+
+        .popular-badge {
+            background-color: var(--primary-yellow);
+            color: var(--primary-black);
+            font-weight: bold;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            position: absolute;
+            top: -12px;
+            right: 20px;
+        }
+
+        .promo-banner {
+            background-color: var(--primary-yellow);
+            color: var(--primary-black);
+            font-weight: bold;
+            padding: 15px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promo-banner::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, 0.1) 100%);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Promotion Banner -->
+    <div class="promo-banner text-center">
+        <div class="container">
+            <span class="d-inline-block me-2"><i class="bi bi-star-fill"></i> OFERTA POR TEMPO LIMITADO</span>
+            <span class="d-inline-block me-2">|</span>
+            <span class="d-inline-block me-2">Inscreva-se hoje e ganhe 40% de DESCONTO</span>
+            <span class="d-inline-block me-2">|</span>
+            <span class="d-inline-block me-2"><i class="bi bi-clock-fill"></i> Termina em 24:59:59</span>
+        </div>
+    </div>
+
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg bg-black navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <h1 class="mb-0"><span class="text-yellow">Insta</span>Pro</h1>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#course">Curso</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#instructor">Instrutor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#outcomes">Benefícios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#pricing">Preços</a>
+                    </li>
+                    <li class="nav-item ms-lg-3">
+                        <a class="btn btn-yellow d-block d-lg-inline-block mt-2 mt-lg-0" href="#pricing">Inscreva-se
+                            Agora</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Hero Section -->
+    <section class="hero-section d-flex align-items-center text-white" id="home">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7 mb-5 mb-lg-0">
+                    <p class="text-yellow fw-bold mb-3"><i class="bi bi-star-fill me-2"></i>CURSO MAIS VENDIDO</p>
+                    <h1 class="hero-title mb-4">Domine <span class="text-yellow">os anúncios do Instagram</span> em
+                        apenas 30 dias</h1>
+                    <p class="lead mb-5">Transforme seu negócio com nosso sistema passo a passo para criar anúncios de
+                        alta conversão no Instagram que geram vendas no piloto automático.</p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="#pricing" class="btn btn-yellow btn-lg fw-bold">Increva-se <i
+                                class="bi bi-arrow-right ms-2"></i></a>
+                        <a href="#course" class="btn btn-outline-light btn-lg fw-bold">Explorar curso</a>
+                    </div>
+                    <div class="mt-4 d-flex align-items-center">
+                        <div class="d-flex me-3">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg"
+                                class="rounded-circle border border-2 border-yellow me-n2" width="40" alt="Student">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg"
+                                class="rounded-circle border border-2 border-yellow me-n2" width="40" alt="Student">
+                            <img src="https://randomuser.me/api/portraits/women/45.jpg"
+                                class="rounded-circle border border-2 border-yellow" width="40" alt="Student">
+                        </div>
+                        <div>
+                            <p class="mb-0 small">
+                                <i class="bi bi-star-fill text-yellow"></i>
+                                <i class="bi bi-star-fill text-yellow"></i>
+                                <i class="bi bi-star-fill text-yellow"></i>
+                                <i class="bi bi-star-fill text-yellow"></i>
+                                <i class="bi bi-star-fill text-yellow"></i>
+                                <span class="ms-1">2,500+ Estudantes Satisfeitos</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 text-center">
+                    <div class="ratio ratio-16x9 mb-4">
+                        <iframe src="https://www.youtube.com/embed/9AO00HqXvz0?autoplay=0&rel=0" title="Course Preview"
+                            allowfullscreen></iframe>
+                    </div>
+                    <p style="color: white !important" class="text-muted small">Dê uma olhada no que você aprenderá no
+                        curso</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instructor Section -->
+    <section class="py-5 py-lg-7 bg-light" id="instructor">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-4 text-center mb-5 mb-lg-0">
+                    <img src="https://images.unsplash.com/photo-1557862921-37829c790f19?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80"
+                        alt="Alex Johnson" class="instructor-img mb-3">
+                    <h4 class="mb-1">Alex Johnson</h4>
+                    <p class="text-muted mb-0">Instagram Ads Expert</p>
+                    <div class="d-flex justify-content-center mt-2">
+                        <a href="#" class="text-dark me-3"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-dark me-3"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="text-dark me-3"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="text-dark"><i class="bi bi-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <h2 class="mb-4">Aprenda com um profissional de marketing digital</h2>
+                    <p class="lead mb-4">Olá, sou o Alex e ajudei mais de 500 empresas a aumentar o desempenho de seus
+                        anúncios no Instagram, gerando mais de US$ 12 milhões em receita somente com anúncios no
+                        Instagram.</p>
+                    <p>Com 7 anos de experiência prática na execução de campanhas publicitárias para empresas que vão
+                        desde pequenas empresas locais até marcas da Fortune 500, reuni tudo o que sei neste curso
+                        abrangente que você pode concluir em apenas 30 dias.</p>
+                    <div class="row mt-4">
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <div class="bg-yellow bg-opacity-25 rounded-circle p-3 me-3">
+                                    <i class="bi bi-trophy-fill"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-0">7+ Anos de experiência</h5>
+                                    <p class="text-muted mb-0 small">Executando campanhas de sucesso</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <div class="bg-yellow bg-opacity-25 rounded-circle p-3 me-3">
+                                    <i class="bi bi-people-fill"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-0">500+ Clientes</h5>
+                                    <p class="text-muted mb-0 small">Histórias de sucesso em todo o mundo</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <div class="bg-yellow bg-opacity-25 rounded-circle p-3 me-3">
+                                    <i class="bi bi-graph-up-arrow"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-0">Mais de US$ 12 milhões gerados</h5>
+                                    <p class="text-muted mb-0 small">Em receita via anúncios do Instagram</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <div class="bg-yellow bg-opacity-25 rounded-circle p-3 me-3">
+                                    <i class="bi bi-stars"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-0">Classificação 4,98/5</h5>
+                                    <p class="text-muted mb-0 small">De centenas de estudantes</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Benefits Section -->
+    <section class="py-5 py-lg-7" id="outcomes">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="mb-3">O que você alcançará em apenas 30 dias</h2>
+                <p class="lead text-muted mx-auto" style="max-width: 700px;">Nosso sistema comprovado levará você de
+                    iniciante a especialista em anúncios do Instagram, mesmo que você nunca tenha veiculado um anúncio
+                    antes.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-0 p-4">
+                        <div class="feature-icon">
+                            <i class="bi bi-currency-dollar"></i>
+                        </div>
+                        <h4>Estratégias focadas em ROI</h4>
+                        <p>Aprenda a criar campanhas publicitárias focadas em lucro que geram pelo menos 5 vezes mais
+                            retorno sobre seu investimento em anúncios.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-0 p-4">
+                        <div class="feature-icon">
+                            <i class="bi bi-eye-fill"></i>
+                        </div>
+                        <h4>Segmentação Avançada</h4>
+                        <p>Domine a arte da segmentação de público-alvo com foco preciso para que seus anúncios sejam
+                            vistos por seus clientes ideais.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-0 p-4">
+                        <div class="feature-icon">
+                            <i class="bi bi-film"></i>
+                        </div>
+                        <h4>Criativos de alta conversão</h4>
+                        <p>Crie anúncios e vídeos que chamem a atenção e convertam espectadores em clientes pagantes.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-0 p-4">
+                        <div class="feature-icon">
+                            <i class="bi bi-bar-chart-line-fill"></i>
+                        </div>
+                        <h4>Otimização orientada por dados</h4>
+                        <p>Aprenda a interpretar análises e otimizar campanhas para obter o máximo desempenho.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-0 p-4">
+                        <div class="feature-icon">
+                            <i class="bi bi-award-fill"></i>
+                        </div>
+                        <h4>Técnicas de Escala</h4>
+                        <p>Descubra como escalar campanhas vencedoras de forma lucrativa sem ver retornos decrescentes.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-0 p-4">
+                        <div class="feature-icon">
+                            <i class="bi bi-headset"></i>
+                        </div>
+                        <h4>Suporte contínuo</h4>
+                        <p>Tenha acesso direto a Alex e à nossa comunidade de especialistas em anúncios do Instagram
+                            para obter orientação.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Curriculum Section -->
+    <section class="py-5 py-lg-7 bg-black text-white" id="course">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-lg-5 mb-5 mb-lg-0">
+                    <h2 class="mb-4">Curriculo do curso</h2>
+                    <p class="lead mb-4">Um caminho de aprendizado estruturado e passo a passo para dominar os anúncios
+                        do Instagram em apenas 30 dias.</p>
+                    <p>Cada semana se baseia na anterior, levando você de iniciante absoluto a especialista confiante,
+                        com lições práticas que você pode implementar imediatamente.</p>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-yellow me-2"></i>32 videoaulas
+                            abrangentes</li>
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-yellow me-2"></i>15 recursos para
+                            download</li>
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-yellow me-2"></i>8 exercícios práticos
+                        </li>
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-yellow me-2"></i>4 sessões de perguntas
+                            e respostas ao vivo</li>
+                        <li><i class="bi bi-check-circle-fill text-yellow me-2"></i>Acesso vitalício às atualizações
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-6">
+                    <div class="accordion" id="courseAccordion">
+                        <div class="accordion-item mb-3 border-0 rounded overflow-hidden">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button bg-yellow text-black fw-bold collapsed" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#week1">
+                                    Semana 1: Fundamentos dos anúncios do Instagram
+                                </button>
+                            </h3>
+                            <div id="week1" class="accordion-collapse collapse" data-bs-parent="#courseAccordion">
+                                <div class="accordion-body bg-dark">
+                                    <div class="module-item">
+                                        <h6 class="mb-1" style="color: white;">Dia 1: Ecossistema de anúncios do
+                                            Instagram</h6>
+                                        <p class="text-muted small mb-0" style="color: white !important;">Compreendendo
+                                            o cenário de anúncios do Instagram</p>
+                                    </div>
+                                    <div class="module-item">
+                                        <h6 class="mb-1" style="color: white;">Dia 2: Configurando sua conta comercial
+                                        </h6>
+                                        <p class="text-muted small mb-0" style="color: white !important;">Otimizando seu
+                                            perfil para conversões</p>
+                                    </div>
+                                    <div class="module-item">
+                                        <h6 class="mb-1" style="color: white;">Dia 3: Objetivos da Campanha Explicados
+                                        </h6>
+                                        <p class="text-muted small mb-0" style="color: white !important;">Choosing the
+                                            right goal for your business</p>
+                                    </div>
+                                    <div class="module-item">
+                                        <h6 class="mb-1" style="color: white;">Dia 4: Estrutura básica do anúncio</h6>
+                                        <p class="text-muted small mb-0" style="color: white !important;">Componentes de
+                                            um anúncio de alta conversão no Instagram</p>
+                                    </div>
+                                    <div class="module-item">
+                                        <h6 class="mb-1" style="color: white;">Dia 5: Criando seu primeiro anúncio</h6>
+                                        <p class="text-muted small mb-0" style="color: white !important;">Tutorial
+                                            prático com orientações passo a passo</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item mb-3 border-0 rounded overflow-hidden">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button bg-yellow text-black fw-bold collapsed" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#week2">
+                                    Semana 2: Domínio do Público e dos Criativos
+                                </button>
+                            </h3>
+                            <div id="week2" class="accordion-collapse collapse" data-bs-parent="#courseAccordion">
+                                <div class="accordion-body bg-dark">
+                                    <div class="module-item">
+                                        <h6 class="mb-1" style="color: white;">Dia 6: Estratégias de Pesquisa de Público
+                                        </h6>
+                                        <p class="text-muted small mb-0" style="color: white !important;">Encontrando e
+                                            perfilando seu cliente ideal</p>
+                                    </div>
+                                    <div class="module-item">
+                                        <h6 class="mb-1" style="color: white;">Dia 7: Análise Profunda das Opções de
+                                            Segmentação</h6>
+                                        <p class="text-muted small mb-0" style="color: white !important;">Guia detalhado
+                                            de todas as opções de segmentação</p>
+                                    </div>
+                                    <div class="module-item">
+                                        <h6 class="mb-1" style="color: white;">Dia 8: Criando Públicos Semelhantes</h6>
+                                        <p class="text-muted small mb-0" style="color: white !important;">Aproveitando
+                                            seus clientes existentes para encontrar mais</p>
+                                    </div>
+                                    <div class="module-item">
+                                        <h6 class="mb-1" style="color: white;">Dia 9: Fundamentos da Criatividade para
+                                            Anúncios</h6>
+                                        <p class="text-muted small mb-0" style="color: white !important;">Princípios de
+                                            design que impulsionam o engajamento</p>
+                                    </div>
+                                    <div class="module-item">
+                                        <h6 class="mb-1" style="color: white;">Dia 10: Guia de Produção de Anúncios em
+                                            Vídeo</h6>
+                                        <p class="text-muted small mb-0" style="color: white !important;">Criando vídeos
+                                            de qualidade profissional com seu celular</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item mb-3 border-0 rounded overflow-hidden">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button bg-yellow text-black fw-bold collapsed" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#week3">
+                                    Semana 3: Otimização e Escala
+                                </button>
+                            </h3>
+                            <div id="week3" class="accordion-collapse collapse" data-bs-parent="#courseAccordion">
+                                <div class="accordion-body bg-dark">
+                                    <div class="module-item">
+                                        <h6 class="mb-1" style="color: white;">Dia 16: Análise de Métricas Essenciais
+                                        </h6>
+                                        <p class="text-muted small mb-0" style="color: white !important;">Compreendendo
+                                            quais números realmente importam</p>
+                                    </div>
+                                    <div class="module-item">
+                                        <h6 class="mb-1" style="color: white;">Dia 17: Estratégias de Teste A/B</h6>
+                                        <p class="text-muted small mb-0" style="color: white !important;">Abordagem
+                                            metódica para testar variáveis</p>
+                                    </div>
+                                    <div class="module-item">
+                                        <h6 class="mb-1" style="color: white;">Dia 18: Métodos de Alocação de Orçamento
+                                        </h6>
+                                        <p class="text-muted small mb-0" style="color: white !important;">Maneiras
+                                            inteligentes de distribuir seu investimento em anúncios</p>
+                                    </div>
+                                    <div class="module-item">
+                                        <h6 class="mb-1" style="color: white;">Dia 19: Escalando Campanhas Verticalmente
+                                        </h6>
+                                        <p class="text-muted small mb-0" style="color: white !important;">Aumentando o
+                                            orçamento enquanto mantém a eficiência</p>
+                                    </div>
+                                    <div class="module-item">
+                                        <h6 class="mb-1" style="color: white;">Dia 20: Escalando Campanhas
+                                            Horizontalmente</h6>
+                                        <p class="text-muted small mb-0" style="color: white !important;">Encontrando
+                                            novos públicos e abordagens</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item mb-3 border-0 rounded overflow-hidden">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button bg-yellow text-black fw-bold collapsed" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#week4">
+                                    Semana 4: Estratégias Avançadas e Automação
+                                </button>
+                            </h3>
+                            <div id="week4" class="accordion-collapse collapse" data-bs-parent="#courseAccordion">
+                                <div class="accordion-body bg-dark">
+                                    <div class="module-item">
+                                        <h6 class="mb-1" style="color: white;">Dia 21: Design de Funil de Retargeting
+                                        </h6>
+                                        <p class="text-muted small mb-0" style="color: white !important;">Criando
+                                            jornadas de clientes em múltiplas etapas</p>
+                                    </div>
+                                    <div class="module-item">
+                                        <h6 class="mb-1" style="color: white;">Dia 22: Táticas de Geração de Leads</h6>
+                                        <p class="text-muted small mb-0" style="color: white !important;">Transformando
+                                            visualizações no Instagram em leads e vendas</p>
+                                    </div>
+                                    <div class="module-item">
+                                        <h6 class="mb-1" style="color: white;">Dia 23: Anúncios com Colaboração de
+                                            Influenciadores</h6>
+                                        <p class="text-muted small mb-0" style="color: white !important;">Aproveitando a
+                                            credibilidade de terceiros</p>
+                                    </div>
+                                    <div class="module-item">
+                                        <h6 class="mb-1" style="color: white;">Dia 24: Automatizando Tarefas Repetitivas
+                                        </h6>
+                                        <p class="text-muted small mb-0" style="color: white !important;">Ferramentas e
+                                            fluxos de trabalho para economizar tempo</p>
+                                    </div>
+                                    <div class="module-item">
+                                        <h6 class="mb-1" style="color: white;">Dia 25: Construindo um Sistema
+                                            Sustentável</h6>
+                                        <p class="text-muted small mb-0" style="color: white !important;">Criando um
+                                            processo de anúncios repetível para seu negócio</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-5 py-lg-7 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="mb-3">Histórias de Sucesso dos Nossos Alunos</h2>
+                <p class="lead text-muted mx-auto" style="max-width: 700px;">Não confie apenas na nossa palavra — veja o
+                    que nossos alunos dizem sobre seus resultados após concluir o curso.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100 testimonial-card">
+                        <div class="card-body p-4">
+                            <div class="d-flex mb-3">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah"
+                                    class="rounded-circle me-3" width="50">
+                                <div>
+                                    <h5 class="mb-0">Sarah K.</h5>
+                                    <p class="text-muted small mb-0">Proprietária de Loja Online</p>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <i class="bi bi-star-fill text-yellow"></i>
+                                <i class="bi bi-star-fill text-yellow"></i>
+                                <i class="bi bi-star-fill text-yellow"></i>
+                                <i class="bi bi-star-fill text-yellow"></i>
+                                <i class="bi bi-star-fill text-yellow"></i>
+                            </div>
+                            <p>"Este curso transformou completamente a maneira como abordo anúncios no Instagram. Em 30
+                                dias aplicando as estratégias do Alex, meu ROAS melhorou de 1.8 para 5.6! A seção de
+                                segmentação detalhada sozinha valeu 10 vezes o preço."</p>
+                        </div>
+                        <div class="card-footer bg-white border-0">
+                            <p class="small text-muted mb-0"><i class="bi bi-check-circle-fill text-success me-1"></i>
+                                Aluna verificada</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100 testimonial-card">
+                        <div class="card-body p-4">
+                            <div class="d-flex mb-3">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael"
+                                    class="rounded-circle me-3" width="50">
+                                <div>
+                                    <h5 class="mb-0">Michael T.</h5>
+                                    <p class="text-muted small mb-0">Agência de Marketing Digital</p>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <i class="bi bi-star-fill text-yellow"></i>
+                                <i class="bi bi-star-fill text-yellow"></i>
+                                <i class="bi bi-star-fill text-yellow"></i>
+                                <i class="bi bi-star-fill text-yellow"></i>
+                                <i class="bi bi-star-fill text-yellow"></i>
+                            </div>
+                            <p>"Já fiz muitos cursos sobre anúncios no Instagram, mas nenhum chegou perto deste. As
+                                técnicas de escala me ajudaram a aumentar o investimento mensal de um cliente de R$5k
+                                para R$50k, mantendo a lucratividade. O curso se pagou na primeira semana."</p>
+                        </div>
+                        <div class="card-footer bg-white border-0">
+                            <p class="small text-muted mb-0"><i class="bi bi-check-circle-fill text-success me-1"></i>
+                                Aluno verificado</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100 testimonial-card">
+                        <div class="card-body p-4">
+                            <div class="d-flex mb-3">
+                                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Jamie"
+                                    class="rounded-circle me-3" width="50">
+                                <div>
+                                    <h5 class="mb-0">Jamie L.</h5>
+                                    <p class="text-muted small mb-0">Treinadora Fitness</p>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <i class="bi bi-star-fill text-yellow"></i>
+                                <i class="bi bi-star-fill text-yellow"></i>
+                                <i class="bi bi-star-fill text-yellow"></i>
+                                <i class="bi bi-star-fill text-yellow"></i>
+                                <i class="bi bi-star-fill text-yellow"></i>
+                            </div>
+                            <p>"Como dona de um pequeno negócio com orçamento limitado, eu era cética em relação aos
+                                anúncios no Instagram. Mas seguindo o sistema passo a passo do Alex, consegui meus
+                                primeiros 5 clientes de personal training em 2 semanas, gastando apenas R$10/dia!"</p>
+                        </div>
+                        <div class="card-footer bg-white border-0">
+                            <p class="small text-muted mb-0"><i class="bi bi-check-circle-fill text-success me-1"></i>
+                                Aluna verificada</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- CTA Section -->
+    <section class="py-5 py-lg-7 bg-yellow">
+        <div class="container">
+            <div class="row align-items-center text-center text-lg-start">
+                <div class="col-lg-8 mb-4 mb-lg-0">
+                    <h2 class="mb-3">Pronto para Dominar os Anúncios do Instagram em 30 Dias?</h2>
+                    <p class="lead mb-0">Junte-se a milhares de alunos que transformaram seus negócios com nosso sistema
+                        comprovado.</p>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <a href="#pricing" class="btn btn-dark btn-lg fw-bold">Inscreva-se Agora <i
+                            class="bi bi-arrow-right ms-2"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Pricing Section -->
+    <section class="py-5 py-lg-7" id="pricing">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="mb-3">Preços Simples e Transparentes</h2>
+                <p class="lead text-muted mx-auto" style="max-width: 600px;">Tenha acesso vitalício a todos os materiais
+                    do curso, futuras atualizações e nossa comunidade exclusiva de alunos.</p>
+            </div>
+            <div class="row justify-content-center g-4">
+                <div class="col-lg-4">
+                    <div class="card h-100 pricing-card">
+                        <div class="card-header pricing-header text-center">
+                            <h4 class="mb-0">Básico</h4>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="text-center mb-4">
+                                <span class="d-block display-4 fw-bold mb-1">R$50</span>
+                                <span class="text-muted">pagamento único</span>
+                            </div>
+                            <ul class="list-unstyled mb-4">
+                                <li class="mb-3"><i class="bi bi-check-circle-fill text-yellow me-2"></i> Acesso
+                                    completo ao curso de 30 dias</li>
+                                <li class="mb-3"><i class="bi bi-check-circle-fill text-yellow me-2"></i> Recursos para
+                                    download</li>
+                                <li class="mb-3"><i class="bi bi-check-circle-fill text-yellow me-2"></i> Planilhas e
+                                    modelos</li>
+                                <li class="mb-3"><i class="bi bi-check-circle-fill text-yellow me-2"></i> Suporte por
+                                    e-mail (resposta em 72h)</li>
+                                <li class="text-muted mb-3"><i class="bi bi-x-circle me-2"></i> <del>Acesso à comunidade
+                                        privada</del></li>
+                                <li class="text-muted"><i class="bi bi-x-circle me-2"></i> <del>Sessões de perguntas e
+                                        respostas ao vivo</del></li>
+                            </ul>
+                            <div class="text-center mt-4">
+                                <a href="https://wa.me/5584991652870" class="btn btn-outline-dark w-100">Obter Acesso
+                                    Básico</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card h-100 pricing-card position-relative">
+                        <span class="popular-badge" style="margin-top: 5%;">MAIS POPULAR</span>
+                        <div class="card-header pricing-header bg-dark text-center">
+                            <h4 class="mb-0">PRO</h4>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="text-center mb-4">
+                                <span class="d-block display-4 fw-bold mb-1">
+                                    <span class="text-decoration-line-through text-muted me-2"
+                                        style="font-size: 1.5rem;">R$250</span>R$150
+                                </span>
+                                <span class="text-muted">pagamento único (Economize R$100)</span>
+                                <div class="mt-2">
+                                    <span class="badge bg-success">Desconto por Tempo Limitado</span>
+                                </div>
+                            </div>
+                            <ul class="list-unstyled mb-4">
+                                <li class="mb-3"><i class="bi bi-check-circle-fill text-yellow me-2"></i> Tudo no plano
+                                    Básico</li>
+                                <li class="mb-3"><i class="bi bi-check-circle-fill text-yellow me-2"></i> Comunidade
+                                    privada de alunos</li>
+                                <li class="mb-3"><i class="bi bi-check-circle-fill text-yellow me-2"></i> 4 Sessões de
+                                    perguntas e respostas ao vivo com Alex</li>
+                                <li class="mb-3"><i class="bi bi-check-circle-fill text-yellow me-2"></i> Suporte
+                                    prioritário por e-mail (resposta em 24h)</li>
+                                <li class="mb-3"><i class="bi bi-check-circle-fill text-yellow me-2"></i> Auditoria de
+                                    conta de anúncios (1 vez)</li>
+                                <li><i class="bi bi-check-circle-fill text-yellow me-2"></i> Bônus: Arquivo de anúncios
+                                    comprovados</li>
+                            </ul>
+                            <div class="text-center mt-4">
+                                <a href="https://wa.me/5584991652870" class="btn w-100 fw-bold"
+                                    style="background-color: #25D366; color: white;">
+                                    <i class="bi bi-whatsapp me-2"></i> Obter Acesso PRO
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card h-100 pricing-card">
+                        <div class="card-header pricing-header text-center">
+                            <h4 class="mb-0">VIP</h4>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="text-center mb-4">
+                                <span class="d-block display-4 fw-bold mb-1">R$250</span>
+                                <span class="text-muted">pagamento único</span>
+                            </div>
+                            <ul class="list-unstyled mb-4">
+                                <li class="mb-3"><i class="bi bi-check-circle-fill text-yellow me-2"></i> Tudo no plano
+                                    PRO</li>
+                                <li class="mb-3"><i class="bi bi-check-circle-fill text-yellow me-2"></i> Chamada de
+                                    coaching individual com Alex</li>
+                                <li class="mb-3"><i class="bi bi-check-circle-fill text-yellow me-2"></i> Sessão
+                                    personalizada de estratégia de anúncios</li>
+                                <li class="mb-3"><i class="bi bi-check-circle-fill text-yellow me-2"></i> Suporte
+                                    ilimitado</li>
+                                <li class="mb-3"><i class="bi bi-check-circle-fill text-yellow me-2"></i> Assistência na
+                                    configuração de campanhas</li>
+                                <li><i class="bi bi-check-circle-fill text-yellow me-2"></i> Acesso a todos os cursos
+                                    futuros</li>
+                            </ul>
+                            <div class="text-center mt-4">
+                                <a href="https://wa.me/5584991652870" class="btn btn-outline-dark w-100">Obter Acesso
+                                    VIP</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- FAQ Section -->
+    <section class="py-5 py-lg-7 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="mb-3">Perguntas Frequentes</h2>
+                <p class="lead text-muted mx-auto" style="max-width: 700px;">Encontre respostas para as dúvidas mais
+                    comuns sobre o curso Domine os Anúncios do Instagram em 30 Dias.</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item mb-3">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq1">
+                                    Por quanto tempo terei acesso ao curso?
+                                </button>
+                            </h3>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Você terá <strong>acesso vitalício</strong> a todos os materiais do curso, incluindo
+                                    quaisquer futuras atualizações que fizermos no conteúdo. Isso significa que você
+                                    pode revisar as aulas sempre que precisar relembrar algo ou quiser implementar novas
+                                    estratégias à medida que seu negócio cresce.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item mb-3">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq2">
+                                    Preciso ter experiência prévia com anúncios no Instagram?
+                                </button>
+                            </h3>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    De jeito nenhum! O curso foi projetado tanto para <strong>iniciantes
+                                        completos</strong> quanto para aqueles que já têm alguma experiência. Começamos
+                                    com os fundamentos básicos e avançamos para estratégias avançadas semana após
+                                    semana. Mesmo que você nunca tenha criado um anúncio antes, conseguirá acompanhar e
+                                    aplicar o que aprender.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item mb-3">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq3">
+                                    O que acontece se eu não conseguir seguir o cronograma de 30 dias?
+                                </button>
+                            </h3>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    O cronograma de 30 dias é apenas uma sugestão—você pode seguir o curso <strong>no
+                                        seu próprio ritmo</strong>. Muitos alunos levam mais tempo em alguns módulos
+                                    enquanto avançam rapidamente em outros. Como você tem acesso vitalício, pode revisar
+                                    qualquer aula sempre que precisar.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item mb-3">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq4">
+                                    Existe garantia de reembolso?
+                                </button>
+                            </h3>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Sim! Oferecemos uma <strong>garantia de reembolso de 30 dias</strong>. Se você
+                                    concluir as duas primeiras semanas do curso, aplicar o que aprendeu e não notar
+                                    nenhuma melhoria nos seus resultados com anúncios no Instagram, basta nos enviar um
+                                    e-mail para receber um reembolso total, sem perguntas.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item mb-3">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq5">
+                                    Quanto tempo devo dedicar ao curso?
+                                </button>
+                            </h3>
+                            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Recomendamos dedicar <strong>45-60 minutos por dia</strong>, 5 dias por semana. Cada
+                                    aula diária foi projetada para ser absorvida em uma única sessão, com passos
+                                    práticos que você pode implementar imediatamente. Os planos PRO e VIP incluem
+                                    materiais bônus que podem exigir tempo adicional, caso você decida explorá-los.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center mt-5">
+                        <a href="#" class="btn btn-dark">Mais perguntas? Fale conosco</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Final CTA Section -->
+    <section class="py-5 py-lg-7 bg-black text-white">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="mb-4">Pare de Gastar Dinheiro em Anúncios Ineficazes</h2>
+                    <p class="lead mb-5">Inscreva-se hoje e comece a ver resultados reais em suas campanhas de anúncios
+                        no Instagram dentro de 30 dias—ou seu dinheiro de volta.</p>
+                    <a href="#pricing" class="btn btn-yellow btn-lg fw-bold me-3 mb-3">Inscreva-se agora <i
+                            class="bi bi-arrow-right ms-2"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Countdown Timer Script -->
+    <script>
+        // Countdown timer for the promo banner
+        // Timer de contagem regressiva para o banner promocional
+        function updateCountdown() {
+            const now = new Date();
+            const promoEndDate = new Date(now.getFullYear(), 5, 30, 23, 59, 59); // 30 de junho às 23:59:59
+
+            const diff = promoEndDate - now;
+
+            if (diff <= 0) {
+                document.querySelector('.promo-banner .bi-clock-fill').parentElement.innerHTML =
+                    `<i class="bi bi-clock-fill"></i> Promoção encerrada`;
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.querySelector('.promo-banner .bi-clock-fill').parentElement.innerHTML =
+                `<i class="bi bi-clock-fill"></i> Termina em ${days}d ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        // Atualiza a cada segundo
+        setInterval(updateCountdown, 1000);
+        updateCountdown(); // Chamada inicial
+
+        // Rolagem suave para links âncora
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80, // Ajuste para cabeçalho fixo
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+    </script>
+</body>
+
+</html>

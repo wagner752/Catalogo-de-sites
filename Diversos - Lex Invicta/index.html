@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lex Invicta – Advocacia de Excelência</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: '#001F3F',
+                        gold: '#D4AF37',
+                    },
+                    fontFamily: {
+                        heading: ['Playfair Display', 'serif'],
+                        body: ['Roboto', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-in-out',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/css">
+        .hero-overlay {
+            background: rgba(0, 31, 63, 0.7);
+        }
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .practice-card:hover .practice-icon {
+            transform: scale(1.1);
+        }
+        .practice-icon {
+            transition: all 0.3s ease;
+        }
+        .floating-whatsapp {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="font-body text-gray-700 bg-white">
+    <!-- Navigation -->
+    <nav class="bg-navy text-white sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <div class="text-2xl font-heading font-bold text-gold">LEX INVICTA</div>
+                    <div class="hidden md:block ml-2 text-sm text-gray-300">Advocacia de Excelência</div>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#inicio" class="hover:text-gold transition">Início</a>
+                    <a href="#areas" class="hover:text-gold transition">Áreas de Atuação</a>
+                    <a href="#sobre" class="hover:text-gold transition">Sobre Nós</a>
+                    <a href="#advogados" class="hover:text-gold transition">Advogados</a>
+                    <a href="#contato" class="hover:text-gold transition">Contato</a>
+                </div>
+                <div class="md:hidden">
+                    <button class="text-white focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="relative h-screen flex items-center justify-center bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');">
+        <div class="hero-overlay absolute inset-0"></div>
+        <div class="container mx-auto px-6 z-10 text-center animate-fade-in">
+            <h1 class="text-4xl md:text-6xl font-heading font-bold text-white mb-6 animate-slide-up">Defesa com Honra, Excelência e Tradição</h1>
+            <p class="text-xl md:text-2xl text-gray-200 mb-8 max-w-2xl mx-auto animate-slide-up">Mais de 15 anos protegendo os direitos e interesses de nossos clientes com integridade e maestria jurídica.</p>
+            <a href="https://wa.me/5511999999999?text=Olá,%20gostaria%20de%20falar%20com%20um%20advogado" class="bg-gold hover:bg-yellow-600 text-navy font-bold py-3 px-8 rounded-md text-lg transition duration-300 transform hover:scale-105 inline-block animate-slide-up">Fale com um advogado agora</a>
+        </div>
+    </section>
+
+    <!-- Practice Areas -->
+    <section id="areas" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-heading font-bold text-navy mb-4">Áreas de Atuação</h2>
+                <div class="w-20 h-1 bg-gold mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">Nossa equipe especializada oferece soluções jurídicas personalizadas em diversas áreas do direito.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Civil -->
+                <div class="practice-card bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition duration-300">
+                    <div class="practice-icon text-4xl text-gold mb-6">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-semibold text-navy mb-3">Direito Civil</h3>
+                    <p class="text-gray-600">Atuação em questões patrimoniais, obrigacionais, familiares e sucessórias, com enfoque na proteção integral dos direitos do cliente.</p>
+                </div>
+                
+                <!-- Penal -->
+                <div class="practice-card bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition duration-300">
+                    <div class="practice-icon text-4xl text-gold mb-6">
+                        <i class="fas fa-gavel"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-semibold text-navy mb-3">Direito Penal</h3>
+                    <p class="text-gray-600">Defesa técnica em processos criminais, habeas corpus, recursos e ações penais com estratégias personalizadas.</p>
+                </div>
+                
+                <!-- Trabalhista -->
+                <div class="practice-card bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition duration-300">
+                    <div class="practice-icon text-4xl text-gold mb-6">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-semibold text-navy mb-3">Direito Trabalhista</h3>
+                    <p class="text-gray-600">Representação em ações trabalhistas, negociações coletivas e consultoria preventiva para empresas e trabalhadores.</p>
+                </div>
+                
+                <!-- Empresarial -->
+                <div class="practice-card bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition duration-300">
+                    <div class="practice-icon text-4xl text-gold mb-6">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-semibold text-navy mb-3">Direito Empresarial</h3>
+                    <p class="text-gray-600">Assessoria jurídica completa para empresas, desde constituição até contratos complexos e recuperação judicial.</p>
+                </div>
+                
+                <!-- Consumidor -->
+                <div class="practice-card bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition duration-300">
+                    <div class="practice-icon text-4xl text-gold mb-6">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-semibold text-navy mb-3">Direito do Consumidor</h3>
+                    <p class="text-gray-600">Defesa dos direitos consumeristas com ações individuais e coletivas, garantindo a reparação de danos materiais e morais.</p>
+                </div>
+                
+                <!-- Consultoria -->
+                <div class="practice-card bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition duration-300">
+                    <div class="practice-icon text-4xl text-gold mb-6">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-semibold text-navy mb-3">Consultoria Jurídica</h3>
+                    <p class="text-gray-600">Prevenção de litígios através de assessoria especializada, análise de riscos e planejamento estratégico jurídico.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="sobre" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-12 lg:mb-0 lg:pr-12">
+                    <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Escritório Lex Invicta" class="rounded-lg shadow-xl w-full h-auto">
+                </div>
+                <div class="lg:w-1/2">
+                    <h2 class="text-3xl md:text-4xl font-heading font-bold text-navy mb-6">Sobre o Escritório</h2>
+                    <div class="w-20 h-1 bg-gold mb-6"></div>
+                    <p class="text-gray-600 mb-6">Fundada em 2008, a Lex Invicta consolidou-se como um dos escritórios de advocacia mais respeitados do país, combinando tradição jurídica com inovação nos métodos de atuação.</p>
+                    <p class="text-gray-600 mb-6">Nossa missão é oferecer excelência na prestação de serviços jurídicos, pautada por valores éticos, compromisso com a justiça e dedicação absoluta aos interesses de nossos clientes.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                        <div class="flex items-start">
+                            <div class="text-gold mr-4 mt-1">
+                                <i class="fas fa-star text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-heading font-semibold text-navy mb-2">Excelência</h4>
+                                <p class="text-gray-600 text-sm">Padrão máximo de qualidade em todos os serviços prestados.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="text-gold mr-4 mt-1">
+                                <i class="fas fa-shield-alt text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-heading font-semibold text-navy mb-2">Integridade</h4>
+                                <p class="text-gray-600 text-sm">Conduta ética e transparente em todas as relações.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="text-gold mr-4 mt-1">
+                                <i class="fas fa-heart text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-heading font-semibold text-navy mb-2">Dedicação</h4>
+                                <p class="text-gray-600 text-sm">Compromisso absoluto com os interesses dos clientes.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="text-gold mr-4 mt-1">
+                                <i class="fas fa-lightbulb text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-heading font-semibold text-navy mb-2">Inovação</h4>
+                                <p class="text-gray-600 text-sm">Soluções jurídicas criativas e personalizadas.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-16 bg-navy text-white">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="p-4">
+                    <div class="text-4xl font-heading font-bold text-gold mb-2">15+</div>
+                    <div class="text-sm uppercase tracking-wider">Anos de Experiência</div>
+                </div>
+                <div class="p-4">
+                    <div class="text-4xl font-heading font-bold text-gold mb-2">500+</div>
+                    <div class="text-sm uppercase tracking-wider">Causas Vencidas</div>
+                </div>
+                <div class="p-4">
+                    <div class="text-4xl font-heading font-bold text-gold mb-2">100%</div>
+                    <div class="text-sm uppercase tracking-wider">Dedicação</div>
+                </div>
+                <div class="p-4">
+                    <div class="text-4xl font-heading font-bold text-gold mb-2">1000+</div>
+                    <div class="text-sm uppercase tracking-wider">Clientes Satisfeitos</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lawyers Section -->
+    <section id="advogados" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-heading font-bold text-navy mb-4">Nossos Advogados</h2>
+                <div class="w-20 h-1 bg-gold mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">Equipe de profissionais altamente qualificados, com formação nas melhores instituições e vasta experiência no mercado.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Lawyer 1 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80" alt="Dr. Eduardo Monteiro" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-heading font-semibold text-navy mb-1">Dr. Eduardo Monteiro</h3>
+                        <p class="text-gold mb-4">Sócio Fundador - OAB/SP 123.456</p>
+                        <p class="text-gray-600 mb-4">Especialista em Direito Empresarial e Civil com mais de 20 anos de experiência. Formado pela USP com pós-graduação em Harvard.</p>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-gray-400 hover:text-gold transition"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-gold transition"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Lawyer 2 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=988&q=80" alt="Dra. Ana Lúcia Fernandes" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-heading font-semibold text-navy mb-1">Dra. Ana Lúcia Fernandes</h3>
+                        <p class="text-gold mb-4">Sócia - OAB/SP 234.567</p>
+                        <p class="text-gray-600 mb-4">Especialista em Direito Penal e Processual Penal. Mestra pela PUC-SP e professora convidada em diversos cursos de especialização.</p>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-gray-400 hover:text-gold transition"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-gold transition"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Lawyer 3 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80" alt="Dr. Rafael Costa" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-heading font-semibold text-navy mb-1">Dr. Rafael Costa</h3>
+                        <p class="text-gold mb-4">Sócio - OAB/SP 345.678</p>
+                        <p class="text-gray-600 mb-4">Especialista em Direito Trabalhista e Previdenciário. Doutor pela Universidade de Coimbra e consultor de grandes empresas.</p>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-gray-400 hover:text-gold transition"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-gold transition"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-heading font-bold text-navy mb-4">Depoimentos</h2>
+                <div class="w-20 h-1 bg-gold mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">O que nossos clientes dizem sobre nosso trabalho</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card bg-gray-50 p-8 rounded-lg">
+                    <div class="text-gold text-2xl mb-4">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p class="text-gray-600 italic mb-6">"A Lex Invicta resolveu um caso complexo de herança que estava parado há anos. Profissionalismo e competência absoluta."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Carlos Silva" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-heading font-semibold text-navy">Carlos Silva</h4>
+                            <p class="text-gray-500 text-sm">Empresário</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card bg-gray-50 p-8 rounded-lg">
+                    <div class="text-gold text-2xl mb-4">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p class="text-gray-600 italic mb-6">"A Dra. Ana foi incansável na minha defesa. Recomendo o escritório sem qualquer ressalva para quem busca excelência jurídica."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Mariana Oliveira" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-heading font-semibold text-navy">Mariana Oliveira</h4>
+                            <p class="text-gray-500 text-sm">Executiva</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card bg-gray-50 p-8 rounded-lg">
+                    <div class="text-gold text-2xl mb-4">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p class="text-gray-600 italic mb-6">"Nosso contrato com a multinacional foi perfeitamente elaborado pela equipe da Lex Invicta, protegendo todos os nossos interesses."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Ricardo Fontes" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-heading font-semibold text-navy">Ricardo Fontes</h4>
+                            <p class="text-gray-500 text-sm">Diretor Corporativo</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Map -->
+    <section id="contato" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row">
+                <div class="lg:w-1/2 mb-12 lg:mb-0 lg:pr-12">
+                    <h2 class="text-3xl md:text-4xl font-heading font-bold text-navy mb-6">Entre em Contato</h2>
+                    <div class="w-20 h-1 bg-gold mb-6"></div>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="text-gold mr-4 mt-1">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-heading font-semibold text-navy mb-1">Endereço</h4>
+                                <p class="text-gray-600">Av. Paulista, 1000 - 10º andar<br>São Paulo - SP, 01310-100</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="text-gold mr-4 mt-1">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-heading font-semibold text-navy mb-1">Telefone</h4>
+                                <p class="text-gray-600">(11) 9999-9999</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="text-gold mr-4 mt-1">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-heading font-semibold text-navy mb-1">E-mail</h4>
+                                <p class="text-gray-600">contato@lexinvicta.com.br</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="text-gold mr-4 mt-1">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-heading font-semibold text-navy mb-1">Horário de Funcionamento</h4>
+                                <p class="text-gray-600">Segunda a Sexta: 9h às 18h<br>Sábado: 9h às 12h (com hora marcada)</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <a href="https://wa.me/5511999999999?text=Olá,%20gostaria%20de%20falar%20com%20um%20advogado" class="bg-gold hover:bg-yellow-600 text-navy font-bold py-3 px-6 rounded-md transition duration-300 inline-flex items-center">
+                            <i class="fab fa-whatsapp mr-2 text-xl"></i> Fale pelo WhatsApp
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="bg-white p-1 rounded-lg shadow-lg">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.2874818643903!2d-46.6637267243711!3d-23.56155816125512!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0xd59f9431f2c9776a!2sAv.%20Paulista%2C%201000%20-%20Bela%20Vista%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2001310-100!5e0!3m2!1spt-BR!2sbr!4v1690836771213!5m2!1spt-BR!2sbr" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" class="rounded-lg"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-navy text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-8 md:mb-0">
+                    <div class="text-2xl font-heading font-bold text-gold mb-4">LEX INVICTA</div>
+                    <p class="text-gray-300 max-w-xs">Advocacia de excelência com tradição, ética e resultados comprovados.</p>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                    <div>
+                        <h4 class="font-heading font-semibold text-gold mb-4">Links Rápidos</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#inicio" class="text-gray-300 hover:text-gold transition">Início</a></li>
+                            <li><a href="#areas" class="text-gray-300 hover:text-gold transition">Áreas de Atuação</a></li>
+                            <li><a href="#sobre" class="text-gray-300 hover:text-gold transition">Sobre Nós</a></li>
+                            <li><a href="#advogados" class="text-gray-300 hover:text-gold transition">Advogados</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-heading font-semibold text-gold mb-4">Contato</h4>
+                        <ul class="space-y-2">
+                            <li class="text-gray-300">(11) 9999-9999</li>
+                            <li class="text-gray-300">contato@lexinvicta.com.br</li>
+                            <li class="text-gray-300">Av. Paulista, 1000 - SP</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-heading font-semibold text-gold mb-4">Redes Sociais</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-gray-300 hover:text-gold transition text-xl"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="text-gray-300 hover:text-gold transition text-xl"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-gray-300 hover:text-gold transition text-xl"><i class="fab fa-facebook"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400 text-sm">
+                <p>&copy; 2023 Lex Invicta - Advocacia de Excelência. Todos os direitos reservados.</p>
+                <p class="mt-2">OAB/SP 123.456</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/5511999999999?text=Olá,%20gostaria%20de%20falar%20com%20um%20advogado" class="floating-whatsapp fixed bottom-8 right-8 bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center text-3xl shadow-xl z-50 hover:bg-green-600 transition">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Simple animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fade-in');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            document.querySelectorAll('section').forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>

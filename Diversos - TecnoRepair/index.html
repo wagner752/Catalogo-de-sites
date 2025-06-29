@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TecnoRepair - Seu celular novo de novo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --dark-gray: #1F1F1F;
+            --neon-blue: #00BFFF;
+            --white: #FFFFFF;
+            --lime-green: #A7FF83;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--dark-gray);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--dark-gray) 0%, #2a2a2a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-phone {
+            position: relative;
+            width: 300px;
+            height: 500px;
+            background: #111;
+            border-radius: 30px;
+            border: 10px solid #333;
+            box-shadow: 0 0 30px rgba(0, 191, 255, 0.5);
+            overflow: hidden;
+        }
+        
+        .phone-screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .diagnostic-animation {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        
+        .diag-line {
+            position: absolute;
+            height: 2px;
+            background: var(--neon-blue);
+            animation: scan 3s linear infinite;
+        }
+        
+        @keyframes scan {
+            0% { top: 0%; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+        
+        .diag-text {
+            position: absolute;
+            color: var(--neon-blue);
+            font-family: monospace;
+            animation: textFade 6s infinite;
+        }
+        
+        @keyframes textFade {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
+        }
+        
+        .section {
+            padding: 100px 0;
+            transition: all 0.5s ease;
+            opacity: 0;
+            transform: scale(0.95);
+        }
+        
+        .section.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .service-card {
+            background: #2a2a2a;
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            border: 1px solid #333;
+            height: 100%;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 191, 255, 0.2);
+            border-color: var(--neon-blue);
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--neon-blue);
+            margin-bottom: 20px;
+        }
+        
+        .repair-animation {
+            width: 100%;
+            height: 200px;
+            position: relative;
+            margin: 50px 0;
+        }
+        
+        .tool {
+            position: absolute;
+            font-size: 2rem;
+            color: var(--neon-blue);
+            animation: toolMove 4s infinite;
+        }
+        
+        @keyframes toolMove {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(50px, 20px) rotate(90deg); }
+            50% { transform: translate(100px, 0) rotate(180deg); }
+            75% { transform: translate(50px, -20px) rotate(270deg); }
+            100% { transform: translate(0, 0) rotate(360deg); }
+        }
+        
+        .phone-part {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: #333;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            color: var(--white);
+        }
+        
+        .counter-item {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .counter-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--neon-blue);
+            margin-bottom: 10px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            cursor: pointer;
+            height: 250px;
+        }
+        
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s ease;
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            text-align: center;
+            color: var(--white);
+        }
+        
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            box-shadow: 0 0 20px rgba(37, 211, 102, 0.5);
+            z-index: 1000;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin: 10px;
+            min-width: 200px;
+        }
+        
+        .contact-btn i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .btn-whatsapp {
+            background: #25D366;
+            color: white;
+        }
+        
+        .btn-instagram {
+            background: #E1306C;
+            color: white;
+        }
+        
+        .btn-phone {
+            background: var(--neon-blue);
+            color: white;
+        }
+        
+        .btn-maps {
+            background: #34B7F1;
+            color: white;
+        }
+        
+        .price-estimator {
+            background: #2a2a2a;
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid #333;
+        }
+        
+        .estimator-step {
+            display: none;
+        }
+        
+        .estimator-step.active {
+            display: block;
+        }
+        
+        .estimator-option {
+            background: #333;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .estimator-option:hover {
+            background: #444;
+            border-left: 5px solid var(--neon-blue);
+        }
+        
+        .estimator-option.selected {
+            background: #444;
+            border-left: 5px solid var(--lime-green);
+        }
+        
+        .progress-bar {
+            height: 5px;
+            background: #333;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: var(--neon-blue);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        
+        .result-box {
+            background: #333;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            display: none;
+        }
+        
+        .result-price {
+            font-size: 2.5rem;
+            color: var(--lime-green);
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        
+        .nav-link {
+            color: var(--white) !important;
+            margin: 0 10px;
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--neon-blue);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: var(--neon-blue) !important;
+        }
+        
+        .btn-primary {
+            background: var(--neon-blue);
+            border: none;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background: #0080FF;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 191, 255, 0.4);
+        }
+        
+        .text-neon {
+            color: var(--neon-blue);
+        }
+        
+        .text-lime {
+            color: var(--lime-green);
+        }
+        
+        .bg-dark-gray {
+            background: #2a2a2a;
+        }
+    </style>
+</head>
+<body>
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/5511999999999" class="whatsapp-btn">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Tecno<span class="text-neon">Repair</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Serviços</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">Sobre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#gallery">Galeria</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contato</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section section d-flex align-items-center">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold mb-4">Seu celular <span class="text-neon">novo de novo</span></h1>
+                    <p class="lead mb-4">Reparos rápidos e de qualidade para devolver a vida ao seu dispositivo. Tecnologia de ponta e profissionais especializados.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#contact" class="btn btn-primary">Fale Conosco</a>
+                        <a href="#services" class="btn btn-outline-light">Nossos Serviços</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 d-flex justify-content-center mt-5 mt-lg-0">
+                    <div class="hero-phone">
+                        <div class="phone-screen">
+                            <div class="diagnostic-animation">
+                                <div class="diag-line" style="top: 10%; width: 80%;"></div>
+                                <div class="diag-line" style="top: 30%; width: 60%; animation-delay: 0.5s;"></div>
+                                <div class="diag-line" style="top: 50%; width: 90%; animation-delay: 1s;"></div>
+                                <div class="diag-line" style="top: 70%; width: 40%; animation-delay: 1.5s;"></div>
+                                
+                                <div class="diag-text" style="top: 20%; left: 20%;">ANALISANDO...</div>
+                                <div class="diag-text" style="top: 40%; left: 30%;">PROCURANDO DEFEITOS...</div>
+                                <div class="diag-text" style="top: 60%; left: 10%;">SOLUÇÃO ENCONTRADA!</div>
+                                
+                                <div style="position: absolute; bottom: 20px; width: 80%; text-align: center;">
+                                    <div class="progress" style="height: 10px; background: #333; margin-bottom: 10px;">
+                                        <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" style="width: 75%"></div>
+                                    </div>
+                                    <p class="text-neon">Reparo concluído em 75%</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section bg-dark-gray">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold mb-3">Nossos <span class="text-neon">Serviços</span></h2>
+                <p class="lead">Oferecemos soluções completas para todos os tipos de problemas em dispositivos móveis</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h4 class="fw-bold">Troca de Tela</h4>
+                        <p>Tela quebrada? Fazemos a substituição com peças originais ou de alta qualidade.</p>
+                        <div class="mt-3 text-lime">
+                            <i class="fas fa-check-circle"></i> Garantia de 3 meses
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-battery-full"></i>
+                        </div>
+                        <h4 class="fw-bold">Troca de Bateria</h4>
+                        <p>Bateria fraca ou inchada? Substituímos por uma nova com maior capacidade.</p>
+                        <div class="mt-3 text-lime">
+                            <i class="fas fa-check-circle"></i> Garantia de 6 meses
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+                        <h4 class="fw-bold">Reparo na Placa</h4>
+                        <p>Problemas na placa mãe? Nossos técnicos especializados fazem o reparo necessário.</p>
+                        <div class="mt-3 text-lime">
+                            <i class="fas fa-check-circle"></i> Garantia de 1 mês
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-plug"></i>
+                        </div>
+                        <h4 class="fw-bold">Conector de Carga</h4>
+                        <p>Seu celular não carrega? Podemos substituir o conector de carga com rapidez.</p>
+                        <div class="mt-3 text-lime">
+                            <i class="fas fa-check-circle"></i> Garantia de 3 meses
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <h4 class="fw-bold">Câmera Traseira/Frontal</h4>
+                        <p>Câmera com defeito? Fazemos a substituição para que você continue registrando momentos.</p>
+                        <div class="mt-3 text-lime">
+                            <i class="fas fa-check-circle"></i> Garantia de 3 meses
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <h4 class="fw-bold">Reparo por Água</h4>
+                        <p>Celular molhado? Atendimento emergencial para tentar recuperar seu dispositivo.</p>
+                        <div class="mt-3 text-lime">
+                            <i class="fas fa-check-circle"></i> Diagnóstico gratuito
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+    </section>
+
+    <!-- Price Estimator Section -->
+    <section class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="price-estimator">
+                        <h3 class="fw-bold mb-4 text-neon">Estimativa de Preço</h3>
+                        <p>Descubra o valor aproximado do reparo do seu dispositivo em poucos passos.</p>
+                        
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="estimator-progress"></div>
+                        </div>
+                        
+                        <div class="estimator-step active" id="step1">
+                            <h5>1. Qual o modelo do seu celular?</h5>
+                            <div class="estimator-option" data-value="iPhone">iPhone</div>
+                            <div class="estimator-option" data-value="Samsung">Samsung</div>
+                            <div class="estimator-option" data-value="Xiaomi">Xiaomi</div>
+                            <div class="estimator-option" data-value="Outro">Outro</div>
+                        </div>
+                        
+                        <div class="estimator-step" id="step2">
+                            <h5>2. Qual o problema do seu dispositivo?</h5>
+                            <div class="estimator-option" data-value="Tela">Tela quebrada</div>
+                            <div class="estimator-option" data-value="Bateria">Bateria ruim</div>
+                            <div class="estimator-option" data-value="Conector">Conector de carga</div>
+                            <div class="estimator-option" data-value="Agua">Contato com água</div>
+                        </div>
+                        
+                        <div class="estimator-step" id="step3">
+                            <h5>3. Qual a gravidade do problema?</h5>
+                            <div class="estimator-option" data-value="Leve">Leve (funciona parcialmente)</div>
+                            <div class="estimator-option" data-value="Moderado">Moderado (algumas funções não trabalham)</div>
+                            <div class="estimator-option" data-value="Grave">Grave (não liga ou muito danificado)</div>
+                        </div>
+                        
+                        <div class="result-box" id="estimator-result">
+                            <h4 class="text-neon">Valor Estimado</h4>
+                            <div class="result-price" id="result-price">R$ 0,00</div>
+                            <p>Este valor é uma estimativa. Entre em contato para um diagnóstico preciso.</p>
+                            <a href="#contact" class="btn btn-primary">Falar com Técnico</a>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between mt-4">
+                            <button class="btn btn-outline-light" id="prev-step" disabled>Anterior</button>
+                            <button class="btn btn-primary" id="next-step">Próximo</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 mt-5 mt-lg-0">
+                    <h3 class="fw-bold mb-4">Por que escolher a <span class="text-neon">TecnoRepair</span>?</h3>
+                    <div class="d-flex align-items-start mb-4">
+                        <div class="me-3 text-neon">
+                            <i class="fas fa-check-circle fa-2x"></i>
+                        </div>
+                        <div>
+                            <h5>Reparo Rápido</h5>
+                            <p>Muitos reparos são feitos na hora, com tempo médio de 30 a 60 minutos.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex align-items-start mb-4">
+                        <div class="me-3 text-neon">
+                            <i class="fas fa-check-circle fa-2x"></i>
+                        </div>
+                        <div>
+                            <h5>Peças de Qualidade</h5>
+                            <p>Trabalhamos apenas com peças originais ou de primeira linha.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex align-items-start mb-4">
+                        <div class="me-3 text-neon">
+                            <i class="fas fa-check-circle fa-2x"></i>
+                        </div>
+                        <div>
+                            <h5>Garantia</h5>
+                            <p>Todos os nossos serviços possuem garantia escrita contra defeitos.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex align-items-start mb-4">
+                        <div class="me-3 text-neon">
+                            <i class="fas fa-check-circle fa-2x"></i>
+                        </div>
+                        <div>
+                            <h5>Técnicos Certificados</h5>
+                            <p>Nossa equipe possui certificação e treinamento constante.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Counters -->
+                    <div class="row mt-5">
+                        <div class="col-6 col-md-3">
+                            <div class="counter-item">
+                                <div class="counter-number" data-count="1500">0</div>
+                                <div>Dispositivos Reparados</div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="counter-item">
+                                <div class="counter-number" data-count="98">0</div>
+                                <div>Taxa de Sucesso</div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="counter-item">
+                                <div class="counter-number" data-count="12">0</div>
+                                <div>Anos de Experiência</div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="counter-item">
+                                <div class="counter-number" data-count="500">0</div>
+                                <div>Clientes Satisfeitos</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="section bg-dark-gray">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold mb-3">Antes <span class="text-neon">&</span> Depois</h2>
+                <p class="lead">Veja alguns dos nossos trabalhos e o resultado final</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="gallery-item">
+                        <img src="IMG/tela quebrada.png" class="gallery-image" alt="Celular quebrado">
+                        <div class="gallery-caption">Tela quebrada</div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="gallery-item">
+                        <img src="IMG/CelularMolhado.jpeg" class="gallery-image" alt="Celular molhado">
+                        <div class="gallery-caption">Danos por água</div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="gallery-item">
+                        <img src="IMG/PlacaMae.jpeg" class="gallery-image" alt="Placa danificada">
+                        <div class="gallery-caption">Placa mãe danificada</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5">
+                <button class="btn btn-primary" id="toggle-gallery">Ver Resultados</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold mb-3">Entre em <span class="text-neon">Contato</span></h2>
+                <p class="lead">Estamos prontos para atender você da melhor forma possível</p>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100 bg-dark-gray">
+                                <div class="card-body text-center p-4">
+                                    <i class="fas fa-map-marker-alt fa-3x text-neon mb-3"></i>
+                                    <h4 style="color: white;" class="fw-bold">Endereço</h4>
+                                    <p style="color: white;">Rua Tecnologia, 123<br>São Paulo - SP</p>
+                                    <a href="https://maps.google.com" class="btn btn-maps mt-3">
+                                        <i class="fas fa-map-marked-alt"></i> Ver no Mapa
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100 bg-dark-gray">
+                                <div class="card-body text-center p-4">
+                                    <i class="fas fa-clock fa-3x text-neon mb-3"></i>
+                                    <h4 style="color: white;" class="fw-bold">Horário de Funcionamento</h4>
+                                    <p style="color: white;">Segunda a Sexta: 9h - 18h<br>Sábado: 9h - 13h<br>Domingo: Fechado</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-5">
+                        <h4 class="fw-bold mb-4">Nos chame por qualquer um desses canais</h4>
+                        <div class="d-flex flex-wrap justify-content-center">
+                            <a href="https://wa.me/5511999999999" class="contact-btn btn-whatsapp">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
+                            </a>
+                            <a href="tel:+5511999999999" class="contact-btn btn-phone">
+                                <i class="fas fa-phone"></i> Ligar Agora
+                            </a>
+                            <a href="https://instagram.com/tecnorepair" class="contact-btn btn-instagram">
+                                <i class="fab fa-instagram"></i> Instagram
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="fw-bold text-neon">TecnoRepair</h4>
+                    <p>Seu celular novo de novo. Reparos rápidos e de qualidade com garantia.</p>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="fw-bold">Links Rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#home" class="text-white">Início</a></li>
+                        <li><a href="#services" class="text-white">Serviços</a></li>
+                        <li><a href="#gallery" class="text-white">Galeria</a></li>
+                        <li><a href="#contact" class="text-white">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="fw-bold">Redes Sociais</h5>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-white"><i class="fab fa-facebook-f fa-lg"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-whatsapp fa-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2025 TecnoRepair. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scroll and section animation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scroll for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Section animation on scroll
+            function checkScroll() {
+                const sections = document.querySelectorAll('.section');
+                const windowHeight = window.innerHeight;
+                const scrollPosition = window.scrollY;
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    
+                    if (scrollPosition + windowHeight > sectionTop + sectionHeight / 2) {
+                        section.classList.add('active');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', checkScroll);
+            checkScroll(); // Run once on load
+            
+            // Price estimator functionality
+            const steps = document.querySelectorAll('.estimator-step');
+            const nextBtn = document.getElementById('next-step');
+            const prevBtn = document.getElementById('prev-step');
+            const progressFill = document.getElementById('estimator-progress');
+            const resultBox = document.getElementById('estimator-result');
+            const resultPrice = document.getElementById('result-price');
+            
+            let currentStep = 0;
+            const answers = {};
+            const priceMap = {
+                iPhone: {
+                    Tela: { Leve: 500, Moderado: 600, Grave: 700 },
+                    Bateria: { Leve: 300, Moderado: 350, Grave: 400 },
+                    Conector: { Leve: 200, Moderado: 250, Grave: 300 },
+                    Agua: { Leve: 350, Moderado: 500, Grave: 800 }
+                },
+                Samsung: {
+                    Tela: { Leve: 400, Moderado: 500, Grave: 600 },
+                    Bateria: { Leve: 250, Moderado: 300, Grave: 350 },
+                    Conector: { Leve: 150, Moderado: 200, Grave: 250 },
+                    Agua: { Leve: 300, Moderado: 450, Grave: 700 }
+                },
+                Xiaomi: {
+                    Tela: { Leve: 350, Moderado: 450, Grave: 550 },
+                    Bateria: { Leve: 200, Moderado: 250, Grave: 300 },
+                    Conector: { Leve: 120, Moderado: 180, Grave: 220 },
+                    Agua: { Leve: 250, Moderado: 400, Grave: 600 }
+                },
+                Outro: {
+                    Tela: { Leve: 300, Moderado: 400, Grave: 500 },
+                    Bateria: { Leve: 180, Moderado: 220, Grave: 280 },
+                    Conector: { Leve: 100, Moderado: 150, Grave: 200 },
+                    Agua: { Leve: 200, Moderado: 350, Grave: 500 }
+                }
+            };
+            
+            function updateProgress() {
+                const progress = (currentStep / steps.length) * 100;
+                progressFill.style.width = `${progress}%`;
+                
+                prevBtn.disabled = currentStep === 0;
+                
+                if (currentStep === steps.length) {
+                    nextBtn.style.display = 'none';
+                    calculatePrice();
+                } else {
+                    nextBtn.style.display = 'block';
+                }
+            }
+            
+            function calculatePrice() {
+                const brand = answers.brand;
+                const problem = answers.problem;
+                const severity = answers.severity;
+                
+                if (brand && problem && severity) {
+                    const price = priceMap[brand][problem][severity];
+                    resultPrice.textContent = `R$ ${price.toFixed(2)}`;
+                    resultBox.style.display = 'block';
+                }
+            }
+            
+            document.querySelectorAll('.estimator-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    const stepId = this.closest('.estimator-step').id;
+                    const value = this.getAttribute('data-value');
+                    
+                    // Remove selected class from all options in this step
+                    this.closest('.estimator-step').querySelectorAll('.estimator-option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    
+                    // Add selected class to clicked option
+                    this.classList.add('selected');
+                    
+                    // Store answer
+                    if (stepId === 'step1') answers.brand = value;
+                    if (stepId === 'step2') answers.problem = value;
+                    if (stepId === 'step3') answers.severity = value;
+                    
+                    // Auto proceed to next step after selection
+                    if (currentStep < steps.length - 1) {
+                        setTimeout(() => {
+                            nextStep();
+                        }, 300);
+                    }
+                });
+            });
+            
+            function nextStep() {
+                if (currentStep < steps.length) {
+                    steps[currentStep].classList.remove('active');
+                    currentStep++;
+                    
+                    if (currentStep < steps.length) {
+                        steps[currentStep].classList.add('active');
+                    } else {
+                        resultBox.style.display = 'block';
+                    }
+                    
+                    updateProgress();
+                }
+            }
+            
+            function prevStep() {
+                if (currentStep > 0) {
+                    if (currentStep === steps.length) {
+                        resultBox.style.display = 'none';
+                    } else {
+                        steps[currentStep].classList.remove('active');
+                    }
+                    
+                    currentStep--;
+                    steps[currentStep].classList.add('active');
+                    updateProgress();
+                }
+            }
+            
+            nextBtn.addEventListener('click', nextStep);
+            prevBtn.addEventListener('click', prevStep);
+            
+            // Counter animation
+            function animateCounters() {
+                const counters = document.querySelectorAll('.counter-number');
+                const speed = 200;
+                
+                counters.forEach(counter => {
+                    const target = +counter.getAttribute('data-count');
+                    const count = +counter.innerText;
+                    const increment = target / speed;
+                    
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + increment);
+                        setTimeout(animateCounters, 1);
+                    } else {
+                        counter.innerText = target;
+                    }
+                });
+            }
+            
+            // Gallery toggle
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            const toggleBtn = document.getElementById('toggle-gallery');
+            const beforeImages = [
+                'IMG/tela quebrada.png',
+                'IMG/CelularMolhado.jpeg',
+                'IMG/PlacaMae.jpeg'
+            ];
+            
+            const afterImages = [
+                'IMG/tela reparada.webp',
+                'IMG/DanoPorAguaReparado.webp',
+                'IMG/PlacaMaeReparada.webp'
+            ];
+            
+            let showingBefore = true;
+            
+            toggleBtn.addEventListener('click', function() {
+                const images = document.querySelectorAll('.gallery-image');
+                
+                if (showingBefore) {
+                    images.forEach((img, index) => {
+                        img.src = afterImages[index];
+                    });
+                    toggleBtn.textContent = 'Ver Antes';
+                } else {
+                    images.forEach((img, index) => {
+                        img.src = beforeImages[index];
+                    });
+                    toggleBtn.textContent = 'Ver Depois';
+                }
+                
+                showingBefore = !showingBefore;
+            });
+            
+            // Animate counters when section is visible
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounters();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            const counterSection = document.querySelector('.counter-item').closest('.row');
+            observer.observe(counterSection);
+        });
+    </script>
+</body>
+</html>

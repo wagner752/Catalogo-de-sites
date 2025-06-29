@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fotógrafo Profissional | Retratos que Contam Histórias</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
+        
+        :root {
+            --black: #0D0D0D;
+            --white: #F7F7F7;
+            --gray: #B4B4B4;
+            --gold: #C9A66B;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--black);
+            color: var(--white);
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(13, 13, 13, 0.3), rgba(13, 13, 13, 0.7)), url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1630&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-20px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+        }
+        
+        .section {
+            min-height: 100vh;
+            padding: 80px 0;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+        
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .portfolio-item img {
+            transition: transform 0.5s ease;
+        }
+        
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(201, 166, 107, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            overflow: auto;
+        }
+        
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90vh;
+            margin-top: 5vh;
+        }
+        
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: var(--gold);
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        
+        .close:hover {
+            color: var(--white);
+        }
+        
+        .specialty-card {
+            transition: all 0.3s ease;
+            border: 1px solid rgba(180, 180, 180, 0.2);
+        }
+        
+        .specialty-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold);
+        }
+        
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            color: var(--gold);
+            transform: scale(1.2);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--gold);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .active-nav::after {
+            width: 100%;
+        }
+        
+        .gold-text {
+            color: var(--gold);
+        }
+        
+        .gold-border {
+            border-color: var(--gold);
+        }
+        
+        .gold-bg {
+            background-color: var(--gold);
+        }
+        
+        .testimonial-slider {
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .testimonial-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .testimonial {
+            min-width: 100%;
+        }
+        
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--gray);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-dot.active {
+            background-color: var(--gold);
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body class="relative">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-black bg-opacity-90 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#" class="text-2xl font-bold gold-text">FOTOGRAFIA</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-white hover:text-gold-500 active-nav">Início</a>
+                    <a href="#about" class="nav-link text-white hover:text-gold-500">Sobre Mim</a>
+                    <a href="#portfolio" class="nav-link text-white hover:text-gold-500">Portfólio</a>
+                    <a href="#specialties" class="nav-link text-white hover:text-gold-500">Especialidades</a>
+                    <a href="#contact" class="nav-link text-white hover:text-gold-500">Contato</a>
+                </div>
+                <button class="md:hidden text-white focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero flex items-center justify-center relative">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 text-white">Retratos que contam histórias</h1>
+            <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto">Capturando momentos únicos com arte e sensibilidade</p>
+            <a href="#about" class="scroll-down text-white text-3xl">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section bg-black py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-16 text-center gold-text">Sobre Mim</h2>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <div class="relative overflow-hidden rounded-lg">
+                        <img src="https://images.unsplash.com/photo-1554080351-a576cf803bda?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Fotógrafo" class="w-full h-auto">
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <h3 class="text-3xl font-bold mb-6">João Silva</h3>
+                    <p class="text-gray-300 mb-6">Fotógrafo profissional com mais de 10 anos de experiência, especializado em retratos artísticos e fotografia de eventos.</p>
+                    <p class="text-gray-300 mb-6">Minha jornada na fotografia começou como uma paixão pela forma como a luz pode transformar momentos comuns em memórias extraordinárias. Ao longo dos anos, desenvolvi um estilo único que combina técnica precisa com sensibilidade artística.</p>
+                    <p class="text-gray-300 mb-8">Acredito que cada pessoa tem uma história para contar, e meu trabalho é capturar essas narrativas visuais de maneira autêntica e emocionante.</p>
+                    <div class="flex space-x-4">
+                        <div class="text-center">
+                            <p class="text-4xl font-bold gold-text">500+</p>
+                            <p class="text-gray-300">Clientes</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-4xl font-bold gold-text">50+</p>
+                            <p class="text-gray-300">Exposições</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-4xl font-bold gold-text">10+</p>
+                            <p class="text-gray-300">Prêmios</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="section bg-black py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-16 text-center gold-text">Portfólio</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Portfolio Item 1 -->
+                <div class="portfolio-item rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Retrato 1" class="w-full h-full object-cover">
+                    <div class="portfolio-overlay">
+                        <i class="fas fa-search-plus text-4xl text-black"></i>
+                    </div>
+                </div>
+                <!-- Portfolio Item 2 -->
+                <div class="portfolio-item rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1493863641943-9b68992a8d07?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1158&q=80" alt="Retrato 2" class="w-full h-full object-cover">
+                    <div class="portfolio-overlay">
+                        <i class="fas fa-search-plus text-4xl text-black"></i>
+                    </div>
+                </div>
+                <!-- Portfolio Item 3 -->
+                <div class="portfolio-item rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1530785602389-07594beb8b73?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Retrato 3" class="w-full h-full object-cover">
+                    <div class="portfolio-overlay">
+                        <i class="fas fa-search-plus text-4xl text-black"></i>
+                    </div>
+                </div>
+                <!-- Portfolio Item 4 -->
+                <div class="portfolio-item rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1160&q=80" alt="Retrato 4" class="w-full h-full object-cover">
+                    <div class="portfolio-overlay">
+                        <i class="fas fa-search-plus text-4xl text-black"></i>
+                    </div>
+                </div>
+                <!-- Portfolio Item 5 -->
+                <div class="portfolio-item rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Retrato 5" class="w-full h-full object-cover">
+                    <div class="portfolio-overlay">
+                        <i class="fas fa-search-plus text-4xl text-black"></i>
+                    </div>
+                </div>
+                <!-- Portfolio Item 6 -->
+                <div class="portfolio-item rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Retrato 6" class="w-full h-full object-cover">
+                    <div class="portfolio-overlay">
+                        <i class="fas fa-search-plus text-4xl text-black"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specialties Section -->
+    <section id="specialties" class="section bg-black py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-16 text-center gold-text">Especialidades</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Specialty 1 -->
+                <div class="specialty-card p-8 rounded-lg bg-gray-900">
+                    <div class="text-5xl mb-6 gold-text">
+                        <i class="fas fa-camera-retro"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Retratos Artísticos</h3>
+                    <p class="text-gray-300">Criação de retratos que capturam a essência e personalidade de cada indivíduo, com iluminação e composição cuidadosamente planejadas.</p>
+                </div>
+                <!-- Specialty 2 -->
+                <div class="specialty-card p-8 rounded-lg bg-gray-900">
+                    <div class="text-5xl mb-6 gold-text">
+                        <i class="fas fa-ring"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Casamentos</h3>
+                    <p class="text-gray-300">Documentação emocional e artística do dia mais especial da sua vida, preservando cada momento com sensibilidade e atenção aos detalhes.</p>
+                </div>
+                <!-- Specialty 3 -->
+                <div class="specialty-card p-8 rounded-lg bg-gray-900">
+                    <div class="text-5xl mb-6 gold-text">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Fotografia Corporativa</h3>
+                    <p class="text-gray-300">Imagens profissionais para empresas, incluindo retratos executivos, fotos de equipe e cobertura de eventos corporativos.</p>
+                </div>
+                <!-- Specialty 4 -->
+                <div class="specialty-card p-8 rounded-lg bg-gray-900">
+                    <div class="text-5xl mb-6 gold-text">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Fotografia de Viagem</h3>
+                    <p class="text-gray-300">Documentação de paisagens, culturas e pessoas ao redor do mundo, capturando a essência de cada destino com um olhar único.</p>
+                </div>
+                <!-- Specialty 5 -->
+                <div class="specialty-card p-8 rounded-lg bg-gray-900">
+                    <div class="text-5xl mb-6 gold-text">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Moda</h3>
+                    <p class="text-gray-300">Criação de imagens impactantes para campanhas de moda, lookbooks e editoriais, destacando a beleza das peças e a narrativa por trás delas.</p>
+                </div>
+                <!-- Specialty 6 -->
+                <div class="specialty-card p-8 rounded-lg bg-gray-900">
+                    <div class="text-5xl mb-6 gold-text">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Fotografia de Produto</h3>
+                    <p class="text-gray-300">Apresentação de produtos de forma criativa e atrativa, destacando seus detalhes e qualidades para cativar o público-alvo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-16 text-center gold-text">O que dizem meus clientes</h2>
+            <div class="testimonial-slider relative">
+                <div class="testimonial-track">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial p-8">
+                        <div class="max-w-4xl mx-auto text-center">
+                            <p class="text-xl italic text-gray-300 mb-8">"João capturou perfeitamente a essência do nosso casamento. Cada foto conta uma história e nos transporta de volta àquele dia especial. Seu olhar artístico e atenção aos detalhes são incomparáveis."</p>
+                            <div class="flex items-center justify-center">
+                                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Ana e Pedro" class="w-16 h-16 rounded-full object-cover mr-4">
+                                <div>
+                                    <p class="font-bold">Ana e Pedro</p>
+                                    <p class="text-gray-400 text-sm">Casamento</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial p-8">
+                        <div class="max-w-4xl mx-auto text-center">
+                            <p class="text-xl italic text-gray-300 mb-8">"As fotos corporativas que João fez para nossa equipe superaram todas as expectativas. Ele conseguiu capturar a personalidade de cada um de nós, resultando em imagens profissionais mas ao mesmo tempo muito naturais."</p>
+                            <div class="flex items-center justify-center">
+                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Carlos" class="w-16 h-16 rounded-full object-cover mr-4">
+                                <div>
+                                    <p class="font-bold">Carlos Mendes</p>
+                                    <p class="text-gray-400 text-sm">CEO, TechSolutions</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial p-8">
+                        <div class="max-w-4xl mx-auto text-center">
+                            <p class="text-xl italic text-gray-300 mb-8">"Meu retrato feito por João é a melhor foto que já tirei na vida. Ele tem um dom para fazer as pessoas se sentirem confortáveis na frente da câmera e capturar sua verdadeira essência. Recomendo sem hesitar!"</p>
+                            <div class="flex items-center justify-center">
+                                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" alt="Mariana" class="w-16 h-16 rounded-full object-cover mr-4">
+                                <div>
+                                    <p class="font-bold">Mariana Costa</p>
+                                    <p class="text-gray-400 text-sm">Atriz</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-center mt-8 space-x-2">
+                    <div class="nav-dot active" data-slide="0"></div>
+                    <div class="nav-dot" data-slide="1"></div>
+                    <div class="nav-dot" data-slide="2"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Highlight Section -->
+    <section class="py-20 bg-black relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-black to-transparent z-10"></div>
+        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Destaque" class="absolute inset-0 w-full h-full object-cover opacity-30">
+        <div class="container mx-auto px-6 relative z-20">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-4xl font-bold mb-8 gold-text">"A fotografia é a arte de congelar o tempo, transformando momentos efêmeros em memórias eternas."</h2>
+                <p class="text-xl text-gray-300">Cada clique é uma oportunidade de contar uma história, revelar uma emoção ou capturar a beleza passageira do mundo ao nosso redor.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section bg-black py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-16 text-center gold-text">Vamos Conversar</h2>
+            <div class="max-w-2xl mx-auto text-center">
+                <p class="text-xl text-gray-300 mb-12">Estou disponível para novos projetos e colaborações. Entre em contato através dos canais abaixo para discutirmos suas necessidades fotográficas.</p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                    <a href="https://wa.me/5511999999999" class="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-bold flex items-center justify-center transition-colors duration-300">
+                        <i class="fab fa-whatsapp text-2xl mr-3"></i> WhatsApp
+                    </a>
+                    <a href="https://instagram.com/fotografo" class="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-8 py-4 rounded-lg font-bold flex items-center justify-center transition-colors duration-300">
+                        <i class="fab fa-instagram text-2xl mr-3"></i> Instagram
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="#" class="text-2xl font-bold gold-text">FOTOGRAFIA</a>
+                    <p class="text-gray-400 mt-2">© 2023 João Silva Fotografia. Todos os direitos reservados.</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="https://instagram.com/fotografo" class="social-icon text-white text-2xl hover:text-gold-500">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://wa.me/5511999999999" class="social-icon text-white text-2xl hover:text-gold-500">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="https://behance.net/fotografo" class="social-icon text-white text-2xl hover:text-gold-500">
+                        <i class="fab fa-behance"></i>
+                    </a>
+                    <a href="https://flickr.com/fotografo" class="social-icon text-white text-2xl hover:text-gold-500">
+                        <i class="fab fa-flickr"></i>
+                    </a>
+                    <a href="https://pinterest.com/fotografo" class="social-icon text-white text-2xl hover:text-gold-500">
+                        <i class="fab fa-pinterest"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <script>
+        // Intersection Observer for section animations
+        const sections = document.querySelectorAll('.section');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Update active nav link
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active-nav');
+                });
+                this.classList.add('active-nav');
+            });
+        });
+
+        // Portfolio lightbox
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const closeBtn = document.querySelector('.close');
+        
+        portfolioItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const imgSrc = this.querySelector('img').src;
+                modal.style.display = 'block';
+                modalImg.src = imgSrc;
+            });
+        });
+        
+        closeBtn.addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+        
+        window.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // Testimonial slider
+        const track = document.querySelector('.testimonial-track');
+        const dots = document.querySelectorAll('.nav-dot');
+        let currentSlide = 0;
+        
+        function goToSlide(slideIndex) {
+            track.style.transform = `translateX(-${slideIndex * 100}%)`;
+            
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[slideIndex].classList.add('active');
+            
+            currentSlide = slideIndex;
+        }
+        
+        dots.forEach(dot => {
+            dot.addEventListener('click', function() {
+                const slideIndex = parseInt(this.getAttribute('data-slide'));
+                goToSlide(slideIndex);
+            });
+        });
+        
+        // Auto slide
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % dots.length;
+            goToSlide(currentSlide);
+        }, 5000);
+
+        // Update active nav link on scroll
+        window.addEventListener('scroll', function() {
+            const scrollPosition = window.scrollY;
+            
+            document.querySelectorAll('section').forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute('id');
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        link.classList.remove('active-nav');
+                        if (link.getAttribute('href') === `#${sectionId}`) {
+                            link.classList.add('active-nav');
+                        }
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.md\\:hidden');
+        const navLinks = document.querySelector('.md\\:flex');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            navLinks.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camila Silva | Transforme seu Corpo e Mente</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .hero-image {
+            background-image: linear-gradient(to right, rgba(255,255,255,0.9) 40%, rgba(255,215,0,0.7)), url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 4px;
+            background: #FFD700;
+            bottom: -8px;
+            left: 0;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+        }
+        
+        .training-card:hover {
+            transform: scale(1.03);
+        }
+        
+        .floating-whatsapp {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transition: opacity 0.6s ease-in;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-white text-black">
+    <!-- Navigation -->
+    <nav class="bg-black text-white py-4 px-6 sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="text-2xl font-bold">
+                <span class="text-yellow-400">CAMILA</span> SILVA
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="hover:text-yellow-400 transition">INÍCIO</a>
+                <a href="#about" class="hover:text-yellow-400 transition">SOBRE MIM</a>
+                <a href="#training" class="hover:text-yellow-400 transition">TREINOS</a>
+                <a href="#results" class="hover:text-yellow-400 transition">RESULTADOS</a>
+                <a href="#contact" class="hover:text-yellow-400 transition">CONTATO</a>
+            </div>
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-white focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-black absolute w-full left-0 px-6 pb-4 shadow-lg">
+            <div class="flex flex-col space-y-3 mt-3">
+                <a href="#home" class="hover:text-yellow-400 transition">INÍCIO</a>
+                <a href="#about" class="hover:text-yellow-400 transition">SOBRE MIM</a>
+                <a href="#training" class="hover:text-yellow-400 transition">TREINOS</a>
+                <a href="#results" class="hover:text-yellow-400 transition">RESULTADOS</a>
+                <a href="#contact" class="hover:text-yellow-400 transition">CONTATO</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-image min-h-screen flex items-center">
+        <div class="container mx-auto px-6">
+            <div class="max-w-2xl">
+                <h1 class="text-4xl md:text-6xl font-black uppercase mb-6 leading-tight">
+                    TREINE COM FOCO. <br>
+                    <span class="text-yellow-400">ALCANCE RESULTADOS.</span>
+                </h1>
+                <p class="text-lg md:text-xl mb-8 font-semibold">
+                    Transforme seu corpo e mente com treinos personalizados e acompanhamento individual.
+                </p>
+                <a href="#contact" class="bg-black text-white px-8 py-4 font-bold uppercase hover:bg-yellow-400 hover:text-black transition duration-300 inline-block">
+                    Agende sua avaliação gratuita
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-lg text-center fade-in">
+                    <div class="text-yellow-400 text-4xl mb-4">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h3 class="text-xl font-bold uppercase mb-3">DISCIPLINA</h3>
+                    <p>Programas estruturados para desenvolver hábitos consistentes e alcançar seus objetivos.</p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-lg text-center fade-in">
+                    <div class="text-yellow-400 text-4xl mb-4">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3 class="text-xl font-bold uppercase mb-3">MOTIVAÇÃO</h3>
+                    <p>Acompanhamento constante para manter você focada e determinada em sua jornada.</p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-lg text-center fade-in">
+                    <div class="text-yellow-400 text-4xl mb-4">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-xl font-bold uppercase mb-3">RESULTADOS</h3>
+                    <p>Metodologia comprovada que garante evolução contínua e transformação real.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold uppercase mb-16 section-title fade-in">SOBRE MIM</h2>
+            
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2 fade-in">
+                    <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80" 
+                         alt="Personal Trainer" 
+                         class="rounded-lg shadow-2xl w-full">
+                </div>
+                <div class="md:w-1/2 fade-in">
+                    <h3 class="text-2xl font-bold uppercase mb-4">CAMILA SILVA</h3>
+                    <p class="mb-6 text-lg">
+                        Personal Trainer certificada com mais de 8 anos de experiência ajudando mulheres a transformarem seus corpos e vidas através do treinamento físico.
+                    </p>
+                    
+                    <div class="mb-8">
+                        <h4 class="font-bold uppercase text-yellow-400 mb-3">CREDENCIAIS</h4>
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-yellow-400 mt-1 mr-2"></i>
+                                <span>Bacharelada em Educação Física - UFMG</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-yellow-400 mt-1 mr-2"></i>
+                                <span>Certificação Internacional em Treinamento Funcional</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-yellow-400 mt-1 mr-2"></i>
+                                <span>Especialização em Nutrição Esportiva</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-bold uppercase text-yellow-400 mb-3">MINHA MISSÃO</h4>
+                        <p>
+                            Acredito que o exercício físico vai muito além da estética. Meu objetivo é empoderar mulheres através do movimento, desenvolvendo não apenas corpos mais fortes, mas mentes mais confiantes e resilientes.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Training Types Section -->
+    <section id="training" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold uppercase mb-16 section-title fade-in">TIPOS DE TREINO</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg training-card transition duration-300 fade-in">
+                    <div class="h-48 bg-yellow-400 flex items-center justify-center">
+                        <i class="fas fa-running text-6xl text-black"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold uppercase mb-3">FUNCIONAL</h3>
+                        <p class="mb-4">Treinos dinâmicos que melhoram força, mobilidade e condicionamento físico geral.</p>
+                        <ul class="space-y-2 text-sm">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-yellow-400 mt-1 mr-2"></i>
+                                <span>Melhora da postura</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-yellow-400 mt-1 mr-2"></i>
+                                <span>Ganho de mobilidade</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-yellow-400 mt-1 mr-2"></i>
+                                <span>Prevenção de lesões</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg training-card transition duration-300 fade-in">
+                    <div class="h-48 bg-black flex items-center justify-center">
+                        <i class="fas fa-weight text-6xl text-yellow-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold uppercase mb-3">EMAGRECIMENTO</h3>
+                        <p class="mb-4">Programas específicos para perda de gordura e definição muscular.</p>
+                        <ul class="space-y-2 text-sm">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-yellow-400 mt-1 mr-2"></i>
+                                <span>Treinos metabólicos</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-yellow-400 mt-1 mr-2"></i>
+                                <span>Orientacão nutricional</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-yellow-400 mt-1 mr-2"></i>
+                                <span>Monitoramento contínuo</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Card 3 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg training-card transition duration-300 fade-in">
+                    <div class="h-48 bg-yellow-400 flex items-center justify-center">
+                        <i class="fas fa-dumbbell text-6xl text-black"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold uppercase mb-3">HIPERTROFIA</h3>
+                        <p class="mb-4">Programas para ganho de massa muscular e definição.</p>
+                        <ul class="space-y-2 text-sm">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-yellow-400 mt-1 mr-2"></i>
+                                <span>Periodização avançada</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-yellow-400 mt-1 mr-2"></i>
+                                <span>Acompanhamento de carga</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-yellow-400 mt-1 mr-2"></i>
+                                <span>Adaptação progressiva</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Card 4 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg training-card transition duration-300 fade-in">
+                    <div class="h-48 bg-black flex items-center justify-center">
+                        <i class="fas fa-home text-6xl text-yellow-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold uppercase mb-3">TREINO EM CASA</h3>
+                        <p class="mb-4">Programas adaptados para quem prefere treinar no conforto de casa.</p>
+                        <ul class="space-y-2 text-sm">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-yellow-400 mt-1 mr-2"></i>
+                                <span>Videoaulas exclusivas</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-yellow-400 mt-1 mr-2"></i>
+                                <span>Material adaptável</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-yellow-400 mt-1 mr-2"></i>
+                                <span>Acompanhamento online</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section id="results" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold uppercase mb-16 section-title fade-in">RESULTADOS REAIS</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Result 1 -->
+                <div class="relative group overflow-hidden rounded-lg shadow-lg fade-in">
+                    <img src="IMG/Modelo1.jpg" 
+                         alt="Resultado antes e depois" 
+                         class="w-full h-96 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <div class="text-white text-center p-4">
+                            <h3 class="text-xl font-bold">ANA CAROLINA</h3>
+                            <p class="text-yellow-400 font-semibold">-18kg em 5 meses</p>
+                            <p>"Com disciplina e treinos específicos, alcancei resultados incríveis!"</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Result 2 -->
+                <div class="relative group overflow-hidden rounded-lg shadow-lg fade-in">
+                    <img src="IMG/Modelo2.jpeg" 
+                         alt="Resultado antes e depois" 
+                         class="w-full h-96 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <div class="text-white text-center p-4">
+                            <h3 class="text-xl font-bold">JULIANA MARTINS</h3>
+                            <p class="text-yellow-400 font-semibold">+8kg de massa muscular</p>
+                            <p>"O acompanhamento personalizado fez toda a diferença nos meus resultados!"</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Result 3 -->
+                <div class="relative group overflow-hidden rounded-lg shadow-lg fade-in">
+                    <img src="IMG/Modelo3.jpeg" 
+                         alt="Resultado antes e depois" 
+                         class="w-full h-96 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <div class="text-white text-center p-4">
+                            <h3 class="text-xl font-bold">FERNANDO LIMA</h3>
+                            <p class="text-yellow-400 font-semibold">Definição muscular em 3 meses</p>
+                            <p>"Os treinos foram adaptados para minhas necessidades e limitações."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold uppercase mb-16 section-title fade-in">DEPOIMENTOS</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-8 rounded-lg shadow-lg testimonial-card transition duration-300 fade-in">
+                    <div class="flex items-center mb-6">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="Cliente" 
+                             class="w-16 h-16 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-bold">CAROLINA SOUZA</h4>
+                            <p class="text-yellow-400 text-sm">Aluna há 1 ano</p>
+                        </div>
+                    </div>
+                    <p class="italic">
+                        "A Camila mudou completamente minha relação com o exercício físico. Em 6 meses perdi 15kg e ganhei uma autoestima que nunca imaginei ter. Seu método realmente funciona!"
+                    </p>
+                    <div class="flex mt-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-8 rounded-lg shadow-lg testimonial-card transition duration-300 fade-in">
+                    <div class="flex items-center mb-6">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" 
+                             alt="Cliente" 
+                             class="w-16 h-16 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-bold">AMANDA RODRIGUES</h4>
+                            <p class="text-yellow-400 text-sm">Aluna há 8 meses</p>
+                        </div>
+                    </div>
+                    <p class="italic">
+                        "Depois do parto, meu corpo estava completamente diferente. Com os treinos da Camila, em 4 meses já havia recuperado minha forma física e até superado meu condicionamento pré-gestacional."
+                    </p>
+                    <div class="flex mt-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-white p-8 rounded-lg shadow-lg testimonial-card transition duration-300 fade-in">
+                    <div class="flex items-center mb-6">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" 
+                             alt="Cliente" 
+                             class="w-16 h-16 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-bold">PATRÍCIA FERNANDES</h4>
+                            <p class="text-yellow-400 text-sm">Aluna há 2 anos</p>
+                        </div>
+                    </div>
+                    <p class="italic">
+                        "Acompanhamento impecável! Mesmo viajando a trabalho, recebia treinos adaptados e orientações precisas. Hoje tenho um corpo definido e saudável aos 45 anos."
+                    </p>
+                    <div class="flex mt-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-black text-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold uppercase mb-16 section-title fade-in">CONTATO</h2>
+            
+            <div class="flex flex-col md:flex-row gap-12">
+                <div class="md:w-1/2 fade-in">
+                    <h3 class="text-2xl font-bold uppercase mb-6">AGENDE SUA AVALIAÇÃO</h3>
+                    <p class="mb-8">
+                        Preencha o formulário ao lado para agendar sua avaliação física gratuita e dar o primeiro passo em direção aos seus objetivos.
+                    </p>
+                    
+                    <div class="mb-8">
+                        <h4 class="font-bold uppercase text-yellow-400 mb-3">INFORMAÇÕES</h4>
+                        <div class="space-y-4">
+                            <p class="flex items-start">
+                                <i class="fas fa-map-marker-alt text-yellow-400 mt-1 mr-3"></i>
+                                <span>Av. Paulista, 1000 - São Paulo/SP</span>
+                            </p>
+                            <p class="flex items-start">
+                                <i class="fas fa-phone text-yellow-400 mt-1 mr-3"></i>
+                                <span>(11) 99999-9999</span>
+                            </p>
+                            <p class="flex items-start">
+                                <i class="fas fa-envelope text-yellow-400 mt-1 mr-3"></i>
+                                <span>contato@personaltrainer.com.br</span>
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-bold uppercase text-yellow-400 mb-3">HORÁRIOS</h4>
+                        <p>Segunda a Sexta: 6h às 21h</p>
+                        <p>Sábado: 8h às 14h</p>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 fade-in">
+                    <form class="bg-gray-900 p-8 rounded-lg">
+                        <div class="mb-6">
+                            <label for="name" class="block mb-2 font-semibold">NOME COMPLETO</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 bg-gray-800 rounded focus:outline-none focus:ring-2 focus:ring-yellow-400">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="email" class="block mb-2 font-semibold">E-MAIL</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 bg-gray-800 rounded focus:outline-none focus:ring-2 focus:ring-yellow-400">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="phone" class="block mb-2 font-semibold">TELEFONE</label>
+                            <input type="tel" id="phone" class="w-full px-4 py-3 bg-gray-800 rounded focus:outline-none focus:ring-2 focus:ring-yellow-400">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="message" class="block mb-2 font-semibold">MENSAGEM</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-3 bg-gray-800 rounded focus:outline-none focus:ring-2 focus:ring-yellow-400"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="bg-yellow-400 text-black px-8 py-3 font-bold uppercase w-full hover:bg-white transition duration-300">
+                            ENVIAR MENSAGEM
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/+5584991652870" target="_blank" class="fixed bottom-8 right-8 bg-green-500 text-white p-4 rounded-full shadow-xl floating-whatsapp z-50">
+        <i class="fab fa-whatsapp text-3xl"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="text-2xl font-bold mb-4">
+                        <span class="text-yellow-400">CAMILA</span> SILVA
+                    </div>
+                    <p class="text-gray-400 italic">"Sua melhor versão começa aqui."</p>
+                </div>
+                
+                <div class="flex space-x-6 mb-6 md:mb-0">
+                    <a href="https://www.instagram.com/w__wagner/" target="_blank" class="text-white hover:text-yellow-400 transition">
+                        <i class="fab fa-instagram text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-white hover:text-yellow-400 transition">
+                        <i class="fab fa-whatsapp text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-white hover:text-yellow-400 transition">
+                        <i class="fab fa-tiktok text-2xl"></i>
+                    </a>
+                </div>
+                
+                <div class="text-gray-400 text-sm">
+                    &copy; 2025 Camila Silva. Todos os direitos reservados.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Scroll animation
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('visible');
+                }
+            });
+        };
+        
+        // Check on initial load
+        fadeInOnScroll();
+        
+        // Check on scroll
+        window.addEventListener('scroll', fadeInOnScroll);
+    </script>
+</body>
+</html>

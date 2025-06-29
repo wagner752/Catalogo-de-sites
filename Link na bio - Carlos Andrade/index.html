@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Trainer - Sua Jornada Fitness</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        @keyframes neonGlow {
+            0%, 100% { box-shadow: 0 0 5px #FFD60A, 0 0 10px #FFD60A; }
+            50% { box-shadow: 0 0 20px #FFD60A, 0 0 30px #FFD60A; }
+        }
+        
+        .profile-img {
+            transition: transform 0.1s ease-out;
+        }
+        
+        .gym-icon {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 8s infinite ease-in-out;
+        }
+        
+        .pulse-line {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #FFD60A, transparent);
+            opacity: 0.2;
+            animation: pulse 3s infinite;
+        }
+        
+        .link-btn {
+            animation: slideIn 0.5s forwards;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .link-btn:hover {
+            animation: neonGlow 2s infinite;
+            transform: scale(1.05);
+        }
+        
+        .heartbeat {
+            animation: heartbeat 2s infinite;
+        }
+        
+        .progress-bar {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: linear-gradient(90deg, #FFD60A, #ffea70);
+            animation: progressAnimation 2s forwards;
+        }
+        
+        @keyframes progressAnimation {
+            from { width: 0; }
+            to { width: var(--progress-width); }
+        }
+        
+        .quote-text {
+            background: linear-gradient(90deg, #FFD60A, #ffea70);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: textShine 3s infinite alternate;
+        }
+        
+        @keyframes textShine {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+        
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        
+        .modal-content {
+            background: #1F1F1F;
+            padding: 2rem;
+            border-radius: 10px;
+            border: 2px solid #FFD60A;
+            transform: scale(0.8);
+            transition: transform 0.3s;
+            max-width: 90%;
+            width: 400px;
+        }
+        
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+        
+        .contact-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: #FFD60A;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 999;
+            box-shadow: 0 0 10px #FFD60A;
+            animation: float 3s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-black text-white min-h-screen overflow-x-hidden relative">
+    <!-- Animated Background Elements -->
+    <div id="background-elements"></div>
+    
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-8 relative z-10">
+        <!-- Profile Section -->
+        <div class="flex flex-col items-center mb-12">
+            <div class="relative mb-6" id="profile-container">
+                <img src="img/Carlos Silva.jpg" 
+                     alt="Personal Trainer" 
+                     class="profile-img w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-[#FFD60A] object-cover shadow-lg">
+                <div class="absolute -bottom-3 left-1/2 transform -translate-x-1/2 bg-[#FFD60A] text-black px-4 py-1 rounded-full font-bold text-sm">
+                    ONLINE
+                </div>
+            </div>
+            
+            <h1 class="text-3xl md:text-4xl font-bold mb-2 text-center">CARLOS ANDRADE</h1>
+            <p class="text-[#FFD60A] text-lg mb-6 text-center">Personal Trainer & Coach</p>
+            
+            <!-- Active Students Counter -->
+            <div class="bg-[#1F1F1F] rounded-lg p-4 mb-6 w-full max-w-md">
+                <div class="flex justify-between items-center">
+                    <span class="font-medium">Alunos Ativos:</span>
+                    <span class="text-2xl font-bold text-[#FFD60A]" id="student-counter">0</span>
+                </div>
+                <div class="progress-bar h-2 bg-[#000000] rounded-full mt-2">
+                    <div class="progress-fill rounded-full" style="--progress-width: 72%"></div>
+                </div>
+                <div class="text-xs text-gray-400 mt-1 text-right">Meta semanal: 72%</div>
+            </div>
+            
+            <!-- Motivational Quote -->
+            <div class="mb-8 text-center">
+                <p class="quote-text text-xl md:text-2xl font-bold" id="motivational-quote">
+                    "A disciplina é a ponte entre metas e realizações."
+                </p>
+            </div>
+        </div>
+        
+        <!-- Links Section -->
+        <div class="grid gap-4 mb-12" id="links-container">
+            <!-- Links will be added dynamically with staggered animation -->
+        </div>
+        
+        <!-- Social Proof -->
+        <div class="bg-[#1F1F1F] rounded-xl p-6 mb-8">
+            <h3 class="text-xl font-bold mb-4 text-center text-[#FFD60A]">DEPOIMENTOS</h3>
+            <div class="space-y-4">
+                <div class="bg-black bg-opacity-50 p-4 rounded-lg">
+                    <div class="flex items-center mb-2">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <p class="font-bold">Ana Souza</p>
+                            <div class="flex text-[#FFD60A]">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-sm">"Carlos transformou completamente minha rotina de exercícios. Em 3 meses já vi resultados incríveis!"</p>
+                </div>
+                <div class="bg-black bg-opacity-50 p-4 rounded-lg">
+                    <div class="flex items-center mb-2">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <p class="font-bold">Ricardo Almeida</p>
+                            <div class="flex text-[#FFD60A]">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-sm">"O acompanhamento personalizado fez toda diferença. Super recomendo!"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Floating Contact Button -->
+    <div class="contact-icon" id="contact-button">
+        <i class="fas fa-comment-dots text-2xl text-black"></i>
+    </div>
+    
+    <!-- Contact Modal -->
+    <div class="modal-overlay" id="contact-modal">
+        <div class="modal-content">
+            <h3 class="text-xl font-bold mb-4 text-[#FFD60A]">ENTRE EM CONTATO</h3>
+            <form id="contact-form">
+                <div class="mb-4">
+                    <label class="block mb-1">Nome</label>
+                    <input type="text" class="w-full bg-[#000000] border border-[#333333] rounded px-3 py-2 focus:outline-none focus:border-[#FFD60A]">
+                </div>
+                <div class="mb-4">
+                    <label class="block mb-1">Email</label>
+                    <input type="email" class="w-full bg-[#000000] border border-[#333333] rounded px-3 py-2 focus:outline-none focus:border-[#FFD60A]">
+                </div>
+                <div class="mb-4">
+                    <label class="block mb-1">Mensagem</label>
+                    <textarea class="w-full bg-[#000000] border border-[#333333] rounded px-3 py-2 focus:outline-none focus:border-[#FFD60A] h-24"></textarea>
+                </div>
+                <button type="button" class="w-full bg-[#FFD60A] text-black font-bold py-2 px-4 rounded hover:bg-opacity-90 transition">
+                    ENVIAR MENSAGEM
+                </button>
+            </form>
+            <button class="absolute top-2 right-2 text-gray-400 hover:text-white" id="close-modal">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="bg-[#1F1F1F] py-4 text-center text-sm relative z-10">
+        <div class="container mx-auto px-4">
+            <p class="mb-2">© 2025 Carlos Silva - Todos os direitos reservados</p>
+            <p class="text-gray-400 heartbeat inline-block">
+                <i class="fas fa-heart text-red-500 mr-1"></i> 
+                
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create animated background elements
+            createBackgroundElements();
+            
+            // Parallax effect for profile image
+            setupParallax();
+            
+            // Animate links with staggered delay
+            setupLinks();
+            
+            // Student counter animation
+            animateCounter();
+            
+            // Motivational quotes rotation
+            rotateQuotes();
+            
+            // Contact modal functionality
+            setupContactModal();
+            
+        });
+        
+        function createBackgroundElements() {
+            const container = document.getElementById('background-elements');
+            const gymIcons = ['dumbbell', 'running', 'biking', 'weight-hanging', 'heartbeat'];
+            const colors = ['#FFD60A', '#FFFFFF', '#FFD60A', '#FFFFFF', '#FFD60A'];
+            
+            // Add gym icons
+            for (let i = 0; i < 15; i++) {
+                const icon = document.createElement('i');
+                const randomIcon = gymIcons[Math.floor(Math.random() * gymIcons.length)];
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                
+                icon.className = `gym-icon fas fa-${randomIcon}`;
+                icon.style.color = randomColor;
+                icon.style.fontSize = `${Math.random() * 20 + 10}px`;
+                icon.style.top = `${Math.random() * 100}%`;
+                icon.style.left = `${Math.random() * 100}%`;
+                icon.style.animationDelay = `${Math.random() * 5}s`;
+                icon.style.animationDuration = `${Math.random() * 10 + 5}s`;
+                
+                container.appendChild(icon);
+            }
+            
+            // Add pulse lines
+            for (let i = 0; i < 8; i++) {
+                const line = document.createElement('div');
+                line.className = 'pulse-line';
+                line.style.width = `${Math.random() * 200 + 100}px`;
+                line.style.top = `${Math.random() * 100}%`;
+                line.style.left = `${Math.random() * 100}%`;
+                line.style.transform = `rotate(${Math.random() * 360}deg)`;
+                line.style.animationDelay = `${Math.random() * 3}s`;
+                
+                container.appendChild(line);
+            }
+        }
+        
+        function setupParallax() {
+            const profileImg = document.querySelector('.profile-img');
+            const container = document.getElementById('profile-container');
+            
+            container.addEventListener('mousemove', (e) => {
+                const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+                const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+                profileImg.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+            });
+            
+            container.addEventListener('mouseenter', () => {
+                profileImg.style.transition = 'none';
+            });
+            
+            container.addEventListener('mouseleave', () => {
+                profileImg.style.transition = 'transform 0.5s ease';
+                profileImg.style.transform = 'rotateY(0deg) rotateX(0deg)';
+            });
+            
+            // For touch devices
+            container.addEventListener('touchmove', (e) => {
+                e.preventDefault();
+                const touch = e.touches[0];
+                const xAxis = (window.innerWidth / 2 - touch.pageX) / 25;
+                const yAxis = (window.innerHeight / 2 - touch.pageY) / 25;
+                profileImg.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+            });
+            
+            container.addEventListener('touchend', () => {
+                profileImg.style.transition = 'transform 0.5s ease';
+                profileImg.style.transform = 'rotateY(0deg) rotateX(0deg)';
+            });
+        }
+        
+        function setupLinks() {
+            const links = [
+                {
+                    icon: 'instagram',
+                    color: 'bg-gradient-to-r from-purple-500 to-pink-500',
+                    text: 'Instagram',
+                    url: '#',
+                    delay: 0.1
+                },
+                {
+                    icon: 'whatsapp',
+                    color: 'bg-gradient-to-r from-green-500 to-green-600',
+                    text: 'Agendar Consulta',
+                    url: '#',
+                    delay: 0.3
+                },
+                {
+                    icon: 'youtube',
+                    color: 'bg-gradient-to-r from-red-500 to-red-600',
+                    text: 'Treinos Online',
+                    url: '#',
+                    delay: 0.5
+                },
+                {
+                    icon: 'tiktok',
+                    color: 'bg-gradient-to-r from-black to-gray-700',
+                    text: 'Dicas Rápidas',
+                    url: '#',
+                    delay: 0.7
+                },
+                {
+                    icon: 'store',
+                    color: 'bg-gradient-to-r from-yellow-500 to-yellow-600',
+                    text: 'Loja de Suplementos',
+                    url: '#',
+                    delay: 0.9
+                }
+            ];
+            
+            const container = document.getElementById('links-container');
+            
+            links.forEach((link, index) => {
+                const linkElement = document.createElement('a');
+                linkElement.href = link.url;
+                linkElement.className = `link-btn flex items-center justify-center p-4 rounded-lg ${link.color} text-white font-bold text-center`;
+                linkElement.style.animationDelay = `${link.delay}s`;
+                linkElement.style.border = '1px solid rgba(255, 255, 255, 0.1)';
+                
+                linkElement.innerHTML = `
+                    <i class="fab fa-${link.icon} text-xl mr-3"></i>
+                    <span>${link.text}</span>
+                `;
+                
+                container.appendChild(linkElement);
+                
+                // Trigger reflow to start animation
+                setTimeout(() => {
+                    linkElement.style.opacity = '1';
+                }, 10);
+            });
+        }
+        
+        function animateCounter() {
+            const counter = document.getElementById('student-counter');
+            const target = 247;
+            const duration = 2000;
+            const step = target / (duration / 16);
+            let current = 0;
+            
+            const interval = setInterval(() => {
+                current += step;
+                if (current >= target) {
+                    clearInterval(interval);
+                    current = target;
+                }
+                counter.textContent = Math.floor(current);
+            }, 16);
+        }
+        
+        function rotateQuotes() {
+            const quotes = [
+                '"A disciplina é a ponte entre metas e realizações."',
+                '"O corpo alcança o que a mente acredita."',
+                '"Não é sobre ser perfeito, é sobre ser melhor."',
+                '"Sua única limitação é você mesmo."',
+                '"Grandes resultados exigem grandes esforços."'
+            ];
+            
+            const quoteElement = document.getElementById('motivational-quote');
+            let currentIndex = 0;
+            
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % quotes.length;
+                
+                // Fade out
+                quoteElement.style.opacity = 0;
+                
+                setTimeout(() => {
+                    quoteElement.textContent = quotes[currentIndex];
+                    // Fade in
+                    quoteElement.style.opacity = 1;
+                }, 500);
+                
+            }, 5000);
+        }
+        
+        function setupContactModal() {
+            const contactButton = document.getElementById('contact-button');
+            const contactModal = document.getElementById('contact-modal');
+            const closeModal = document.getElementById('close-modal');
+            
+            contactButton.addEventListener('click', () => {
+                contactModal.classList.add('active');
+            });
+            
+            closeModal.addEventListener('click', () => {
+                contactModal.classList.remove('active');
+            });
+            
+            // Close modal when clicking outside
+            contactModal.addEventListener('click', (e) => {
+                if (e.target === contactModal) {
+                    contactModal.classList.remove('active');
+                }
+            });
+        }
+        
+      
+    </script>
+</body>
+</html>

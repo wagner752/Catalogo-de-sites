@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Makeup Artist | Transformando Beleza em Arte</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(250, 218, 221, 0.7), rgba(245, 235, 221, 0.7)),
+                url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .portfolio-item {
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-item:hover {
+            transform: scale(1.03);
+            opacity: 0.9;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal {
+            transition: opacity 0.3s ease;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.2);
+            color: #D4AF37;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #25D366;
+            color: white;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fadeIn {
+            animation: fadeIn 1s ease forwards;
+        }
+
+        .stroked-text {
+            -webkit-text-stroke: 0.7px black;
+            /* 2px de espessura e preto */
+        }
+        
+    </style>
+</head>
+
+<body class="bg-[#F5EBDD] text-gray-700">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white bg-opacity-90 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="text-2xl font-bold text-[#D4AF37]">Makeup<span class="text-pink-400">Art</span></span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-center space-x-8">
+                        <a href="#home" class="text-gray-700 hover:text-[#D4AF37] px-3 py-2 font-medium">Início</a>
+                        <a href="#about" class="text-gray-700 hover:text-[#D4AF37] px-3 py-2 font-medium">Sobre Mim</a>
+                        <a href="#services"
+                            class="text-gray-700 hover:text-[#D4AF37] px-3 py-2 font-medium">Serviços</a>
+                        <a href="#portfolio"
+                            class="text-gray-700 hover:text-[#D4AF37] px-3 py-2 font-medium">Portfólio</a>
+                        <a href="#testimonials"
+                            class="text-gray-700 hover:text-[#D4AF37] px-3 py-2 font-medium">Depoimentos</a>
+                        <a href="#contact" class="text-gray-700 hover:text-[#D4AF37] px-3 py-2 font-medium">Contato</a>
+                        <a href="https://wa.me/+5584991652870" target="_blank"
+                            class="bg-[#D4AF37] text-white px-4 py-2 rounded-full hover:bg-opacity-90 transition duration-300">
+                            <i class="fab fa-whatsapp mr-2"></i> WhatsApp
+                        </a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-gray-700 hover:text-[#D4AF37] focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white bg-opacity-95">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home"
+                    class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-[#D4AF37]">Início</a>
+                <a href="#about" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-[#D4AF37]">Sobre
+                    Mim</a>
+                <a href="#services"
+                    class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-[#D4AF37]">Serviços</a>
+                <a href="#portfolio"
+                    class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-[#D4AF37]">Portfólio</a>
+                <a href="#testimonials"
+                    class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-[#D4AF37]">Depoimentos</a>
+                <a href="#contact"
+                    class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-[#D4AF37]">Contato</a>
+                <a href="https://wa.me/5511999999999" target="_blank"
+                    class="block bg-[#D4AF37] text-white px-4 py-2 rounded-full mx-3 my-2 text-center">
+                    <i class="fab fa-whatsapp mr-2"></i> WhatsApp
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero min-h-screen flex items-center justify-center pt-20 border border-black">
+        <div class="container mx-auto px-6 text-center animate-fadeIn">
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 stroked-text">
+                Transformando Beleza em Arte
+            </h1>
+            <p class="text-xl md:text-2xl text-white mb-10 max-w-2xl mx-auto" style="color: rgb(0, 0, 0);">
+                Maquiagem profissional que realça sua beleza natural para momentos especiais
+            </p>
+            <a href="#contact"
+                class="bg-[#D4AF37] hover:bg-[#c9a030] text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 inline-block ">
+                Agende seu horário
+            </a>
+        </div>
+    </section>
+
+
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <img src="IMG/Maquiadora.jpg" alt="Makeup Artist" class="rounded-lg shadow-xl w-full h-auto">
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl md:text-4xl font-bold text-[#D4AF37] mb-6">Sobre Mim</h2>
+                    <p class="text-lg mb-6">Olá, eu sou a Carla! Uma maquiadora profissional apaixonada por realçar a
+                        beleza única de cada pessoa. Com mais de 10 anos de experiência no mercado, já trabalhei em
+                        diversos eventos, desfiles e produções editoriais.</p>
+                    <p class="text-lg mb-6">Minha filosofia é simples: a maquiagem deve realçar, não esconder. Acredito
+                        que cada rosto conta uma história e meu trabalho é ajudar você a contar a sua com confiança e
+                        estilo.</p>
+                    <p class="text-lg mb-8">Formada pela Makeup Forever Academy em Paris, continuo me atualizando com as
+                        últimas técnicas e tendências para oferecer o melhor serviço possível às minhas clientes.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="bg-[#FADADD] px-4 py-2 rounded-full">
+                            <span class="text-gray-700">+1000 clientes satisfeitas</span>
+                        </div>
+                        <div class="bg-[#FADADD] px-4 py-2 rounded-full">
+                            <span class="text-gray-700">Certificações internacionais</span>
+                        </div>
+                        <div class="bg-[#FADADD] px-4 py-2 rounded-full">
+                            <span class="text-gray-700">Produtos de alta qualidade</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-[#FADADD]">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#D4AF37] mb-4">Meus Serviços</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Ofereço uma variedade de serviços de maquiagem para
+                    atender todas as suas necessidades</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="service-card bg-white p-8 rounded-lg shadow-md transition duration-300 hover:shadow-xl">
+                    <div class="text-[#D4AF37] text-4xl mb-4">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Maquiagem Social</h3>
+                    <p class="text-gray-600 mb-4">Perfeita para eventos diurnos ou noturnos, formaturas e festas. Um
+                        look que combina com seu estilo pessoal e a ocasião.</p>
+                    <div class="text-[#D4AF37] font-bold text-lg">A partir de R$ 180</div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-card bg-white p-8 rounded-lg shadow-md transition duration-300 hover:shadow-xl">
+                    <div class="text-[#D4AF37] text-4xl mb-4">
+                        <i class="fas fa-ring"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Maquiagem para Noivas</h3>
+                    <p class="text-gray-600 mb-4">Um look especial e duradouro para o seu grande dia, com teste prévio
+                        para garantir a perfeição.</p>
+                    <div class="text-[#D4AF37] font-bold text-lg">A partir de R$ 350</div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card bg-white p-8 rounded-lg shadow-md transition duration-300 hover:shadow-xl">
+                    <div class="text-[#D4AF37] text-4xl mb-4">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Maquiagem Editorial</h3>
+                    <p class="text-gray-600 mb-4">Criações artísticas para ensaios fotográficos, desfiles e produções
+                        criativas.</p>
+                    <div class="text-[#D4AF37] font-bold text-lg">A partir de R$ 250</div>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="service-card bg-white p-8 rounded-lg shadow-md transition duration-300 hover:shadow-xl">
+                    <div class="text-[#D4AF37] text-4xl mb-4">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Aulas Personalizadas</h3>
+                    <p class="text-gray-600 mb-4">Aprenda técnicas profissionais para aplicar sua própria maquiagem no
+                        dia a dia ou para ocasiões especiais.</p>
+                    <div class="text-[#D4AF37] font-bold text-lg">A partir de R$ 200</div>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="service-card bg-white p-8 rounded-lg shadow-md transition duration-300 hover:shadow-xl">
+                    <div class="text-[#D4AF37] text-4xl mb-4">
+                        <i class="fas fa-brush"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Maquiagem Artística</h3>
+                    <p class="text-gray-600 mb-4">Transformações criativas para festas temáticas, halloween ou produções
+                        artísticas.</p>
+                    <div class="text-[#D4AF37] font-bold text-lg">A partir de R$ 300</div>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="service-card bg-white p-8 rounded-lg shadow-md transition duration-300 hover:shadow-xl">
+                    <div class="text-[#D4AF37] text-4xl mb-4">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Maquiagem em Grupo</h3>
+                    <p class="text-gray-600 mb-4">Serviço especial para eventos com várias pessoas (damas de honra,
+                        festas de 15 anos, etc.) com desconto progressivo.</p>
+                    <div class="text-[#D4AF37] font-bold text-lg">A partir de R$ 150/pessoa</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#D4AF37] mb-4">Meu Portfólio</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Alguns dos meus trabalhos recentes</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Portfolio Item 1 -->
+                <div class="portfolio-item relative overflow-hidden rounded-lg shadow-md cursor-pointer"
+                    onclick="openModal('IMG/Noiva.jpg')">
+                    <img src="IMG/Noiva.jpg"
+                        alt="Bridal Makeup" class="w-full h-80 object-cover">
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 hover:opacity-100 transition duration-300">
+                        <span class="text-white text-xl font-bold">Noiva - Juliana</span>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 2 -->
+                <div class="portfolio-item relative overflow-hidden rounded-lg shadow-md cursor-pointer"
+                    onclick="openModal('IMG/Modelo2.jpg')">
+                    <img src="IMG/Modelo2.jpg"
+                        alt="Editorial Makeup" class="w-full h-80 object-cover">
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 hover:opacity-100 transition duration-300">
+                        <span class="text-white text-xl font-bold">Editorial - Vogue</span>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 3 -->
+                <div class="portfolio-item relative overflow-hidden rounded-lg shadow-md cursor-pointer"
+                    onclick="openModal('IMG/Modelo3.jpg')">
+                    <img src="IMG/Modelo3.jpg"
+                        alt="Social Makeup" class="w-full h-80 object-cover">
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 hover:opacity-100 transition duration-300">
+                        <span class="text-white text-xl font-bold">Social - Ana Carolina</span>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 4 -->
+                <div class="portfolio-item relative overflow-hidden rounded-lg shadow-md cursor-pointer"
+                    onclick="openModal('IMG/Modelo4.jpg')">
+                    <img src="IMG/Modelo4.jpg"
+                        alt="Fashion Makeup" class="w-full h-80 object-cover">
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 hover:opacity-100 transition duration-300">
+                        <span class="text-white text-xl font-bold">Desfile - Fashion Week</span>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 5 -->
+                <div class="portfolio-item relative overflow-hidden rounded-lg shadow-md cursor-pointer"
+                    onclick="openModal('IMG/Modelo5.jpg')">
+                    <img src="IMG/Modelo5.jpg"
+                        alt="Bridal Makeup" class="w-full h-80 object-cover">
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 hover:opacity-100 transition duration-300">
+                        <span class="text-white text-xl font-bold">Noiva - Fernanda</span>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 6 -->
+                <div class="portfolio-item relative overflow-hidden rounded-lg shadow-md cursor-pointer"
+                    onclick="openModal('IMG/Modelo6.jpg')">
+                    <img src="IMG/Modelo6.jpg"
+                        alt="Artistic Makeup" class="w-full h-80 object-cover">
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 hover:opacity-100 transition duration-300">
+                        <span class="text-white text-xl font-bold">Artístico - Halloween</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="https://www.instagram.com/w__wagner/" target="_blank"
+                    class="inline-block bg-[#D4AF37] hover:bg-[#c9a030] text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300">
+                    Veja mais no Instagram <i class="fab fa-instagram ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-[#FADADD]">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#D4AF37] mb-4">Depoimentos</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">O que minhas clientes dizem</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card p-8 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Client"
+                            class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Ana Paula</h4>
+                            <div class="flex text-[#D4AF37]">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"A Carla fez minha maquiagem de noiva e foi incrível! Fiquei
+                        radiante no meu grande dia e a maquiagem durou perfeita até o final da festa. Super recomendo!"
+                    </p>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card p-8 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client"
+                            class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Juliana</h4>
+                            <div class="flex text-[#D4AF37]">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"Contratei a Carla para minha formatura e amei o resultado! Ela
+                        entendeu exatamente o que eu queria e fez um trabalho impecável. Todas me elogiaram!"</p>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card p-8 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Client"
+                            class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Fernanda</h4>
+                            <div class="flex text-[#D4AF37]">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"Fiz aulas com a Carla para aprender a me maquiar melhor no dia a
+                        dia. Ela é super paciente e ensina técnicas que realmente funcionam. Minha autoestima melhorou
+                        muito!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#D4AF37] mb-4">Pacotes Especiais</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Opções personalizadas para diferentes necessidades
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Package 1 -->
+                <div class="border border-[#FADADD] rounded-lg p-8 hover:shadow-lg transition duration-300">
+                    <h3 class="text-2xl font-bold text-center mb-4">Básico</h3>
+                    <div class="text-center mb-6">
+                        <span class="text-4xl font-bold text-[#D4AF37]">R$ 180</span>
+                        <span class="text-gray-500 block">por serviço</span>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-[#D4AF37] mr-2"></i>
+                            <span>Maquiagem social</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-[#D4AF37] mr-2"></i>
+                            <span>Duração: 1 hora</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-[#D4AF37] mr-2"></i>
+                            <span>Produtos de alta qualidade</span>
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-times mr-2"></i>
+                            <span>Teste prévio</span>
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-times mr-2"></i>
+                            <span>Retoques</span>
+                        </li>
+                    </ul>
+                    <div class="text-center">
+                        <a href="#contact"
+                            class="inline-block bg-[#FADADD] hover:bg-[#f8ced2] text-gray-700 font-bold py-2 px-6 rounded-full transition duration-300">
+                            Agendar
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Package 2 -->
+                <div class="border-2 border-[#D4AF37] rounded-lg p-8 hover:shadow-lg transition duration-300 relative">
+                    <div
+                        class="absolute top-0 right-0 bg-[#D4AF37] text-white px-4 py-1 rounded-bl-lg rounded-tr-lg font-bold">
+                        Popular
+                    </div>
+                    <h3 class="text-2xl font-bold text-center mb-4">Premium</h3>
+                    <div class="text-center mb-6">
+                        <span class="text-4xl font-bold text-[#D4AF37]">R$ 300</span>
+                        <span class="text-gray-500 block">por serviço</span>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-[#D4AF37] mr-2"></i>
+                            <span>Maquiagem social ou editorial</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-[#D4AF37] mr-2"></i>
+                            <span>Duração: 1h30</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-[#D4AF37] mr-2"></i>
+                            <span>Produtos de luxo</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-[#D4AF37] mr-2"></i>
+                            <span>Teste prévio</span>
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-times mr-2"></i>
+                            <span>Retoques</span>
+                        </li>
+                    </ul>
+                    <div class="text-center">
+                        <a href="#contact"
+                            class="inline-block bg-[#D4AF37] hover:bg-[#c9a030] text-white font-bold py-2 px-6 rounded-full transition duration-300">
+                            Agendar
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Package 3 -->
+                <div class="border border-[#FADADD] rounded-lg p-8 hover:shadow-lg transition duration-300">
+                    <h3 class="text-2xl font-bold text-center mb-4">Noiva</h3>
+                    <div class="text-center mb-6">
+                        <span class="text-4xl font-bold text-[#D4AF37]">R$ 500</span>
+                        <span class="text-gray-500 block">pacote completo</span>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-[#D4AF37] mr-2"></i>
+                            <span>Maquiagem para noiva</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-[#D4AF37] mr-2"></i>
+                            <span>Teste prévio incluído</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-[#D4AF37] mr-2"></i>
+                            <span>Produtos profissionais à prova d'água</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-[#D4AF37] mr-2"></i>
+                            <span>Retoques durante o evento</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-[#D4AF37] mr-2"></i>
+                            <span>Maquiagem para 1 dama de honra (opcional)</span>
+                        </li>
+                    </ul>
+                    <div class="text-center">
+                        <a href="#contact"
+                            class="inline-block bg-[#FADADD] hover:bg-[#f8ced2] text-gray-700 font-bold py-2 px-6 rounded-full transition duration-300">
+                            Agendar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12 bg-[#F5EBDD] p-6 rounded-lg max-w-3xl mx-auto">
+                <h3 class="text-xl font-bold mb-4">Precisa de algo personalizado?</h3>
+                <p class="mb-6">Entre em contato para discutirmos suas necessidades específicas. Posso criar um pacote
+                    sob medida para você ou seu evento.</p>
+                <a href="https://wa.me/+5584991652870" target="_blank"
+                    class="inline-block bg-[#D4AF37] hover:bg-[#c9a030] text-white font-bold py-2 px-6 rounded-full transition duration-300">
+                    Fale comigo
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-[#F5EBDD]">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#D4AF37] mb-4">Entre em Contato</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Agende seu horário ou tire suas dúvidas</p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-12 max-w-6xl mx-auto">
+                <div class="lg:w-1/2">
+                    <form class="bg-white p-8 rounded-lg shadow-md">
+                        <div class="mb-6">
+                            <label for="name" class="block text-gray-700 font-medium mb-2">Nome</label>
+                            <input type="text" id="name"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D4AF37]">
+                        </div>
+                        <div class="mb-6">
+                            <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+                            <input type="email" id="email"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D4AF37]">
+                        </div>
+                        <div class="mb-6">
+                            <label for="phone" class="block text-gray-700 font-medium mb-2">Telefone</label>
+                            <input type="tel" id="phone"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D4AF37]">
+                        </div>
+                        <div class="mb-6">
+                            <label for="service" class="block text-gray-700 font-medium mb-2">Serviço de
+                                interesse</label>
+                            <select id="service"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D4AF37]">
+                                <option value="">Selecione um serviço</option>
+                                <option value="social">Maquiagem Social</option>
+                                <option value="bridal">Maquiagem para Noivas</option>
+                                <option value="editorial">Maquiagem Editorial</option>
+                                <option value="classes">Aulas Personalizadas</option>
+                                <option value="artistic">Maquiagem Artística</option>
+                                <option value="group">Maquiagem em Grupo</option>
+                            </select>
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-700 font-medium mb-2">Mensagem</label>
+                            <textarea id="message" rows="4"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D4AF37]"></textarea>
+                        </div>
+                        <button type="submit"
+                            class="w-full bg-[#D4AF37] hover:bg-[#c9a030] text-white font-bold py-3 px-4 rounded-lg transition duration-300">
+                            Enviar Mensagem
+                        </button>
+                    </form>
+                </div>
+
+                <div class="lg:w-1/2">
+                    <div class="bg-white p-8 rounded-lg shadow-md h-full">
+                        <h3 class="text-2xl font-bold text-[#D4AF37] mb-6">Informações de Contato</h3>
+
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="text-[#D4AF37] text-xl mt-1 mr-4">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Localização</h4>
+                                    <p class="text-gray-600">São Paulo - SP</p>
+                                    <p class="text-gray-600">Atendimento em domicílio e em estúdio</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div class="text-[#D4AF37] text-xl mt-1 mr-4">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Telefone</h4>
+                                    <p class="text-gray-600">(11) 99999-9999</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div class="text-[#D4AF37] text-xl mt-1 mr-4">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Email</h4>
+                                    <p class="text-gray-600">contato@makeupart.com</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div class="text-[#D4AF37] text-xl mt-1 mr-4">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Horário de Atendimento</h4>
+                                    <p class="text-gray-600">Segunda a Sábado: 9h às 19h</p>
+                                    <p class="text-gray-600">Domingo: somente para eventos</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-10">
+                            <h4 class="font-bold mb-4">Me siga nas redes sociais</h4>
+                            <div class="flex space-x-4">
+                                <a href="https://www.instagram.com" target="_blank"
+                                    class="social-icon text-gray-600 hover:text-[#D4AF37] text-2xl transition duration-300">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="https://www.tiktok.com" target="_blank"
+                                    class="social-icon text-gray-600 hover:text-[#D4AF37] text-2xl transition duration-300">
+                                    <i class="fab fa-tiktok"></i>
+                                </a>
+                                <a href="https://www.pinterest.com" target="_blank"
+                                    class="social-icon text-gray-600 hover:text-[#D4AF37] text-2xl transition duration-300">
+                                    <i class="fab fa-pinterest"></i>
+                                </a>
+                                <a href="https://www.youtube.com" target="_blank"
+                                    class="social-icon text-gray-600 hover:text-[#D4AF37] text-2xl transition duration-300">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="mt-10">
+                            <a href="https://wa.me/+5584991652870" target="_blank"
+                                class="whatsapp-btn inline-flex items-center bg-[#25D366] bg-opacity-10 text-[#075E54] font-bold py-3 px-6 rounded-full transition duration-300">
+                                <i class="fab fa-whatsapp text-2xl mr-3"></i>
+                                <span>Fale comigo no WhatsApp</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#333] text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <span class="text-2xl font-bold text-[#D4AF37]">Makeup<span class="text-pink-400">Art</span></span>
+                    <p class="mt-2 text-gray-300">Transformando beleza em arte desde 2012</p>
+                </div>
+
+                <div class="flex space-x-6 mb-6 md:mb-0">
+                    <a href="#home" class="text-gray-300 hover:text-white">Início</a>
+                    <a href="#about" class="text-gray-300 hover:text-white">Sobre</a>
+                    <a href="#services" class="text-gray-300 hover:text-white">Serviços</a>
+                    <a href="#portfolio" class="text-gray-300 hover:text-white">Portfólio</a>
+                    <a href="#contact" class="text-gray-300 hover:text-white">Contato</a>
+                </div>
+
+                <div class="flex space-x-4">
+                    <a href="https://www.instagram.com" target="_blank"
+                        class="text-gray-300 hover:text-[#D4AF37] text-xl">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.tiktok.com" target="_blank" class="text-gray-300 hover:text-[#D4AF37] text-xl">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                    <a href="https://www.pinterest.com" target="_blank"
+                        class="text-gray-300 hover:text-[#D4AF37] text-xl">
+                        <i class="fab fa-pinterest"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-400 italic mb-4">"A beleza começa no momento em que você decide ser você mesma." -
+                    Coco Chanel</p>
+                <p class="text-gray-400">&copy; 2025 MakeupArt. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Portfolio Modal -->
+    <div id="portfolio-modal"
+        class="modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80 hidden">
+        <div class="relative max-w-4xl w-full mx-4">
+            <button onclick="closeModal()" class="absolute -top-12 right-0 text-white text-3xl hover:text-[#D4AF37]">
+                <i class="fas fa-times"></i>
+            </button>
+            <img id="modal-image" src="" alt="Portfolio Image" class="w-full h-auto max-h-[90vh] object-contain">
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top"
+        class="fixed bottom-8 right-8 bg-[#D4AF37] text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg hidden">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function () {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Portfolio modal
+        function openModal(imageSrc) {
+            document.getElementById('modal-image').src = imageSrc;
+            document.getElementById('portfolio-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('portfolio-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside the image
+        document.getElementById('portfolio-modal').addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Back to top button
+        window.addEventListener('scroll', function () {
+            var backToTopButton = document.getElementById('back-to-top');
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('hidden');
+            } else {
+                backToTopButton.classList.add('hidden');
+            }
+        });
+
+        document.getElementById('back-to-top').addEventListener('click', function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                // Close mobile menu if open
+                document.getElementById('mobile-menu').classList.add('hidden');
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const offset = 80; // Adjust for fixed header
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Obrigada pelo seu contato! Responderei em breve.');
+            this.reset();
+        });
+
+        // Animate elements on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.animate-fadeIn');
+
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+
+        window.addEventListener('load', animateOnScroll);
+        window.addEventListener('scroll', animateOnScroll);
+    </script>
+</body>
+
+</html>

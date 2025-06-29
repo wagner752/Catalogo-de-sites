@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OrbiFit - Academia Intergaláctica</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.materialdesignicons.com/6.5.95/css/materialdesignicons.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Space+Grotesk:wght@300;400;500;700&display=swap');
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #0f0f1a;
+            color: #e0e0ff;
+        }
+
+        .orbitron {
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #00d1ff, #b300ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .space-bg {
+            background-image: url('https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?q=80&w=1471&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .card-glass {
+            background: rgba(15, 15, 30, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-space {
+            background: linear-gradient(90deg, #00d1ff, #b300ff);
+            border: none;
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .btn-space:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 209, 255, 0.3);
+        }
+
+        .floating-btn {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .equipment-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 209, 255, 0.2);
+        }
+
+        .modal {
+            transition: opacity 0.3s ease;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen">
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/+5584991652870" target="_blank"
+        class="fixed bottom-8 right-8 bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl shadow-lg z-50 floating-btn">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Navigation -->
+    <nav class="bg-black bg-opacity-70 backdrop-filter backdrop-blur-lg fixed w-full z-40 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <span class="text-2xl font-bold gradient-text orbitron">ORBIFIT</span>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home"
+                            class="text-white hover:text-purple-300 px-3 py-2 rounded-md text-sm font-medium">Início</a>
+                        <a href="#programas"
+                            class="text-gray-300 hover:text-purple-300 px-3 py-2 rounded-md text-sm font-medium">Programas</a>
+                        <a href="#planos"
+                            class="text-gray-300 hover:text-purple-300 px-3 py-2 rounded-md text-sm font-medium">Planos</a>
+                        <a href="#depoimentos"
+                            class="text-gray-300 hover:text-purple-300 px-3 py-2 rounded-md text-sm font-medium">Depoimentos</a>
+                        <a href="#contato"
+                            class="text-gray-300 hover:text-purple-300 px-3 py-2 rounded-md text-sm font-medium">Contato</a>
+                    </div>
+                </div>
+
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" id="mobile-menu-button"
+                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div class="hidden md:hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-gray-900">
+                <a href="#home" class="text-white block px-3 py-2 rounded-md text-base font-medium">Início</a>
+                <a href="#programas"
+                    class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Programas</a>
+                <a href="#planos"
+                    class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Planos</a>
+                <a href="#depoimentos"
+                    class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Depoimentos</a>
+                <a href="#contato"
+                    class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Contato</a>
+                <button onclick="openModal('loginModal')"
+                    class="btn-space px-6 py-2 rounded-full text-sm font-bold mt-2">Área do Membro</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="space-bg relative pt-32 pb-20 md:pt-40 md:pb-32 flex items-center justify-center">
+        <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 orbitron gradient-text">ORBIFIT</h1>
+                <h2 class="text-2xl md:text-4xl font-bold mb-8 text-white">Transforme seu corpo, <span
+                        class="gradient-text">em qualquer órbita</span></h2>
+                <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-10">A primeira academia intergaláctica
+                    com tecnologia de ponta para levar seu treino ao próximo nível. Prepare-se para a experiência
+                    fitness do futuro!</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <button class="btn-space px-8 py-4 rounded-full text-lg font-bold">Comece sua jornada</button>
+                    <button
+                        class="bg-transparent border-2 border-purple-500 text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-purple-900 hover:bg-opacity-30 transition">Conheça
+                        nossos programas</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 bg-gradient-to-b from-gray-900 to-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white orbitron">TECNOLOGIA <span
+                        class="gradient-text">ESPACIAL</span></h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">Equipamentos futuristas que utilizam princípios da
+                    física espacial para maximizar seus resultados</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="card-glass p-8 rounded-xl equipment-card transition duration-500">
+                    <div class="text-purple-400 text-5xl mb-6">
+                        <i class="fas fa-atom"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Gravidade Zero</h3>
+                    <p class="text-gray-300">Nossas esteiras antigravitacionais reduzem o impacto nas articulações em
+                        90%, permitindo treinos mais longos e eficientes.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="card-glass p-8 rounded-xl equipment-card transition duration-500">
+                    <div class="text-blue-400 text-5xl mb-6">
+                        <i class="fas fa-satellite-dish"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Monitoramento Neural</h3>
+                    <p class="text-gray-300">Sensores cerebrais acompanham seu foco e motivação, ajustando a intensidade
+                        do treino em tempo real.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="card-glass p-8 rounded-xl equipment-card transition duration-500">
+                    <div class="text-pink-400 text-5xl mb-6">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Propulsão Espacial</h3>
+                    <p class="text-gray-300">Nossos equipamentos de resistência usam campos de força para simular
+                        diferentes gravidades, desafiando seus músculos como nunca.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section id="programas" class="py-20 bg-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white orbitron">PROGRAMAS <span
+                        class="gradient-text">GALÁCTICOS</span></h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">Treinos desenvolvidos por nossos cientistas espaciais
+                    para resultados fora deste mundo</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Program 1 -->
+                <div
+                    class="bg-gray-900 rounded-xl overflow-hidden transition duration-500 hover:shadow-xl hover:shadow-purple-500/20">
+                    <div class="h-48 bg-gradient-to-r from-purple-900 to-blue-900 flex items-center justify-center">
+                        <i class="fas fa-meteor text-6xl text-white opacity-70"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-3">Treino Asteroide</h3>
+                        <p class="text-gray-300 mb-4">Treino HIIT de alta intensidade que queima calorias como um
+                            meteoro entrando na atmosfera.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-purple-400 font-bold">30 min</span>
+                            <button class="text-purple-400 hover:text-purple-300 font-medium">Saiba mais →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Program 2 -->
+                <div
+                    class="bg-gray-900 rounded-xl overflow-hidden transition duration-500 hover:shadow-xl hover:shadow-blue-500/20">
+                    <div class="h-48 bg-gradient-to-r from-blue-900 to-cyan-900 flex items-center justify-center">
+                        <i class="mdi mdi-earth text-6xl text-white opacity-70"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-3">Força de Saturno</h3>
+                        <p class="text-gray-300 mb-4">Treino de força com anéis gravitacionais ajustáveis para todos os
+                            níveis.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-400 font-bold">45 min</span>
+                            <button class="text-blue-400 hover:text-blue-300 font-medium">Saiba mais →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Program 3 -->
+                <div
+                    class="bg-gray-900 rounded-xl overflow-hidden transition duration-500 hover:shadow-xl hover:shadow-pink-500/20">
+                    <div class="h-48 bg-gradient-to-r from-pink-900 to-purple-900 flex items-center justify-center">
+                        <i class="mdi mdi-star text-6xl text-white opacity-70"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-3">Via Láctea</h3>
+                        <p class="text-gray-300 mb-4">Treino de resistência que simula as condições de gravidade em
+                            diferentes planetas.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-pink-400 font-bold">60 min</span>
+                            <button class="text-pink-400 hover:text-pink-300 font-medium">Saiba mais →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Program 4 -->
+                <div
+                    class="bg-gray-900 rounded-xl overflow-hidden transition duration-500 hover:shadow-xl hover:shadow-green-500/20">
+                    <div class="h-48 bg-gradient-to-r from-green-900 to-teal-900 flex items-center justify-center">
+                        <i class="mdi mdi-alien text-6xl text-white opacity-70"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-3">Recuperação Alien</h3>
+                        <p class="text-gray-300 mb-4">Técnicas avançadas de recuperação pós-treino usando tecnologia
+                            extraterrestre.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-green-400 font-bold">20 min</span>
+                            <button class="text-green-400 hover:text-green-300 font-medium">Saiba mais →</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-16">
+                <button class="btn-space px-8 py-3 rounded-full text-lg font-bold">Ver todos os programas</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="planos" class="py-20 bg-gradient-to-b from-black to-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white orbitron">PLANOS <span
+                        class="gradient-text">ESPACIAIS</span></h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">Escolha a órbita perfeita para sua jornada fitness
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Plan 1 -->
+                <div
+                    class="card-glass rounded-xl p-8 hover:border-purple-500 border border-gray-800 transition duration-300">
+                    <div class="text-center mb-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Órbita Terrestre</h3>
+                        <p class="text-gray-300">Para iniciantes na jornada espacial</p>
+                    </div>
+                    <div class="text-center mb-8">
+                        <span class="text-5xl font-bold text-white">R$ 90</span>
+                        <span class="text-gray-400">/mês</span>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center text-gray-300">
+                            <i class="fas fa-check-circle text-green-400 mr-2"></i> Acesso às áreas básicas
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <i class="fas fa-check-circle text-green-400 mr-2"></i> 2 aulas em grupo por semana
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <i class="fas fa-check-circle text-green-400 mr-2"></i> Monitoramento básico
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-times-circle text-gray-600 mr-2"></i> Acesso à zona de gravidade zero
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-times-circle text-gray-600 mr-2"></i> Treinos personalizados
+                        </li>
+                    </ul>
+                    <button
+                        class="w-full bg-gray-800 hover:bg-gray-700 text-white py-3 rounded-lg font-medium transition">Assinar
+                        plano</button>
+                </div>
+
+                <!-- Plan 2 (Featured) -->
+                <div class="relative">
+                    <div class="absolute -top-4 left-0 right-0 text-center">
+                        <span
+                            class="bg-gradient-to-r from-purple-500 to-blue-500 text-white text-xs font-bold px-4 py-1 rounded-full">MAIS
+                            POPULAR</span>
+                    </div>
+                    <div
+                        class="card-glass rounded-xl p-8 border-2 border-purple-500 transform hover:scale-105 transition duration-300">
+                        <div class="text-center mb-6">
+                            <h3 class="text-xl font-bold text-white mb-2">Órbita Lunar</h3>
+                            <p class="text-gray-300">Para quem quer ir além</p>
+                        </div>
+                        <div class="text-center mb-8">
+                            <span class="text-5xl font-bold text-white">R$ 150</span>
+                            <span class="text-gray-400">/mês</span>
+                        </div>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center text-gray-300">
+                                <i class="fas fa-check-circle text-green-400 mr-2"></i> Acesso completo à academia
+                            </li>
+                            <li class="flex items-center text-gray-300">
+                                <i class="fas fa-check-circle text-green-400 mr-2"></i> Aulas ilimitadas em grupo
+                            </li>
+                            <li class="flex items-center text-gray-300">
+                                <i class="fas fa-check-circle text-green-400 mr-2"></i> Monitoramento avançado
+                            </li>
+                            <li class="flex items-center text-gray-300">
+                                <i class="fas fa-check-circle text-green-400 mr-2"></i> 2 sessões mensais na zona de
+                                gravidade zero
+                            </li>
+                            <li class="flex items-center text-gray-400">
+                                <i class="fas fa-times-circle text-gray-600 mr-2"></i> Treinos personalizados
+                            </li>
+                        </ul>
+                        <button class="w-full btn-space py-3 rounded-lg font-bold transition">Assinar plano</button>
+                    </div>
+                </div>
+
+                <!-- Plan 3 -->
+                <div
+                    class="card-glass rounded-xl p-8 hover:border-blue-500 border border-gray-800 transition duration-300">
+                    <div class="text-center mb-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Órbita Intergaláctica</h3>
+                        <p class="text-gray-300">Para os verdadeiros astronautas do fitness</p>
+                    </div>
+                    <div class="text-center mb-8">
+                        <span class="text-5xl font-bold text-white">R$ 200</span>
+                        <span class="text-gray-400">/mês</span>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center text-gray-300">
+                            <i class="fas fa-check-circle text-green-400 mr-2"></i> Acesso completo premium
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <i class="fas fa-check-circle text-green-400 mr-2"></i> Aulas ilimitadas + VIP
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <i class="fas fa-check-circle text-green-400 mr-2"></i> Monitoramento neural completo
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <i class="fas fa-check-circle text-green-400 mr-2"></i> Acesso ilimitado à zona de gravidade
+                            zero
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <i class="fas fa-check-circle text-green-400 mr-2"></i> Treinos personalizados semanais
+                        </li>
+                    </ul>
+                    <button
+                        class="w-full bg-gray-800 hover:bg-gray-700 text-white py-3 rounded-lg font-medium transition">Assinar
+                        plano</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="depoimentos" class="py-20 bg-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white orbitron">DEPOIMENTOS <span
+                        class="gradient-text">ESTELARES</span></h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">O que nossos membros astronautas estão dizendo</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="card-glass p-8 rounded-xl">
+                    <div class="flex items-center mb-6">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Ana Santos"
+                            class="w-16 h-16 rounded-full border-2 border-purple-500">
+                        <div class="ml-4">
+                            <h4 class="text-white font-bold">Ana Santos</h4>
+                            <p class="text-purple-400 text-sm">Membro há 1 ano</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 italic">"A zona de gravidade zero mudou completamente minha recuperação de
+                        lesões. Em 3 meses já estava melhor do que antes!"</p>
+                    <div class="mt-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="card-glass p-8 rounded-xl">
+                    <div class="flex items-center mb-6">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Carlos Ribeiro"
+                            class="w-16 h-16 rounded-full border-2 border-blue-500">
+                        <div class="ml-4">
+                            <h4 class="text-white font-bold">Carlos Ribeiro</h4>
+                            <p class="text-blue-400 text-sm">Membro há 8 meses</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 italic">"Os treinos com monitoramento neural são incríveis. O equipamento
+                        ajusta a dificuldade exatamente quando eu preciso de mais desafio."</p>
+                    <div class="mt-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="card-glass p-8 rounded-xl">
+                    <div class="flex items-center mb-6">
+                        <img src="https://randomuser.me/api/portraits/women/63.jpg" alt="Juliana Almeida"
+                            class="w-16 h-16 rounded-full border-2 border-pink-500">
+                        <div class="ml-4">
+                            <h4 class="text-white font-bold">Juliana Almeida</h4>
+                            <p class="text-pink-400 text-sm">Membro há 1.5 anos</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 italic">"Nunca me senti tão motivada! A atmosfera futurista e os instrutores
+                        fazem cada treino ser uma experiência única."</p>
+                    <div class="mt-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="py-16 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl text-center font-bold mb-12 text-white orbitron">NOSSO <span
+                    class="gradient-text">ESPAÇO</span></h2>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" style="margin-top: 5%;">
+                <div
+                    class="h-50 bg-gradient-to-br from-purple-900 to-blue-900 rounded-lg flex items-center justify-center">
+                    <img src="img/Academia1.jpg" class="img-fluid" style="max-height: 300px;">
+                </div>
+                <div
+                    class="h-50 bg-gradient-to-br from-blue-900 to-cyan-900 rounded-lg flex items-center justify-center">
+                    <img src="img/Academia2.jpg" class="img-fluid" style="max-height: 300px;">
+                </div>
+                <div
+                    class="h-50 bg-gradient-to-br from-cyan-900 to-green-900 rounded-lg flex items-center justify-center">
+                    <img src="img/Academia3.jpg" class="img-fluid" style="max-height: 300px;">
+                </div>
+                <div
+                    class="h-50 bg-gradient-to-br from-green-900 to-yellow-900 rounded-lg flex items-center justify-center">
+                    <img src="img/Academia4.jpg" class="img-fluid" style="max-height: 300px;">
+                </div>
+                <div
+                    class="h-50 bg-gradient-to-br from-yellow-900 to-orange-900 rounded-lg flex items-center justify-center">
+                    <img src="img/Academia5.jpg" class="img-fluid" style="max-height: 300px;">
+                </div>
+                <div
+                    class="h-50 bg-gradient-to-br from-orange-900 to-red-900 rounded-lg flex items-center justify-center">
+                    <img src="img/Academia6.jpg" class="img-fluid" style="max-height: 300px;">
+                </div>
+                <div
+                    class="h-50 bg-gradient-to-br from-red-900 to-pink-900 rounded-lg flex items-center justify-center">
+                    <img src="img/Academia7.jpg" class="img-fluid" style="max-height: 300px;">
+                </div>
+                <div
+                    class="h-50 bg-gradient-to-br from-pink-900 to-purple-900 rounded-lg flex items-center justify-center">
+                    <img src="img/Academia8.jpg" class="img-fluid" style="max-height: 300px;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contato" class="py-20 bg-gradient-to-b from-gray-900 to-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white orbitron">ENTRE EM <span
+                            class="gradient-text">CONTATO</span></h2>
+                    <p class="text-xl text-gray-300 mb-8">Tem dúvidas sobre nossos programas espaciais? Quer agendar uma
+                        visita à nossa nave-mãe? Mande uma mensagem!</p>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="text-purple-400 text-xl mt-1 mr-4">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold mb-1">Nossa localização</h4>
+                                <p class="text-gray-300">Avenida Via Láctea, 1578 - Andrômeda, São Paulo - SP</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="text-blue-400 text-xl mt-1 mr-4">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold mb-1">Telefone</h4>
+                                <p class="text-gray-300">(11) 4002-8922</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="text-pink-400 text-xl mt-1 mr-4">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold mb-1">Email</h4>
+                                <p class="text-gray-300">contato@orbifit.space</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="text-green-400 text-xl mt-1 mr-4">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold mb-1">Horário de funcionamento</h4>
+                                <p class="text-gray-300">Segunda a Sexta: 6h às 23h<br>Sábado e Domingo: 8h às 20h</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class=" p-8 rounded-xl">
+                    <img src="img/Iphone.png">
+                    <a href="https://www.instagram.com/w__wagner/" target="_blank">
+                        <button type="submit" class="w-full btn-space py-3 rounded-lg font-bold">Siga-nos no
+                            Instagram</button></a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-gradient-to-r from-purple-900 to-blue-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white orbitron">PRONTO PARA DECOLAR?</h2>
+            <p class="text-xl text-gray-200 max-w-3xl mx-auto mb-8">Agende uma visita experimental e experimente o
+                futuro do fitness hoje mesmo!</p>
+            <a href="https://wa.me/+5584991652870" target="_blank">
+                <button
+                    class="bg-white text-purple-900 px-8 py-4 rounded-full text-lg font-bold hover:bg-gray-200 transition">Agendar
+                    visita experimental</button>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold gradient-text orbitron mb-4">ORBIFIT</h3>
+                    <p class="text-gray-400">A academia do futuro, hoje. Transformando corpos e mentes com tecnologia
+                        espacial.</p>
+                    <div class="flex space-x-4 mt-6">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold mb-4">Links rápidos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white">Início</a></li>
+                        <li><a href="#programas" class="text-gray-400 hover:text-white">Programas</a></li>
+                        <li><a href="#planos" class="text-gray-400 hover:text-white">Planos</a></li>
+                        <li><a href="#depoimentos" class="text-gray-400 hover:text-white">Depoimentos</a></li>
+                        <li><a href="#contato" class="text-gray-400 hover:text-white">Contato</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold mb-4">Legal</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" onclick="openModal('termsModal')" class="text-gray-400 hover:text-white">Termos
+                                de uso</a></li>
+                        <li><a href="#" onclick="openModal('privacyModal')"
+                                class="text-gray-400 hover:text-white">Política de privacidade</a></li>
+                        <li><a href="#" onclick="openModal('faqModal')" class="text-gray-400 hover:text-white">FAQ</a>
+                        </li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Trabalhe conosco</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm mb-4 md:mb-0">© 2025 OrbiFit. Todos os direitos reservados.</p>
+                <div class="flex space-x-6">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa"
+                        class="h-6">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard"
+                        class="h-6">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/American_Express_logo.svg"
+                        alt="American Express" class="h-6">
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+
+    <!-- Terms Modal -->
+    <div id="termsModal"
+        class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 hidden modal">
+        <div
+            class="bg-gray-900 rounded-xl p-8 max-w-2xl w-full mx-4 border border-gray-800 max-h-[80vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-white">Termos de Uso</h3>
+                <button onclick="closeModal('termsModal')" class="text-gray-400 hover:text-white">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="text-gray-300 space-y-4">
+                <h4 class="text-xl font-bold text-white mb-2">1. Aceitação dos Termos</h4>
+                <p>Ao acessar e utilizar os serviços da OrbiFit, você concorda em cumprir estes Termos de Uso e nossa
+                    Política de Privacidade. Se não concordar com estes termos, por favor, não utilize nossos serviços.
+                </p>
+
+                <h4 class="text-xl font-bold text-white mb-2">2. Serviços Oferecidos</h4>
+                <p>A OrbiFit oferece serviços de academia com equipamentos de última geração, aulas em grupo,
+                    treinamento personalizado e assessoria nutricional. Todos os serviços estão sujeitos à
+                    disponibilidade e podem ser alterados sem aviso prévio.</p>
+
+                <h4 class="text-xl font-bold text-white mb-2">3. Requisitos de Saúde</h4>
+                <p>É obrigatória a apresentação de atestado médico atualizado para utilização dos equipamentos. A
+                    OrbiFit não se responsabiliza por quaisquer problemas de saúde decorrentes da não observância desta
+                    regra.</p>
+
+                <h4 class="text-xl font-bold text-white mb-2">4. Pagamentos e Renovação</h4>
+                <p>Os planos são cobrados mensalmente através do método de pagamento cadastrado. O cancelamento deve ser
+                    solicitado com pelo menos 5 dias de antecedência do próximo vencimento.</p>
+
+                <h4 class="text-xl font-bold text-white mb-2">5. Conduta do Usuário</h4>
+                <p>É proibido qualquer comportamento que perturbe o funcionamento da academia ou a experiência de outros
+                    membros. A OrbiFit reserva-se o direito de cancelar planos em caso de violação grave destes termos.
+                </p>
+
+                <h4 class="text-xl font-bold text-white mb-2">6. Alterações nos Termos</h4>
+                <p>Estes termos podem ser atualizados periodicamente. Alterações significativas serão comunicadas aos
+                    membros com pelo menos 30 dias de antecedência.</p>
+            </div>
+            <div class="mt-8 text-center">
+                <button onclick="closeModal('termsModal')"
+                    class="btn-space px-6 py-2 rounded-full font-bold">Entendi</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Privacy Modal -->
+    <div id="privacyModal"
+        class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 hidden modal">
+        <div
+            class="bg-gray-900 rounded-xl p-8 max-w-2xl w-full mx-4 border border-gray-800 max-h-[80vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-white">Política de Privacidade</h3>
+                <button onclick="closeModal('privacyModal')" class="text-gray-400 hover:text-white">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="text-gray-300 space-y-4">
+                <h4 class="text-xl font-bold text-white mb-2">1. Informações Coletadas</h4>
+                <p>Coletamos informações pessoais como nome, CPF, endereço, dados de saúde, informações de pagamento e
+                    dados de utilização dos equipamentos. Também podemos coletar dados biométricos para acesso às
+                    instalações.</p>
+
+                <h4 class="text-xl font-bold text-white mb-2">2. Uso das Informações</h4>
+                <p>Utilizamos seus dados para: fornecer nossos serviços, processar pagamentos, personalizar sua
+                    experiência, melhorar nossos serviços, enviar comunicações importantes e cumprir obrigações legais.
+                </p>
+
+                <h4 class="text-xl font-bold text-white mb-2">3. Compartilhamento de Dados</h4>
+                <p>Seus dados podem ser compartilhados com: prestadores de serviços terceirizados (como processadores de
+                    pagamento), autoridades governamentais quando exigido por lei, e profissionais de saúde em caso de
+                    emergência.</p>
+
+                <h4 class="text-xl font-bold text-white mb-2">4. Segurança dos Dados</h4>
+                <p>Implementamos medidas técnicas e organizacionais para proteger seus dados pessoais contra acesso não
+                    autorizado, alteração, divulgação ou destruição.</p>
+
+                <h4 class="text-xl font-bold text-white mb-2">5. Seus Direitos</h4>
+                <p>Você tem direito a: acessar seus dados, corrigir informações incorretas, solicitar a exclusão de
+                    dados, opor-se ao processamento e solicitar a portabilidade de dados.</p>
+
+                <h4 class="text-xl font-bold text-white mb-2">6. Cookies e Tecnologias Similares</h4>
+                <p>Nosso site utiliza cookies para melhorar a experiência do usuário. Você pode gerenciar suas
+                    preferências de cookies através das configurações do navegador.</p>
+
+                <h4 class="text-xl font-bold text-white mb-2">7. Alterações na Política</h4>
+                <p>Esta política pode ser atualizada periodicamente. Recomendamos que você revise esta política
+                    regularmente para estar ciente de como protegemos suas informações.</p>
+            </div>
+            <div class="mt-8 text-center">
+                <button onclick="closeModal('privacyModal')"
+                    class="btn-space px-6 py-2 rounded-full font-bold">Entendi</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ Modal -->
+    <div id="faqModal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 hidden modal">
+        <div
+            class="bg-gray-900 rounded-xl p-8 max-w-2xl w-full mx-4 border border-gray-800 max-h-[80vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-white">Perguntas Frequentes</h3>
+                <button onclick="closeModal('faqModal')" class="text-gray-400 hover:text-white">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="text-gray-300 space-y-6">
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-2">1. Qual é o horário de funcionamento da OrbiFit?</h4>
+                    <p>Funcionamos de segunda a sexta das 6h às 23h, e sábados e domingos das 8h às 20h. Algumas áreas
+                        especiais como a zona de gravidade zero podem ter horários diferenciados.</p>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-2">2. Preciso de atestado médico para me matricular?</h4>
+                    <p>Sim, exigimos atestado médico atualizado (com menos de 6 meses) para liberação do uso dos
+                        equipamentos. O documento deve especificar que você está apto para atividades físicas.</p>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-2">3. Como funciona o cancelamento do plano?</h4>
+                    <p>O cancelamento deve ser solicitado pessoalmente na recepção ou por e-mail com pelo menos 5 dias
+                        úteis antes da próxima cobrança. Não aceitamos cancelamentos por telefone.</p>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-2">4. A OrbiFit oferece aulas experimentais?</h4>
+                    <p>Sim, oferecemos uma aula experimental gratuita mediante agendamento prévio. Entre em contato pelo
+                        WhatsApp ou telefone para marcar seu horário.</p>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-2">5. Há estacionamento no local?</h4>
+                    <p>Temos convênio com estacionamentos próximos que oferecem desconto para nossos membros. O primeiro
+                        horário é cortesia para visitantes.</p>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-2">6. Posso congelar meu plano?</h4>
+                    <p>Sim, permitimos o congelamento do plano por até 3 meses ao ano, com taxa administrativa. O
+                        período mínimo de congelamento é de 15 dias.</p>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-2">7. Como funciona o monitoramento neural?</h4>
+                    <p>Nossos equipamentos especiais possuem sensores que leem sua atividade cerebral durante o treino,
+                        ajustando a resistência e intensidade para maximizar seus resultados.</p>
+                </div>
+            </div>
+            <div class="mt-8 text-center">
+                <p class="text-gray-400 mb-4">Não encontrou sua dúvida? Entre em contato conosco!</p>
+                <button onclick="closeModal('faqModal')"
+                    class="btn-space px-6 py-2 rounded-full font-bold">Fechar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function () {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Modal functions
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function (event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

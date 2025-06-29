@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transforme seu Corpo | Personal Trainer Profissional</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700;900&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --black: #121212;
+            --red: #E50914;
+            --gray: #2E2E2E;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .title-font {
+            font-family: 'Bebas Neue', cursive;
+        }
+
+        .hero-overlay {
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .plan-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .before-after-slider {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+        }
+
+        .before-after-slider img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slider-handle {
+            position: absolute;
+            width: 4px;
+            height: 100%;
+            background: var(--red);
+            left: 50%;
+            cursor: ew-resize;
+            z-index: 10;
+        }
+
+        .slider-handle::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--red);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+    <!-- Navigation -->
+    <nav class="bg-black text-white sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#" class="title-font text-3xl text-red-600">CARLOS<span class="text-white">SILVA</span></a>
+
+            <div class="hidden md:flex space-x-8">
+                <a href="#sobre" class="hover:text-red-500 transition">Sobre</a>
+                <a href="#planos" class="hover:text-red-500 transition">Planos</a>
+                <a href="#resultados" class="hover:text-red-500 transition">Resultados</a>
+                <a href="#depoimentos" class="hover:text-red-500 transition">Depoimentos</a>
+                <a href="#contato" class="hover:text-red-500 transition">Contato</a>
+            </div>
+
+            <a href="#contato"
+                class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-md font-bold transition md:block hidden">
+                Comece Hoje
+            </a>
+
+            <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-black pb-4 px-4">
+            <a href="#sobre" class="block py-2 hover:text-red-500 transition">Sobre</a>
+            <a href="#planos" class="block py-2 hover:text-red-500 transition">Planos</a>
+            <a href="#resultados" class="block py-2 hover:text-red-500 transition">Resultados</a>
+            <a href="#depoimentos" class="block py-2 hover:text-red-500 transition">Depoimentos</a>
+            <a href="#contato" class="block py-2 hover:text-red-500 transition">Contato</a>
+            <a href="#contato"
+                class="block bg-red-600 hover:bg-red-700 px-4 py-2 rounded-md font-bold transition mt-2 text-center">
+                Comece Hoje
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center bg-gray-900 overflow-hidden">
+        <div class="absolute inset-0 hero-overlay"></div>
+        <img src="../Gym/img/background.png" alt="Personal Trainer" class="absolute inset-0 w-full h-full object-cover">
+
+        <div class="relative z-10 text-center px-4">
+            <h1 class="title-font text-5xl md:text-7xl text-white mb-6">
+                TRANSFORME SEU <span class="text-red-600">CORPO</span>, SUA <span class="text-red-600">MENTE</span> E
+                SUA <span class="text-red-600">VIDA</span>
+            </h1>
+            <p class="text-xl text-white mb-10 max-w-2xl mx-auto">
+                Treinos personalizados para alcançar seus objetivos físicos e melhorar sua qualidade de vida.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#contato"
+                    class="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-md font-bold text-lg transition transform hover:scale-105">
+                    Agende sua Avaliação
+                </a>
+                <a href="#planos"
+                    class="bg-transparent border-2 border-white hover:bg-white hover:text-black text-white px-8 py-4 rounded-md font-bold text-lg transition transform hover:scale-105">
+                    Planos de Treino
+                </a>
+            </div>
+        </div>
+
+        <div class="absolute bottom-10 left-0 right-0 text-center">
+            <a href="#sobre" class="text-white animate-bounce inline-block">
+                <i class="fas fa-chevron-down text-2xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="sobre" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="title-font text-4xl md:text-5xl text-black mb-4">SOBRE <span class="text-red-600">MIM</span>
+                </h2>
+                <div class="w-20 h-1 bg-red-600 mx-auto"></div>
+            </div>
+
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2">
+                    <img src="IMG/Carlos Silva.jpg"
+                        alt="Personal Trainer" class="rounded-lg shadow-xl w-full">
+                </div>
+
+                <div class="lg:w-1/2">
+                    <h3 class="text-3xl font-bold mb-6">Meu nome é <span class="text-red-600">Carlos Silva</span></h3>
+                    <p class="text-gray-700 mb-6">
+                        Com mais de 10 anos de experiência no mercado fitness, ajudo pessoas comuns a alcançarem
+                        resultados extraordinários. Minha missão é transformar vidas através do exercício físico e da
+                        educação nutricional.
+                    </p>
+
+                    <div class="mb-8">
+                        <h4 class="text-xl font-bold mb-4 text-gray-800">Minhas Certificações:</h4>
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-red-600 mt-1 mr-2"></i>
+                                <span>Bacharel em Educação Física - UFMG</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-red-600 mt-1 mr-2"></i>
+                                <span>Especialista em Treinamento Funcional - CREF</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-red-600 mt-1 mr-2"></i>
+                                <span>Nutrição Esportiva - ISSN</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-red-600 mt-1 mr-2"></i>
+                                <span>Treinamento de Força Avançado - NSCA</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="text-xl font-bold mb-4 text-gray-800">Especialidades:</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-200 px-3 py-1 rounded-full text-sm">Hipertrofia</span>
+                            <span class="bg-gray-200 px-3 py-1 rounded-full text-sm">Emagrecimento</span>
+                            <span class="bg-gray-200 px-3 py-1 rounded-full text-sm">Condicionamento Físico</span>
+                            <span class="bg-gray-200 px-3 py-1 rounded-full text-sm">Treino Funcional</span>
+                            <span class="bg-gray-200 px-3 py-1 rounded-full text-sm">Preparação Física</span>
+                            <span class="bg-gray-200 px-3 py-1 rounded-full text-sm">Reabilitação</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Training Plans -->
+    <section id="planos" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="title-font text-4xl md:text-5xl text-black mb-4">PLANOS DE <span
+                        class="text-red-600">TREINO</span></h2>
+                <div class="w-20 h-1 bg-red-600 mx-auto"></div>
+                <p class="text-gray-600 mt-6 max-w-2xl mx-auto">
+                    Escolha o plano que melhor se adapta aos seus objetivos e estilo de vida.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Plano 1 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transition duration-500 plan-card">
+                    <div class="bg-black text-white py-4 px-6">
+                        <h3 class="title-font text-2xl">TREINO PRESENCIAL</h3>
+                        <p class="text-gray-300">Acompanhamento individual</p>
+                    </div>
+                    <div class="p-6">
+                        <div class="text-4xl font-bold mb-4">R$ 150<span class="text-lg text-gray-500">/mês</span></div>
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-red-600 mt-1 mr-2"></i>
+                                <span>3x por semana</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-red-600 mt-1 mr-2"></i>
+                                <span>Avaliação física completa</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-red-600 mt-1 mr-2"></i>
+                                <span>Plano alimentar básico</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-red-600 mt-1 mr-2"></i>
+                                <span>Acompanhamento contínuo</span>
+                            </li>
+                        </ul>
+                        <a href="#contato"
+                            class="block w-full bg-red-600 hover:bg-red-700 text-white text-center py-3 rounded-md font-bold transition">
+                            Quero esse plano
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Plano 2 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transition duration-500 plan-card">
+                    <div class="bg-red-600 text-white py-4 px-6">
+                        <h3 class="title-font text-2xl">TREINO ONLINE</h3>
+                        <p class="text-gray-100">Treine de qualquer lugar</p>
+                    </div>
+                    <div class="p-6">
+                        <div class="text-4xl font-bold mb-4">R$ 80<span class="text-lg text-gray-500">/mês</span></div>
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-red-600 mt-1 mr-2"></i>
+                                <span>Plano de treino personalizado</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-red-600 mt-1 mr-2"></i>
+                                <span>Videoaulas exclusivas</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-red-600 mt-1 mr-2"></i>
+                                <span>Suporte via WhatsApp</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-red-600 mt-1 mr-2"></i>
+                                <span>Atualização mensal</span>
+                            </li>
+                        </ul>
+                        <a href="#contato"
+                            class="block w-full bg-black hover:bg-gray-800 text-white text-center py-3 rounded-md font-bold transition">
+                            Quero esse plano
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Plano 3 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transition duration-500 plan-card">
+                    <div class="bg-black text-white py-4 px-6">
+                        <h3 class="title-font text-2xl">PACOTE COMPLETO</h3>
+                        <p class="text-gray-300">Resultados acelerados</p>
+                    </div>
+                    <div class="p-6">
+                        <div class="text-4xl font-bold mb-4">R$ 200<span class="text-lg text-gray-500">/mês</span></div>
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-red-600 mt-1 mr-2"></i>
+                                <span>Treino presencial + online</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-red-600 mt-1 mr-2"></i>
+                                <span>Plano alimentar completo</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-red-600 mt-1 mr-2"></i>
+                                <span>Acompanhamento diário</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-red-600 mt-1 mr-2"></i>
+                                <span>Monitoramento de resultados</span>
+                            </li>
+                        </ul>
+                        <a href="#contato"
+                            class="block w-full bg-red-600 hover:bg-red-700 text-white text-center py-3 rounded-md font-bold transition">
+                            Quero esse plano
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section id="resultados" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="title-font text-4xl md:text-5xl text-black mb-4">RESULTADOS <span
+                        class="text-red-600">REAIS</span></h2>
+                <div class="w-20 h-1 bg-red-600 mx-auto"></div>
+                <p class="text-gray-600 mt-6 max-w-2xl mx-auto">
+                    Veja as transformações dos meus alunos em apenas alguns meses de treino.
+                </p>
+            </div>
+
+            <div class="before-after-slider rounded-lg shadow-xl mb-12">
+                <img src="IMG/Modelo 3.png" alt="Before" class="w-full h-full object-cover object-mid">
+                <div class="slider-handle"></div>
+                <img src="IMG/Modelo 4.png" alt="After" class="w-full h-full object-cover object-mid"
+                    style="clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%)">
+            </div>
+
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="text-5xl font-bold text-red-600 mb-2">+150</div>
+                    <div class="text-gray-600">Alunos transformados</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-5xl font-bold text-red-600 mb-2">12-16</div>
+                    <div class="text-gray-600">Semanas para resultados</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-5xl font-bold text-red-600 mb-2">100%</div>
+                    <div class="text-gray-600">Satisfação garantida</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="depoimentos" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="title-font text-4xl md:text-5xl text-black mb-4">DEPOIMENTOS DE <span
+                        class="text-red-600">ALUNOS</span></h2>
+                <div class="w-20 h-1 bg-red-600 mx-auto"></div>
+                <p class="text-gray-600 mt-6 max-w-2xl mx-auto">
+                    Veja o que meus alunos têm a dizer sobre a experiência de treinar comigo.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-6 rounded-lg shadow-md transition duration-500 testimonial-card">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Aluna"
+                            class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Ana Carolina</h4>
+                            <div class="text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">
+                        "Perdi 18kg em 4 meses com o acompanhamento do Carlos. Além da mudança física, ganhei muita
+                        disposição e autoestima. Recomendo demais!"
+                    </p>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-6 rounded-lg shadow-md transition duration-500 testimonial-card">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Aluno"
+                            class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Ricardo Almeida</h4>
+                            <div class="text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">
+                        "Depois de anos tentando ganhar massa muscular sem sucesso, em 6 meses com o treino do Carlos
+                        consegui resultados que nunca imaginei possível."
+                    </p>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-white p-6 rounded-lg shadow-md transition duration-500 testimonial-card">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/63.jpg" alt="Aluna"
+                            class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Fernanda Oliveira</h4>
+                            <div class="text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">
+                        "O treino online foi a solução perfeita para minha rotina corrida. Consigo treinar em qualquer
+                        lugar e tenho todo o suporte que preciso."
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center">
+                <a href="#contato"
+                    class="inline-block bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-md font-bold text-lg transition transform hover:scale-105 pulse">
+                    Quero me transformar também!
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contato" class="py-20 bg-black text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="title-font text-4xl md:text-5xl text-white mb-4">VAMOS <span
+                        class="text-red-600">CONVERSAR</span></h2>
+                <div class="w-20 h-1 bg-red-600 mx-auto"></div>
+                <p class="text-gray-300 mt-6 max-w-2xl mx-auto">
+                    Entre em contato para agendar sua avaliação gratuita ou tirar dúvidas sobre os planos.
+                </p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="lg:w-1/2">
+                    <div class="bg-gray-800 p-8 rounded-lg">
+                        <h3 class="text-2xl font-bold mb-6">Envie uma mensagem</h3>
+                        <form>
+                            <div class="mb-4">
+                                <label for="name" class="block mb-2">Seu nome</label>
+                                <input type="text" id="name"
+                                    class="w-full px-4 py-2 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:border-red-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="email" class="block mb-2">Seu e-mail</label>
+                                <input type="email" id="email"
+                                    class="w-full px-4 py-2 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:border-red-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="message" class="block mb-2">Sua mensagem</label>
+                                <textarea id="message" rows="4"
+                                    class="w-full px-4 py-2 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:border-red-500"></textarea>
+                            </div>
+                            <button type="submit"
+                                class="w-full bg-red-600 hover:bg-red-700 text-white py-3 rounded-md font-bold transition">
+                                Enviar Mensagem
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="lg:w-1/2">
+                    <div class="bg-gray-800 p-8 rounded-lg h-full">
+                        <h3 class="text-2xl font-bold mb-6">Contato direto</h3>
+
+                        <div class="mb-8">
+                            <h4 class="text-xl font-bold mb-4 text-red-500">WhatsApp</h4>
+                            <a href="https://wa.me/5511999999999"
+                                class="flex items-center bg-green-600 hover:bg-green-700 px-6 py-4 rounded-lg transition">
+                                <i class="fab fa-whatsapp text-2xl mr-4"></i>
+                                <div>
+                                    <div class="font-bold">(11) 99999-9999</div>
+                                    <div class="text-sm">Clique para conversar</div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="mb-8">
+                            <h4 class="text-xl font-bold mb-4 text-red-500">Redes Sociais</h4>
+                            <div class="flex space-x-4">
+                                <a href="#"
+                                    class="bg-gray-700 hover:bg-gray-600 w-12 h-12 rounded-full flex items-center justify-center transition">
+                                    <i class="fab fa-instagram text-xl"></i>
+                                </a>
+                                <a href="#"
+                                    class="bg-gray-700 hover:bg-gray-600 w-12 h-12 rounded-full flex items-center justify-center transition">
+                                    <i class="fab fa-facebook-f text-xl"></i>
+                                </a>
+                                <a href="#"
+                                    class="bg-gray-700 hover:bg-gray-600 w-12 h-12 rounded-full flex items-center justify-center transition">
+                                    <i class="fab fa-youtube text-xl"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 class="text-xl font-bold mb-4 text-red-500">Localização</h4>
+                            <div class="flex items-start">
+                                <i class="fas fa-map-marker-alt text-red-500 mt-1 mr-3"></i>
+                                <div>
+                                    <p>Av. Paulista, 1000 - São Paulo/SP</p>
+                                    <p class="text-gray-400 text-sm">Academia PowerFit - 3º andar</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="#" class="title-font text-3xl text-red-600">CARLOS<span
+                            class="text-white">SILVA</span></a>
+                    <p class="mt-2 text-gray-400">Transformando vidas através do fitness.</p>
+                </div>
+
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-facebook-f text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-youtube text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-whatsapp text-xl"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500">
+                <p>"A disciplina é a ponte entre metas e realizações." - Jim Rohn</p>
+                <p class="mt-4">© 2023 PowerTrainer. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function () {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Before/After slider functionality
+        const slider = document.querySelector('.before-after-slider');
+        if (slider) {
+            const handle = slider.querySelector('.slider-handle');
+            const afterImage = slider.querySelector('img:last-child');
+
+            let isDragging = false;
+
+            handle.addEventListener('mousedown', function (e) {
+                isDragging = true;
+                document.addEventListener('mousemove', moveHandle);
+                document.addEventListener('mouseup', stopDrag);
+            });
+
+            function moveHandle(e) {
+                if (!isDragging) return;
+
+                const sliderRect = slider.getBoundingClientRect();
+                let x = e.clientX - sliderRect.left;
+
+                // Constrain to slider boundaries
+                x = Math.max(0, Math.min(x, sliderRect.width));
+
+                const percent = (x / sliderRect.width) * 100;
+
+                handle.style.left = `${percent}%`;
+                afterImage.style.clipPath = `polygon(${percent}% 0, 100% 0, 100% 100%, ${percent}% 100%)`;
+            }
+
+            function stopDrag() {
+                isDragging = false;
+                document.removeEventListener('mousemove', moveHandle);
+                document.removeEventListener('mouseup', stopDrag);
+            }
+
+            // Touch support
+            handle.addEventListener('touchstart', function (e) {
+                isDragging = true;
+                document.addEventListener('touchmove', moveHandleTouch);
+                document.addEventListener('touchend', stopDragTouch);
+            });
+
+            function moveHandleTouch(e) {
+                if (!isDragging) return;
+
+                const sliderRect = slider.getBoundingClientRect();
+                let x = e.touches[0].clientX - sliderRect.left;
+
+                // Constrain to slider boundaries
+                x = Math.max(0, Math.min(x, sliderRect.width));
+
+                const percent = (x / sliderRect.width) * 100;
+
+                handle.style.left = `${percent}%`;
+                afterImage.style.clipPath = `polygon(${percent}% 0, 100% 0, 100% 100%, ${percent}% 100%)`;
+            }
+
+            function stopDragTouch() {
+                isDragging = false;
+                document.removeEventListener('touchmove', moveHandleTouch);
+                document.removeEventListener('touchend', stopDragTouch);
+            }
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+
+        // Add scroll animation effects
+        window.addEventListener('scroll', function () {
+            const elements = document.querySelectorAll('.plan-card, .testimonial-card');
+
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        // Trigger animations on load
+        window.addEventListener('load', function () {
+            const elements = document.querySelectorAll('.plan-card, .testimonial-card');
+
+            elements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+
+            // Trigger the scroll event to check initial positions
+            window.dispatchEvent(new Event('scroll'));
+        });
+    </script>
+</body>
+
+</html>
