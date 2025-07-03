@@ -9,89 +9,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700;900&display=swap"
         rel="stylesheet">
-    <style>
-        :root {
-            --black: #121212;
-            --red: #E50914;
-            --gray: #2E2E2E;
-        }
+    <link href="CSS/estilo.css" rel="stylesheet">
 
-        body {
-            font-family: 'Montserrat', sans-serif;
-            scroll-behavior: smooth;
-        }
-
-        .title-font {
-            font-family: 'Bebas Neue', cursive;
-        }
-
-        .hero-overlay {
-            background: rgba(0, 0, 0, 0.6);
-        }
-
-        .testimonial-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        }
-
-        .plan-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-        }
-
-        .pulse {
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.05);
-            }
-
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        .before-after-slider {
-            position: relative;
-            height: 400px;
-            overflow: hidden;
-        }
-
-        .before-after-slider img {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .slider-handle {
-            position: absolute;
-            width: 4px;
-            height: 100%;
-            background: var(--red);
-            left: 50%;
-            cursor: ew-resize;
-            z-index: 10;
-        }
-
-        .slider-handle::after {
-            content: '';
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background: var(--red);
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-    </style>
 </head>
 
 <body class="bg-gray-100">
@@ -175,8 +94,7 @@
 
             <div class="flex flex-col lg:flex-row items-center gap-12">
                 <div class="lg:w-1/2">
-                    <img src="IMG/Carlos Silva.jpg"
-                        alt="Personal Trainer" class="rounded-lg shadow-xl w-full">
+                    <img src="IMG/Carlos Silva.jpg" alt="Personal Trainer" class="rounded-lg shadow-xl w-full">
                 </div>
 
                 <div class="lg:w-1/2">
@@ -351,14 +269,20 @@
                     Veja as transformações dos meus alunos em apenas alguns meses de treino.
                 </p>
             </div>
+            <div class="before-after-slider relative flex justify-center items-center
+             mx-auto w-full max-w-3xl rounded-lg shadow-xl mb-12">
+                <!-- Before -->
+                <img src="IMG/Modelo 3.png" alt="Before"
+                    class="absolute top-0 left-0 w-full h-full object-contain object-center" />
 
-            <div class="before-after-slider rounded-lg shadow-xl mb-12">
-                <img src="IMG/Modelo 3.png" alt="Before" class="w-full h-full object-cover object-mid">
-                <div class="slider-handle"></div>
-                <img src="IMG/Modelo 4.png" alt="After" class="w-full h-full object-cover object-mid"
-                    style="clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%)">
+                <!-- Handle -->
+                <div class="slider-handle z-10"></div>
+
+                <!-- After -->
+                <img src="IMG/Modelo 4.png" alt="After"
+                    class="absolute top-0 left-0 w-full h-full object-contain object-center"
+                    style="clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);" />
             </div>
-
 
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="text-center">
@@ -512,11 +436,11 @@
 
                         <div class="mb-8">
                             <h4 class="text-xl font-bold mb-4 text-red-500">WhatsApp</h4>
-                            <a href="https://wa.me/5511999999999"
+                            <a href="https://wa.me/+5584991652870" target="_blank"
                                 class="flex items-center bg-green-600 hover:bg-green-700 px-6 py-4 rounded-lg transition">
                                 <i class="fab fa-whatsapp text-2xl mr-4"></i>
                                 <div>
-                                    <div class="font-bold">(11) 99999-9999</div>
+                                    <div class="font-bold">(84) 99165-2870</div>
                                     <div class="text-sm">Clique para conversar</div>
                                 </div>
                             </a>
@@ -531,7 +455,7 @@
                                 </a>
                                 <a href="#"
                                     class="bg-gray-700 hover:bg-gray-600 w-12 h-12 rounded-full flex items-center justify-center transition">
-                                    <i class="fab fa-facebook-f text-xl"></i>
+                                    <i class="fab fa-tiktok text-xl"></i>
                                 </a>
                                 <a href="#"
                                     class="bg-gray-700 hover:bg-gray-600 w-12 h-12 rounded-full flex items-center justify-center transition">
@@ -561,17 +485,13 @@
         <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-6 md:mb-0">
-                    <a href="#" class="title-font text-3xl text-red-600">CARLOS<span
-                            class="text-white">SILVA</span></a>
+                    <a href="#" class="title-font text-3xl text-red-600">CARLOS<span class="text-white">SILVA</span></a>
                     <p class="mt-2 text-gray-400">Transformando vidas através do fitness.</p>
                 </div>
 
                 <div class="flex space-x-6">
                     <a href="#" class="text-gray-400 hover:text-white transition">
                         <i class="fab fa-instagram text-xl"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition">
-                        <i class="fab fa-facebook-f text-xl"></i>
                     </a>
                     <a href="#" class="text-gray-400 hover:text-white transition">
                         <i class="fab fa-youtube text-xl"></i>
@@ -584,7 +504,7 @@
 
             <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500">
                 <p>"A disciplina é a ponte entre metas e realizações." - Jim Rohn</p>
-                <p class="mt-4">© 2023 PowerTrainer. Todos os direitos reservados.</p>
+                <p class="mt-4">© 2025 Carlos Silva. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
