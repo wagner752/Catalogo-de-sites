@@ -1,0 +1,200 @@
+    @keyframes float {
+
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+
+    @keyframes pulse {
+
+        0%,
+        100% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0.5;
+        }
+    }
+
+    @keyframes heartbeat {
+        0% {
+            transform: scale(1);
+        }
+
+        25% {
+            transform: scale(1.1);
+        }
+
+        50% {
+            transform: scale(1);
+        }
+
+        75% {
+            transform: scale(1.1);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    @keyframes slideIn {
+        from {
+            transform: translateY(20px);
+            opacity: 0;
+        }
+
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes neonGlow {
+
+        0%,
+        100% {
+            box-shadow: 0 0 5px #FFD60A, 0 0 10px #FFD60A;
+        }
+
+        50% {
+            box-shadow: 0 0 20px #FFD60A, 0 0 30px #FFD60A;
+        }
+    }
+
+    .profile-img {
+        transition: transform 0.1s ease-out;
+    }
+
+    .gym-icon {
+        position: absolute;
+        opacity: 0.1;
+        animation: float 8s infinite ease-in-out;
+    }
+
+    .pulse-line {
+        position: absolute;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #FFD60A, transparent);
+        opacity: 0.2;
+        animation: pulse 3s infinite;
+    }
+
+   .link-btn {
+    opacity: 0;
+    animation-name: slideIn;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .link-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #FFD60A, 0 0 30px #FFD60A;
+}
+
+    .heartbeat {
+        animation: heartbeat 2s infinite;
+    }
+
+    .progress-bar {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .progress-fill {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background: linear-gradient(90deg, #FFD60A, #ffea70);
+        animation: progressAnimation 2s forwards;
+    }
+
+    @keyframes progressAnimation {
+        from {
+            width: 0;
+        }
+
+        to {
+            width: var(--progress-width);
+        }
+    }
+
+    .quote-text {
+        background: linear-gradient(90deg, #FFD60A, #ffea70);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: textShine 3s infinite alternate;
+    }
+
+    @keyframes textShine {
+        0% {
+            background-position: 0% 50%;
+        }
+
+        100% {
+            background-position: 100% 50%;
+        }
+    }
+
+    .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
+    }
+
+    .modal-overlay.active {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    .modal-content {
+        background: #1F1F1F;
+        padding: 2rem;
+        border-radius: 10px;
+        border: 2px solid #FFD60A;
+        transform: scale(0.8);
+        transition: transform 0.3s;
+        max-width: 90%;
+        width: 400px;
+    }
+
+    .modal-overlay.active .modal-content {
+        transform: scale(1);
+    }
+
+    .contact-icon {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+        background-color: #FFD60A;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        z-index: 999;
+        box-shadow: 0 0 10px #FFD60A;
+        animation: float 3s infinite ease-in-out;
+    }
