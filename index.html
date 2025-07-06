@@ -1,280 +1,492 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Supere seus limites com Personal Rodrigo</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Wagner Cruz - Catálogo de sites</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/estilo.css">
+    <!-- Animate.css for animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <!-- CSS padrão da página -->
+    <link rel="stylesheet" href="Hub/css/estilo.css">
 </head>
 
-<body class="relative">
-    <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/5511999999999?text=Olá%20Rodrigo,%20quero%20começar%20meus%20treinos!"
-        class="fixed bottom-6 right-6 z-50 w-16 h-16 bg-[#39FF14] rounded-full flex items-center justify-center pulse">
-        <i class="fab fa-whatsapp text-3xl text-black"></i>
-    </a>
-
-    <!-- Hero Section with Parallax -->
-    <section class="relative h-screen overflow-hidden snap-section">
-        <div class="parallax-bg" id="parallax-bg"></div>
-        <div class="absolute inset-0 bg-black bg-opacity-60"></div>
-
-        <div class="relative h-full flex flex-col justify-center items-center text-center px-4 z-10">
-            <h1 class="text-4xl md:text-6xl font-bold mb-6 text-white">
-                <span class="text-[#00D9FF]">SUPERE</span> SEUS LIMITES
-                <br>COM <span class="text-[#39FF14]">RODRIGO</span>
-            </h1>
-            <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl">
-                Transforme seu corpo e mente com treinos personalizados e acompanhamento exclusivo
-            </p>
-            <a href="https://wa.me/+5584991652870?text=Olá%20Rodrigo,%20quero%20começar%20meus%20treinos!"
-                class="glow-button bg-[#39FF14] text-black font-bold py-4 px-8 rounded-full text-lg md:text-xl">
-                FALE PELO WHATSAPP <i class="fab fa-whatsapp ml-2"></i>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="Hub/img/Logo.png" class="img-fluid">
             </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Hero">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Cursos">Cursos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Musica">Música</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Fitness">Fitness</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#LinkBio">Link na Bio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Diversos">Diversos</a>
+                    </li>
+                </ul>
+                <a href="https://wa.me/+5584991652870" target="_blank">
+                <button class="btn btn-primary ms-lg-3" style="background-color: #1c9c4b; border: none;">Fale comigo no
+                    WhatsApp <i class="fab fa-whatsapp" style="font-size: 20px; margin-right: 8px;"></i></button></a>
+            </div>
         </div>
-    </section>
+    </nav>
 
-    <!-- Horizontal Scroll Gallery - O Método -->
-    <section class="py-16 bg-black snap-section">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
-                <span class="text-[#00D9FF]">O MÉTODO</span> DE TREINO
-            </h2>
+    <!-- Main Content -->
+    <main class="container my-5">
+        <!-- Page Header -->
+        <div class="page-header animate__animated animate__fadeIn" id="Hero" style="margin-top: 25vh;">
+            <h1>Conheça meus modelos</h1>
+            <p>Explore nossos modelos de landing pages desenvolvidos profissionalmente. Cada modelo é totalmente
+                responsivo e pode ser personalizado para atender às suas necessidades.</p>
+            <p>Os modelos abaixo são apenas sugestões para ajudar você a visualizar o que é possível fazer. <strong>Tudo
+                    pode ser personalizado</strong> de acordo com o seu gosto, identidade visual e necessidades. Podemos
+                adaptar cores, textos, imagens, trocar seções entre os modelos ou até mesmo criar um modelo totalmente
+                novo,
+                feito do seu jeito. Este é só o ponto de partida!</p>
+        </div>
 
-            <div class="horizontal-scroll flex pb-8 -mx-4">
-                <div class="scroll-item w-4/5 md:w-1/3 px-4">
-                    <div class="bg-[#0A0A0A] rounded-xl overflow-hidden tilt-card">
-                        <img src="https://images.unsplash.com/photo-1538805060514-97d9cc17730c?ixlib=rb-4.0.3"
-                            alt="Personalização" class="w-full h-64 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold mb-2 text-[#00D9FF]">PERSONALIZAÇÃO TOTAL</h3>
-                            <p class="text-gray-300">
-                                Cada treino é criado exclusivamente para você, considerando seus objetivos, limitações e
-                                estilo de vida.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="scroll-item w-4/5 md:w-1/3 px-4">
-                    <div class="bg-[#0A0A0A] rounded-xl overflow-hidden tilt-card">
-                        <img src="img/Modelo1.jpg"
-                            alt="Técnica" class="w-full h-64 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold mb-2 text-[#00D9FF]">TÉCNICA PERFEITA</h3>
-                            <p class="text-gray-300">
-                                Foco na execução correta para maximizar resultados e evitar lesões, com correção em
-                                tempo real.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="scroll-item w-4/5 md:w-1/3 px-4">
-                    <div class="bg-[#0A0A0A] rounded-xl overflow-hidden tilt-card">
-                        <img src="img/Modelo2.jpg"
-                            alt="Resultados" class="w-full h-64 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold mb-2 text-[#00D9FF]">RESULTADOS COMPROVADOS</h3>
-                            <p class="text-gray-300">
-                                Metodologia testada e aprovada por mais de 200 alunos com transformações reais.
-                            </p>
+        <!-- ### CARDS VENDA DE CURSOS ###  -->
+        <div class="row" id="Cursos">
+            <h1 class="page-header animate__animated animate__fadeIn" style="color: var(--primary);">Vendas de cursos
+            </h1>
+            <!-- Card 1 -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card card-custom position-relative">
+                    <span class="badge bg-success position-absolute top-0 end-0 m-2">Disponível</span>
+                    <img src="Hub/img/instaADS.avif" class="card-img-top" alt="Landing Page">
+                    <div class="card-img-overlay">
+                        <div class="p-3">
+                            <h5 class="card-title">InstaADS</h5>
+                            <p class="card-text">Domine os anúncios do Instagram e transforme seu negócio em apenas 30
+                                dias!</p>
+                            <a href="Venda de cursos - InstaADS/index.html" class="btn btn-view">Conferir modelo</a>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Stats Section with Counters -->
-    <section class="py-16 bg-gradient-to-b from-black to-[#0A0A0A] snap-section">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                <div class="py-8">
-                    <div class="counter text-5xl md:text-6xl font-bold mb-4" data-target="200">0</div>
-                    <h3 class="text-xl font-bold text-white">ALUNOS IMPACTADOS</h3>
-                    <p class="text-gray-400 mt-2">Transformações reais comprovadas</p>
-                </div>
-
-                <div class="py-8">
-                    <div class="counter text-5xl md:text-6xl font-bold mb-4" data-target="10">0</div>
-                    <h3 class="text-xl font-bold text-white">ANOS DE EXPERIÊNCIA</h3>
-                    <p class="text-gray-400 mt-2">Formação e prática de excelência</p>
-                </div>
-
-                <div class="py-8">
-                    <div class="counter text-5xl md:text-6xl font-bold mb-4" data-target="90">0</div>
-                    <h3 class="text-xl font-bold text-white">DIAS PARA RESULTADOS</h3>
-                    <p class="text-gray-400 mt-2">Método comprovadamente eficaz</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Lifestyle Video Section -->
-    <section class="relative h-screen snap-section">
-
-        <div class="video-container h-full w-full">
-            <video autoplay muted loop playsinline>
-                <source src="Fitness - Elite Performance/midia/hero-video.mp4" type="video/mp4">
-                Seu navegador não suporta vídeo.
-            </video>
-        </div>
-
-        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-            <div class="text-center px-4">
-                <h2 class="text-3xl md:text-5xl font-bold mb-6 text-white">
-                    MAIS QUE <span class="text-[#39FF14]">TREINO</span>,<br>
-                    UM <span class="text-[#00D9FF]">ESTILO DE VIDA</span>
-                </h2>
-                <a href="https://wa.me/5584991652870?text=Ol%C3%A1%20Rodrigo%2C%20quero%20come%C3%A7ar%20meus%20treinos!"
-                    class="inline-block glow-button bg-[#39FF14] text-black font-bold py-4 px-8 rounded-full text-lg md:text-xl">
-                    QUERO FAZER PARTE <i class="fas fa-arrow-right ml-2"></i>
-                </a>
-            </div>
-        </div>
-
-    </section>
 
 
-    <!-- Services Section -->
-    <section class="py-16 bg-black snap-section">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
-                <span class="text-[#00D9FF]">SERVIÇOS</span> EXCLUSIVOS
-            </h2>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div
-                    class="bg-[#0A0A0A] rounded-xl overflow-hidden tilt-card border border-[#00D9FF] border-opacity-30">
-                    <div class="p-6">
-                        <div
-                            class="w-16 h-16 bg-[#00D9FF] bg-opacity-20 rounded-full flex items-center justify-center mb-4">
-                            <i class="fas fa-dumbbell text-2xl text-[#00D9FF]"></i>
+            <!-- Card 2 -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card card-custom">
+                    <span class="badge bg-success position-absolute top-0 end-0 m-2">Disponível</span>
+                    <img src="Hub/img/SocialGenius.png" class="card-img-top" alt="Landing Page">
+                    <div class="card-img-overlay">
+                        <div class="p-3">
+                            <h5 class="card-title">SocialGenius</h5>
+                            <p class="card-text">Curso intensivo de criação de conteúdo viral da Social Genius!</p>
+                            <a href="Venda de cursos - SocialGenius/index.html" class="btn btn-view">Conferir
+                                modelo</a>
                         </div>
-                        <h3 class="text-xl font-bold mb-2 text-[#00D9FF]">TREINOS PRESENCIAIS PREMIUM</h3>
-                        <p class="text-gray-300 mb-4">
-                            Acompanhamento individualizado na academia com foco total nos seus objetivos.
-                        </p>
-                        <ul class="text-gray-400 mb-6 space-y-2">
-                            <li class="flex items-center"><i class="fas fa-check text-[#39FF14] mr-2"></i> Planilha
-                                personalizada</li>
-                            <li class="flex items-center"><i class="fas fa-check text-[#39FF14] mr-2"></i> Ajustes em
-                                tempo real</li>
-                            <li class="flex items-center"><i class="fas fa-check text-[#39FF14] mr-2"></i> Foco na
-                                técnica perfeita</li>
-                        </ul>
-                        <a href="https://wa.me/+5584991652870?text=Olá%20Rodrigo,%20quero%20saber%20mais%20sobre%20os%20treinos%20presenciais!"
-                            class="inline-block glow-button bg-[#39FF14] text-black font-bold py-3 px-6 rounded-full text-sm">
-                            SABER MAIS
-                        </a>
-                    </div>
-                </div>
-
-                <div
-                    class="bg-[#0A0A0A] rounded-xl overflow-hidden tilt-card border border-[#00D9FF] border-opacity-30">
-                    <div class="p-6">
-                        <div
-                            class="w-16 h-16 bg-[#00D9FF] bg-opacity-20 rounded-full flex items-center justify-center mb-4">
-                            <i class="fas fa-laptop text-2xl text-[#00D9FF]"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-2 text-[#00D9FF]">CONSULTORIA ONLINE</h3>
-                        <p class="text-gray-300 mb-4">
-                            Treine de qualquer lugar com acompanhamento remoto e planos adaptados à sua rotina.
-                        </p>
-                        <ul class="text-gray-400 mb-6 space-y-2">
-                            <li class="flex items-center"><i class="fas fa-check text-[#39FF14] mr-2"></i> Planilha
-                                digital</li>
-                            <li class="flex items-center"><i class="fas fa-check text-[#39FF14] mr-2"></i> Videochamadas
-                                semanais</li>
-                            <li class="flex items-center"><i class="fas fa-check text-[#39FF14] mr-2"></i> Ajustes via
-                                app</li>
-                        </ul>
-                        <a href="https://wa.me/+5584991652870?text=Olá%20Rodrigo,%20quero%20saber%20mais%20sobre%20a%20consultoria%20online!"
-                            class="inline-block glow-button bg-[#39FF14] text-black font-bold py-3 px-6 rounded-full text-sm">
-                            SABER MAIS
-                        </a>
-                    </div>
-                </div>
-
-                <div
-                    class="bg-[#0A0A0A] rounded-xl overflow-hidden tilt-card border border-[#00D9FF] border-opacity-30">
-                    <div class="p-6">
-                        <div
-                            class="w-16 h-16 bg-[#00D9FF] bg-opacity-20 rounded-full flex items-center justify-center mb-4">
-                            <i class="fas fa-star text-2xl text-[#00D9FF]"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-2 text-[#00D9FF]">ACOMPANHAMENTO EXCLUSIVO</h3>
-                        <p class="text-gray-300 mb-4">
-                            Pacote completo com treino, nutrição e mindset para quem quer resultados extraordinários.
-                        </p>
-                        <ul class="text-gray-400 mb-6 space-y-2">
-                            <li class="flex items-center"><i class="fas fa-check text-[#39FF14] mr-2"></i> Treino +
-                                nutrição</li>
-                            <li class="flex items-center"><i class="fas fa-check text-[#39FF14] mr-2"></i>
-                                Acompanhamento 24/7</li>
-                            <li class="flex items-center"><i class="fas fa-check text-[#39FF14] mr-2"></i> Mindset
-                                vencedor</li>
-                        </ul>
-                        <a href="https://wa.me/+5584991652870?text=Olá%20Rodrigo,%20quero%20saber%20mais%20sobre%20o%20acompanhamento%20exclusivo!"
-                            class="inline-block glow-button bg-[#39FF14] text-black font-bold py-3 px-6 rounded-full text-sm">
-                            SABER MAIS
-                        </a>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Final CTA Section -->
-    <section class="py-16 bg-gradient-to-b from-[#0A0A0A] to-black snap-section">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl md:text-5xl font-bold mb-6">
-                PRONTO PARA <span class="text-[#39FF14]">TRANSFORMAR</span><br>
-                SEU <span class="text-[#00D9FF]">CORPO</span> E <span class="text-[#00D9FF]">MENTE</span>?
-            </h2>
-            <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-                O primeiro passo para sua transformação começa agora. Clique abaixo e vamos conversar sobre seus
-                objetivos!
-            </p>
-            <div class="flex flex-col md:flex-row justify-center gap-4">
-                <a href="https://wa.me/+5584991652870?text=Olá%20Rodrigo,%20quero%20começar%20meus%20treinos!"
-                    class="glow-button bg-[#39FF14] text-black font-bold py-4 px-8 rounded-full text-lg">
-                    FALE PELO WHATSAPP <i class="fab fa-whatsapp ml-2"></i>
-                </a>
-                <a href="https://instagram.com/w__wagner"
-                    class="border-2 border-[#00D9FF] text-white font-bold py-4 px-8 rounded-full text-lg hover:bg-[#00D9FF] hover:bg-opacity-20 transition">
-                    ME SIGA NO INSTAGRAM <i class="fab fa-instagram ml-2"></i>
-                </a>
+            <!-- Card 3 -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card card-custom">
+                    <img src="Hub/img/Em construcao.png" class="card-img-top" alt="Landing Page">
+                    <div class="card-img-overlay">
+                        <div class="p-3">
+                            <h5 class="card-title">Ainda to criando</h5>
+                            <p class="card-text">Calma meu patrão, to desenvolvendo aqui ainda</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
+
+            <!-- ### CARDS MÚSICA ###  -->
+            <div class="row" id="Musica">
+                <h1 class="page-header animate__animated animate__fadeIn" style="color: var(--primary);">Música</h1>
+                <!-- Card 1 -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card card-custom position-relative">
+                        <span class="badge bg-success position-absolute top-0 end-0 m-2">Disponível</span>
+                        <img src="Hub/img/EsterRocha.png" class="card-img-top" alt="Landing Page">
+                        <div class="card-img-overlay">
+                            <div class="p-3">
+                                <h5 class="card-title">Ester Rocha</h5>
+                                <p class="card-text">Cantora Ester Rocha - A Rainha do forró eletrônico</p>
+                                <a href="Musica - Ester Rocha/index.html" class="btn btn-view"
+                                    target="_blank">Conferir modelo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Card 2 -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card card-custom">
+                        <img src="Hub/img/Em construcao.png" class="card-img-top" alt="Landing Page">
+                        <div class="card-img-overlay">
+                            <div class="p-3">
+                                <h5 class="card-title">Ainda to criando</h5>
+                                <p class="card-text">Calma meu patrão, to desenvolvendo aqui ainda</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card card-custom">
+                        <img src="Hub/img/Em construcao.png" class="card-img-top" alt="Landing Page">
+                        <div class="card-img-overlay">
+                            <div class="p-3">
+                                <h5 class="card-title">Ainda to criando</h5>
+                                <p class="card-text">Calma meu patrão, to desenvolvendo aqui ainda</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ### CARDS FITNESS ###  -->
+            <div class="row" id="Fitness">
+                <h1 class="page-header animate__animated animate__fadeIn" style="color: var(--primary);">Fitness</h1>
+                <!-- Card 1 -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card card-custom position-relative">
+                        <span class="badge bg-success position-absolute top-0 end-0 m-2">Disponível</span>
+                        <img src="Hub/img/OrbiFit.png" class="card-img-top" alt="Landing Page">
+                        <div class="card-img-overlay">
+                            <div class="p-3">
+                                <h5 class="card-title">OrbiFit</h5>
+                                <p class="card-text">Academia OrbiFit - Uma experiência de outro mundo</p>
+                                <a href="Fitness - Orbifit/index.html" class="btn btn-view" target="_blank">Conferir
+                                    modelo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Card 2 -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card card-custom">
+                        <span class="badge bg-success position-absolute top-0 end-0 m-2">Disponível</span>
+                        <img src="Hub/img/Carlos Silva.png" class="card-img-top" alt="Landing Page">
+                        <div class="card-img-overlay">
+                            <div class="p-3">
+                                <h5 class="card-title">Carlos Silva</h5>
+                                <p class="card-text">Uma landing para um personal trainer</p>
+                                <a href="Fitness - Carlos Silva/index.html" class="btn btn-view"
+                                    target="_blank">Conferir
+                                    modelo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card card-custom">
+                        <span class="badge bg-success position-absolute top-0 end-0 m-2">Disponível</span>
+                        <img src="Hub/img/Camila Silva.avif" class="card-img-top" alt="Landing Page">
+                        <div class="card-img-overlay">
+                            <div class="p-3">
+                                <h5 class="card-title">Camila Silva</h5>
+                                <p class="card-text">Landing page para uma personal trainer</p>
+                                <a href="Fitness - Camila Silva/index.html" class="btn btn-view"
+                                    target="_blank">Conferir
+                                    modelo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Card 4 -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card card-custom">
+                        <span class="badge bg-success position-absolute top-0 end-0 m-2">Disponível</span>
+                        <img src="Hub/img/Elite Performance.png" class="card-img-top" alt="Landing Page">
+                        <div class="card-img-overlay">
+                            <div class="p-3">
+                                <h5 class="card-title">Elite Performance</h5>
+                                <p class="card-text">Luxo para Personal Traines</p>
+                                <a href="Fitness - Elite Performance/index.html" class="btn btn-view"
+                                    target="_blank">Conferir
+                                    modelo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Card 5 -->
+                 <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card card-custom">
+                        <img src="Hub/img/Em construcao.png" class="card-img-top" alt="Landing Page">
+                        <div class="card-img-overlay">
+                            <div class="p-3">
+                                <h5 class="card-title">Ainda to criando</h5>
+                                <p class="card-text">Calma meu patrão, to desenvolvendo aqui ainda</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Card 6 -->
+                 <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card card-custom">
+                        <img src="Hub/img/Em construcao.png" class="card-img-top" alt="Landing Page">
+                        <div class="card-img-overlay">
+                            <div class="p-3">
+                                <h5 class="card-title">Ainda to criando</h5>
+                                <p class="card-text">Calma meu patrão, to desenvolvendo aqui ainda</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ### CARDS LINK NA BIO ###  -->
+            <div class="row" id="LinkBio">
+                <h1 class="page-header animate__animated animate__fadeIn" style="color: var(--primary);">Link na Bio
+                </h1>
+                <!-- Card 1 -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card card-custom position-relative">
+                        <span class="badge bg-success position-absolute top-0 end-0 m-2">Disponível</span>
+                        <img src="Hub/img/Ana Clara.png" class="card-img-top" alt="Landing Page">
+                        <div class="card-img-overlay">
+                            <div class="p-3">
+                                <h5 class="card-title">Ana Clara - Moderno</h5>
+                                <p class="card-text">Um link na bio perfeito para influencers</p>
+                                <a href="Link na Bio - Ana Clara/index.html" class="btn btn-view"
+                                    target="_blank">Conferir modelo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card card-custom">
+                        <span class="badge bg-success position-absolute top-0 end-0 m-2">Disponível</span>
+                        <img src="Hub/img/Link na Bio - Ester Rocha.png" class="card-img-top" alt="Landing Page">
+                        <div class="card-img-overlay">
+                            <div class="p-3">
+                                <h5 class="card-title">Ester Rocha - Maquiagem</h5>
+                                <p class="card-text">Link na bio para maquiadoras e profissionais da beleza</p>
+                                <a href="Link na Bio - Ester Rocha/index.html" class="btn btn-view" target="_blank">Conferir
+                                    modelo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card card-custom">
+                        <span class="badge bg-success position-absolute top-0 end-0 m-2">Disponível</span>
+                        <img src="Hub/img/Link na Bio - Carlos Silva.png" class="card-img-top" alt="Landing Page">
+                        <div class="card-img-overlay">
+                            <div class="p-3">
+                                <h5 class="card-title">Carlos Andrade - Personal Trainer</h5>
+                                <p class="card-text">Site de link na bio para um personal trainer</p>
+                                <a href="Link na bio - Carlos Andrade/index.html" class="btn btn-view"
+                                    target="_blank">Conferir
+                                    modelo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ### CARDS DIVERSOS ###  -->
+            <div class="row" id="Diversos">
+                <h1 class="page-header animate__animated animate__fadeIn" style="color: var(--primary);">Diversos</h1>
+                <!-- Card 1 -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card card-custom position-relative">
+                        <span class="badge bg-success position-absolute top-0 end-0 m-2">Disponível</span>
+                        <img src="Hub/img/MakeupArtist.png" class="card-img-top" alt="Landing Page">
+                        <div class="card-img-overlay">
+                            <div class="p-3">
+                                <h5 class="card-title">MakeupArtist</h5>
+                                <p class="card-text">Landing para maquiadoras</p>
+                                <a href="Diversos - MakeupArtist/index.html" class="btn btn-view"
+                                    target="_blank">Conferir
+                                    modelo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Card 2 -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card card-custom">
+                        <span style="color: black; background-color: yellow !important;" class="badge bg-success position-absolute top-0 end-0 m-2">Em manutenção</span>
+                        <img src="Hub/img/Diversos - Atriz e Modelo.png" class="card-img-top" alt="Landing Page">
+                        <div class="card-img-overlay">
+                            <div class="p-3">
+                                <h5 class="card-title">Atriz e Modelo</h5>
+                                <p class="card-text">Desenvolvido para atrizes e modelos</p>
+                                <a href="Diversos - Atriz e Modelo/" class="btn btn-view" target="_blank">Conferir
+                                    modelo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Card 3 -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card card-custom">
+                        <span class="badge bg-success position-absolute top-0 end-0 m-2">Disponível</span>
+                        <img src="Hub/img/Diversos - Nutrivida.png" class="card-img-top" alt="Landing Page">
+                        <div class="card-img-overlay">
+                            <div class="p-3">
+                                <h5 class="card-title">NutriVida</h5>
+                                <p class="card-text">Ideal para nutricionistas.</p>
+                                <a href="Diversos - NutriVida/index.html" class="btn btn-view"
+                                    target="_blank">Conferir modelo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card card-custom">
+                        <span class="badge bg-success position-absolute top-0 end-0 m-2">Disponível</span>
+                        <img src="Hub/img/Diversos - Fotografia.png" class="card-img-top" alt="Landing Page">
+                        <div class="card-img-overlay">
+                            <div class="p-3">
+                                <h5 class="card-title">Fotografia</h5>
+                                <p class="card-text">Site para amantes da fotografia.</p>
+                                <a href="Diversos - Fotografia/index.html" class="btn btn-view"
+                                    target="_blank">Conferir modelo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card card-custom">
+                        <span class="badge bg-success position-absolute top-0 end-0 m-2">Disponível</span>
+                        <img src="Hub/img/MakeupArt.png" class="card-img-top" alt="Landing Page">
+                        <div class="card-img-overlay">
+                            <div class="p-3">
+                                <h5 class="card-title">MakeupArt</h5>
+                                <p class="card-text">Feito para maquiadoras</p>
+                                <a href="Diversos - Makeup Art/index.html" class="btn btn-view"
+                                    target="_blank">Conferir modelo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card card-custom">
+                        <span class="badge bg-success position-absolute top-0 end-0 m-2">Disponível</span>
+                        <img src="Hub/img/Diversos - Lentes e emocoes.png" class="card-img-top" alt="Landing Page">
+                        <div class="card-img-overlay">
+                            <div class="p-3">
+                                <h5 class="card-title">Lentes e emocoes</h5>
+                                <p class="card-text">O melhor para fotografos</p>
+                                <a href="Diversos - Lentes e Emocoes/index.html" class="btn btn-view"
+                                    target="_blank">Conferir modelo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 7 -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card card-custom">
+                        <span class="badge bg-success position-absolute top-0 end-0 m-2">Disponível</span>
+                        <img src="Hub/img/Diversos - Lex Invicta.png" class="card-img-top" alt="Landing Page">
+                        <div class="card-img-overlay">
+                            <div class="p-3">
+                                <h5 class="card-title">Lex Invicta</h5>
+                                <p class="card-text">Página simples para escritório de advocacia</p>
+                                <a href="Diversos - Lex Invicta/index.html" class="btn btn-view"
+                                    target="_blank">Conferir modelo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 8 -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card card-custom">
+                        <span class="badge bg-success position-absolute top-0 end-0 m-2">Disponível</span>
+                        <img src="Hub/img/Diversos - TecnoRepair.png" class="card-img-top" alt="Landing Page">
+                        <div class="card-img-overlay">
+                            <div class="p-3">
+                                <h5 class="card-title">TecnoRepair</h5>
+                                <p class="card-text">Estilosa para uma assistência técnica de celulares</p>
+                                <a href="Diversos - TecnoRepair/index.html" class="btn btn-view"
+                                    target="_blank">Conferir modelo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 9 -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card card-custom">
+                        <img src="Hub/img/Em construcao.png" class="card-img-top" alt="Landing Page">
+                        <div class="card-img-overlay">
+                            <div class="p-3">
+                                <h5 class="card-title">Ainda to criando</h5>
+                                <p class="card-text">Calma meu patrão, to desenvolvendo aqui ainda</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </main>
 
     <!-- Footer -->
-    <footer class="py-8 bg-black">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-4 md:mb-0">
-                    <p class="text-gray-400">© 2023 Personal Rodrigo. Todos os direitos reservados.</p>
-                </div>
-                <div class="flex space-x-4">
-                    <a href="https://wa.me/+5584991652870?text=Olá%20Rodrigo,%20quero%20começar%20meus%20treinos!"
-                        class="social-glow w-12 h-12 bg-[#39FF14] rounded-full flex items-center justify-center">
-                        <i class="fab fa-whatsapp text-xl text-black"></i>
-                    </a>
-                    <a href="https://instagram.com/w__wagner"
-                        class="social-glow w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
-                        <i class="fab fa-instagram text-xl text-white"></i>
-                    </a>
-                </div>
+    <footer class="footer">
+        <div class="container">
+            <h5>Meu catalogo de sites</h5>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/w__wagner/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://linkedin.com/in/wagner--cruz" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://wa.me/+5584991652870" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Wagner Cruz. All rights reserved.
             </div>
         </div>
     </footer>
 
-    <script src="script/script.js"></script>
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JavaScript for additional effects -->
+    <script src="Hub/script/script.js"></script>
 </body>
 
 </html>
