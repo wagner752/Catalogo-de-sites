@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbearia Moderna - Corte com Atitude</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700;900&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #111111;
+            color: #FFFFFF;
+            overflow-x: hidden;
+        }
+        
+        .navbar-hidden {
+            transform: translateY(-100%);
+        }
+        
+        .navbar-visible {
+            transform: translateY(0);
+        }
+        
+        .hamburger-line {
+            transition: all 0.3s ease;
+        }
+        
+        .hamburger-active .hamburger-line:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+        
+        .hamburger-active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger-active .hamburger-line:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+        
+        .menu-overlay {
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .menu-content {
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .menu-content.active {
+            transform: translateX(0);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #00E5FF;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .logo-shadow {
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+            animation: pulse 2s infinite alternate;
+        }
+        
+        @keyframes pulse {
+            0% {
+                text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+            }
+            100% {
+                text-shadow: 0 0 20px rgba(255, 215, 0, 0.9);
+            }
+        }
+        
+        .btn-primary {
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(0, 229, 255, 0);
+        }
+        
+        .btn-primary:hover {
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.7);
+            transform: translateY(-2px);
+        }
+        
+        .mirror-overlay {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(0, 229, 255, 0.1) 100%);
+        }
+        
+        .hair-option {
+            transition: all 0.3s ease;
+        }
+        
+        .hair-option:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(0, 229, 255, 0.5);
+        }
+        
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: scale(1.2);
+            filter: drop-shadow(0 0 5px #00E5FF);
+        }
+        
+        .whatsapp-btn {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        .modal {
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        
+        .modal-content {
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+        
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+        
+        .swiper-slide {
+            transition: transform 0.3s ease;
+        }
+        
+        .swiper-slide:hover {
+            transform: scale(1.03);
+        }
+        
+        .time-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .time-icon:hover {
+            transform: rotate(15deg);
+            filter: drop-shadow(0 0 5px #FFD700);
+        }
+    </style>
+</head>
+<body class="relative">
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/5511999999999" class="whatsapp-btn fixed bottom-8 right-8 z-50 bg-[#25D366] text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl shadow-lg hover:bg-[#128C7E]">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed top-0 left-0 w-full bg-[#111111] bg-opacity-90 py-4 px-6 z-40 transition-transform duration-300 navbar-visible">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="text-2xl font-bold text-[#FFD700]">BARBERSHOP</div>
+            
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link text-white hover:text-[#00E5FF] transition">Início</a>
+                <a href="#mirror" class="nav-link text-white hover:text-[#00E5FF] transition">Espelho Virtual</a>
+                <a href="#gallery" class="nav-link text-white hover:text-[#00E5FF] transition">Galeria</a>
+                <a href="#testimonials" class="nav-link text-white hover:text-[#00E5FF] transition">Depoimentos</a>
+                <a href="#location" class="nav-link text-white hover:text-[#00E5FF] transition">Localização</a>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <button id="menu-btn" class="md:hidden focus:outline-none">
+                <div class="w-8 space-y-2">
+                    <span class="hamburger-line block w-full h-1 bg-white rounded"></span>
+                    <span class="hamburger-line block w-full h-1 bg-white rounded"></span>
+                    <span class="hamburger-line block w-full h-1 bg-white rounded"></span>
+                </div>
+            </button>
+        </div>
+    </nav>
+    
+    <!-- Mobile Menu Overlay -->
+    <div id="menu-overlay" class="menu-overlay fixed inset-0 bg-black bg-opacity-80 z-50 opacity-0 invisible">
+        <div class="menu-content absolute top-0 right-0 w-4/5 h-full bg-[#111111] p-8">
+            <div class="flex justify-between items-center mb-12">
+                <div class="text-2xl font-bold text-[#FFD700]">BARBERSHOP</div>
+                <button id="close-menu" class="text-3xl text-white">&times;</button>
+            </div>
+            <div class="flex flex-col space-y-6">
+                <a href="#home" class="nav-link text-2xl text-white hover:text-[#00E5FF] transition">Início</a>
+                <a href="#mirror" class="nav-link text-2xl text-white hover:text-[#00E5FF] transition">Espelho Virtual</a>
+                <a href="#gallery" class="nav-link text-2xl text-white hover:text-[#00E5FF] transition">Galeria</a>
+                <a href="#testimonials" class="nav-link text-2xl text-white hover:text-[#00E5FF] transition">Depoimentos</a>
+                <a href="#location" class="nav-link text-2xl text-white hover:text-[#00E5FF] transition">Localização</a>
+            </div>
+            <div class="absolute bottom-8 left-8 right-8 flex justify-center space-x-6">
+                <a href="#" class="social-icon text-white text-2xl hover:text-[#00E5FF]"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon text-white text-2xl hover:text-[#00E5FF]"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="social-icon text-white text-2xl hover:text-[#00E5FF]"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center bg-[#111111] overflow-hidden pt-20">
+        <!-- Particles background would go here -->
+        <div class="absolute inset-0 z-0" id="particles-js"></div>
+        
+        <div class="container mx-auto px-6 z-10 text-center">
+            <h1 class="logo-shadow text-5xl md:text-8xl font-black mb-8">BARBERSHOP</h1>
+            <p class="text-xl md:text-3xl font-black mb-12">Corte com Atitude, Estilo com Personalidade!</p>
+            <a href="#mirror" class="btn-primary inline-block bg-[#FFD700] text-[#111111] font-bold py-4 px-8 rounded-full text-lg md:text-xl hover:bg-[#FFC000]">Agendar Corte</a>
+        </div>
+    </section>
+
+    <!-- Mirror Section -->
+    <section id="mirror" class="py-20 bg-[#111111]">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-5xl font-black text-center mb-16 text-[#FFD700]">✨ Espelho Virtual  ✨</h2>
+            
+            <div class="mirror-overlay rounded-xl p-8 md:p-12 backdrop-blur-sm border border-[#FFD700] border-opacity-30">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="relative">
+                        <div class="bg-black rounded-lg overflow-hidden aspect-[9/16] flex items-center justify-center border-2 border-[#FFD700]">
+                            <div id="mirror-container" class="w-full h-full flex items-center justify-center">
+                                <video id="video" autoplay playsinline class="w-full h-full object-cover hidden"></video>
+                                <canvas id="canvas" class="w-full h-full object-cover hidden"></canvas>
+                                <div id="mirror-placeholder" class="text-center p-8">
+                                    <i class="fas fa-camera text-5xl text-[#F2F2F2] mb-4"></i>
+                                    <p class="text-[#F2F2F2] mb-6">Ative sua câmera para experimentar diferentes estilos</p>
+                                    <button id="start-camera" class="bg-[#00E5FF] text-[#111111] font-bold py-3 px-6 rounded-full hover:bg-[#00C4E0] transition">Ativar Câmera</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-center mt-6 space-x-4">
+                            <button id="capture-btn" class="bg-[#FFD700] text-[#111111] font-bold py-2 px-4 rounded-full hidden hover:bg-[#FFC000] transition">
+                                <i class="fas fa-camera mr-2"></i>Capturar
+                            </button>
+                            <button id="reset-btn" class="bg-[#F2F2F2] text-[#111111] font-bold py-2 px-4 rounded-full hidden hover:bg-[#DDDDDD] transition">
+                                <i class="fas fa-redo mr-2"></i>Resetar
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6 text-[#FFD700]">Experimente diferentes estilos</h3>
+                        <p class="text-[#F2F2F2] mb-8">Use nosso espelho virtual para testar como ficaria com diferentes cortes de cabelo, barbas e bigodes antes de agendar seu horário.</p>
+                        
+                        <div class="mb-8">
+                            <h4 class="text-xl font-bold mb-4 text-[#00E5FF]">Cortes de Cabelo</h4>
+                            <div class="grid grid-cols-3 gap-4">
+                                <div class="hair-option bg-[#222222] p-3 rounded-lg cursor-pointer text-center" data-style="hair1">
+                                    <img src="https://via.placeholder.com/100x100/FFD700/111111?text=Style1" alt="Corte 1" class="w-full rounded mb-2">
+                                    <p class="text-sm">Undercut</p>
+                                </div>
+                                <div class="hair-option bg-[#222222] p-3 rounded-lg cursor-pointer text-center" data-style="hair2">
+                                    <img src="https://via.placeholder.com/100x100/FFD700/111111?text=Style2" alt="Corte 2" class="w-full rounded mb-2">
+                                    <p class="text-sm">Fade</p>
+                                </div>
+                                <div class="hair-option bg-[#222222] p-3 rounded-lg cursor-pointer text-center" data-style="hair3">
+                                    <img src="https://via.placeholder.com/100x100/FFD700/111111?text=Style3" alt="Corte 3" class="w-full rounded mb-2">
+                                    <p class="text-sm">Pompadour</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-8">
+                            <h4 class="text-xl font-bold mb-4 text-[#00E5FF]">Estilos de Barba</h4>
+                            <div class="grid grid-cols-3 gap-4">
+                                <div class="hair-option bg-[#222222] p-3 rounded-lg cursor-pointer text-center" data-style="beard1">
+                                    <img src="https://via.placeholder.com/100x100/FFD700/111111?text=Beard1" alt="Barba 1" class="w-full rounded mb-2">
+                                    <p class="text-sm">Barba Cheia</p>
+                                </div>
+                                <div class="hair-option bg-[#222222] p-3 rounded-lg cursor-pointer text-center" data-style="beard2">
+                                    <img src="https://via.placeholder.com/100x100/FFD700/111111?text=Beard2" alt="Barba 2" class="w-full rounded mb-2">
+                                    <p class="text-sm">Barba Desenhada</p>
+                                </div>
+                                <div class="hair-option bg-[#222222] p-3 rounded-lg cursor-pointer text-center" data-style="beard3">
+                                    <img src="https://via.placeholder.com/100x100/FFD700/111111?text=Beard3" alt="Barba 3" class="w-full rounded mb-2">
+                                    <p class="text-sm">Barba Rala</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button id="like-style" class="bg-[#FFD700] text-[#111111] font-bold py-3 px-8 rounded-full hover:bg-[#FFC000] transition hidden">
+                            <i class="fas fa-thumbs-up mr-2"></i>Gostei! Agendar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-[#111111]">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-5xl font-black text-center mb-16 text-[#FFD700]">✂️ Nossos Estilos ✂️</h2>
+            
+            <div class="swiper gallery-swiper">
+                <div class="swiper-wrapper">
+                    <!-- Slide 1 -->
+                    <div class="swiper-slide">
+                        <div class="bg-[#222222] rounded-xl overflow-hidden cursor-pointer" onclick="openModal('style1')">
+                            <img src="https://via.placeholder.com/600x800/FFD700/111111?text=Style1" alt="Corte 1" class="w-full h-64 md:h-80 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold mb-2">Undercut Moderno</h3>
+                                <p class="text-[#F2F2F2] mb-4">Corte com laterais bem aparadas e topo mais longo para um visual moderno.</p>
+                                <span class="inline-block bg-[#FFD700] text-[#111111] text-sm font-bold py-1 px-3 rounded-full">R$ 60,00</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 2 -->
+                    <div class="swiper-slide">
+                        <div class="bg-[#222222] rounded-xl overflow-hidden cursor-pointer" onclick="openModal('style2')">
+                            <img src="https://via.placeholder.com/600x800/FFD700/111111?text=Style2" alt="Corte 2" class="w-full h-64 md:h-80 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold mb-2">Fade Degradê</h3>
+                                <p class="text-[#F2F2F2] mb-4">Degradê suave dos lados para um visual limpo e profissional.</p>
+                                <span class="inline-block bg-[#FFD700] text-[#111111] text-sm font-bold py-1 px-3 rounded-full">R$ 70,00</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 3 -->
+                    <div class="swiper-slide">
+                        <div class="bg-[#222222] rounded-xl overflow-hidden cursor-pointer" onclick="openModal('style3')">
+                            <img src="https://via.placeholder.com/600x800/FFD700/111111?text=Style3" alt="Corte 3" class="w-full h-64 md:h-80 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold mb-2">Pompadour Clássico</h3>
+                                <p class="text-[#F2F2F2] mb-4">Estilo retro com volume no topo e laterais aparadas.</p>
+                                <span class="inline-block bg-[#FFD700] text-[#111111] text-sm font-bold py-1 px-3 rounded-full">R$ 80,00</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 4 -->
+                    <div class="swiper-slide">
+                        <div class="bg-[#222222] rounded-xl overflow-hidden cursor-pointer" onclick="openModal('style4')">
+                            <img src="https://via.placeholder.com/600x800/FFD700/111111?text=Style4" alt="Corte 4" class="w-full h-64 md:h-80 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold mb-2">Corte Militar</h3>
+                                <p class="text-[#F2F2F2] mb-4">Corte curto e prático, ideal para quem busca praticidade.</p>
+                                <span class="inline-block bg-[#FFD700] text-[#111111] text-sm font-bold py-1 px-3 rounded-full">R$ 50,00</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 5 -->
+                    <div class="swiper-slide">
+                        <div class="bg-[#222222] rounded-xl overflow-hidden cursor-pointer" onclick="openModal('style5')">
+                            <img src="https://via.placeholder.com/600x800/FFD700/111111?text=Style5" alt="Corte 5" class="w-full h-64 md:h-80 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold mb-2">Corte com Design</h3>
+                                <p class="text-[#F2F2F2] mb-4">Corte personalizado com desenhos e detalhes exclusivos.</p>
+                                <span class="inline-block bg-[#FFD700] text-[#111111] text-sm font-bold py-1 px-3 rounded-full">R$ 90,00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="swiper-pagination mt-8"></div>
+                <div class="swiper-button-next text-[#FFD700]"></div>
+                <div class="swiper-button-prev text-[#FFD700]"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-[#111111]">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-5xl font-black text-center mb-16 text-[#FFD700]">👨‍🎨 Depoimentos  👨‍🎨</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card bg-[#222222] rounded-xl p-8">
+                    <div class="flex items-center mb-6">
+                        <img src="https://via.placeholder.com/80x80/FFD700/111111?text=Client1" alt="Cliente 1" class="w-16 h-16 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold text-lg">Carlos Silva</h4>
+                            <div class="flex text-[#FFD700]">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-[#F2F2F2] italic">"Melhor barbearia da cidade! O atendimento é excelente e o corte sempre sai perfeito. Recomendo a todos!"</p>
+                    <div class="mt-6 flex justify-end">
+                        <i class="fas fa-quote-right text-3xl text-[#FFD700] opacity-30"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card bg-[#222222] rounded-xl p-8">
+                    <div class="flex items-center mb-6">
+                        <img src="https://via.placeholder.com/80x80/FFD700/111111?text=Client2" alt="Cliente 2" class="w-16 h-16 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold text-lg">João Santos</h4>
+                            <div class="flex text-[#FFD700]">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-[#F2F2F2] italic">"Adorei o espelho virtual! Pude testar vários estilos antes de decidir o corte. Equipe muito profissional!"</p>
+                    <div class="mt-6 flex justify-end">
+                        <i class="fas fa-quote-right text-3xl text-[#FFD700] opacity-30"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card bg-[#222222] rounded-xl p-8">
+                    <div class="flex items-center mb-6">
+                        <img src="https://via.placeholder.com/80x80/FFD700/111111?text=Client3" alt="Cliente 3" class="w-16 h-16 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold text-lg">Pedro Oliveira</h4>
+                            <div class="flex text-[#FFD700]">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-[#F2F2F2] italic">"Atendimento de primeira! O barbeiro entendeu exatamente o que eu queria e o resultado foi incrível. Voltarei sempre!"</p>
+                    <div class="mt-6 flex justify-end">
+                        <i class="fas fa-quote-right text-3xl text-[#FFD700] opacity-30"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location" class="py-20 bg-[#111111]">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-5xl font-black text-center mb-16 text-[#FFD700]">📍 Localização & Horários 📍</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <div class="bg-[#222222] rounded-xl p-8 mb-8">
+                        <h3 class="text-2xl font-bold mb-6 text-[#FFD700]">Nossa Localização</h3>
+                        <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden">
+                            <!-- Google Maps iframe would go here -->
+                            <div class="w-full h-64 bg-[#333333] flex items-center justify-center">
+                                <i class="fas fa-map-marker-alt text-5xl text-[#FFD700]"></i>
+                            </div>
+                        </div>
+                        <p class="mt-4 text-[#F2F2F2]">Rua da Barbearia, 123 - Centro, São Paulo - SP</p>
+                    </div>
+                    
+                    <div class="bg-[#222222] rounded-xl p-8">
+                        <h3 class="text-2xl font-bold mb-6 text-[#FFD700]">Horários de Funcionamento</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <div class="time-icon w-10 h-10 bg-[#FFD700] rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-clock text-[#111111]"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-[#F2F2F2]">Segunda a Sexta</p>
+                                    <p class="text-[#F2F2F2]">09:00 - 19:00</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="time-icon w-10 h-10 bg-[#FFD700] rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-clock text-[#111111]"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-[#F2F2F2]">Sábado</p>
+                                    <p class="text-[#F2F2F2]">09:00 - 17:00</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="time-icon w-10 h-10 bg-[#FFD700] rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-clock text-[#111111]"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-[#F2F2F2]">Domingo</p>
+                                    <p class="text-[#F2F2F2]">Fechado</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="bg-[#222222] rounded-xl p-8 h-full">
+                        <h3 class="text-2xl font-bold mb-6 text-[#FFD700]">Agende seu Horário</h3>
+                        <form class="space-y-6">
+                            <div>
+                                <label for="name" class="block text-[#F2F2F2] mb-2">Nome Completo</label>
+                                <input type="text" id="name" class="w-full bg-[#333333] border border-[#444444] rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-[#FFD700]">
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-[#F2F2F2] mb-2">Telefone</label>
+                                <input type="tel" id="phone" class="w-full bg-[#333333] border border-[#444444] rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-[#FFD700]">
+                            </div>
+                            <div>
+                                <label for="date" class="block text-[#F2F2F2] mb-2">Data</label>
+                                <input type="date" id="date" class="w-full bg-[#333333] border border-[#444444] rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-[#FFD700]">
+                            </div>
+                            <div>
+                                <label for="time" class="block text-[#F2F2F2] mb-2">Horário</label>
+                                <input type="time" id="time" class="w-full bg-[#333333] border border-[#444444] rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-[#FFD700]">
+                            </div>
+                            <div>
+                                <label for="service" class="block text-[#F2F2F2] mb-2">Serviço</label>
+                                <select id="service" class="w-full bg-[#333333] border border-[#444444] rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-[#FFD700]">
+                                    <option value="">Selecione um serviço</option>
+                                    <option value="corte">Corte de Cabelo</option>
+                                    <option value="barba">Barba</option>
+                                    <option value="completo">Corte + Barba</option>
+                                    <option value="design">Design de Barba</option>
+                                    <option value="pigmentacao">Pigmentação</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="w-full bg-[#FFD700] text-[#111111] font-bold py-3 px-6 rounded-lg hover:bg-[#FFC000] transition">Agendar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#FFD700] text-[#111111] py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-black mb-4">BARBERSHOP</h3>
+                    <p class="mb-4">Corte com Atitude, Estilo com Personalidade!</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="social-icon text-[#111111] text-xl hover:text-[#00E5FF]"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon text-[#111111] text-xl hover:text-[#00E5FF]"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-icon text-[#111111] text-xl hover:text-[#00E5FF]"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Links Rápidos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="hover:text-[#00E5FF] transition">Início</a></li>
+                        <li><a href="#mirror" class="hover:text-[#00E5FF] transition">Espelho Virtual</a></li>
+                        <li><a href="#gallery" class="hover:text-[#00E5FF] transition">Galeria</a></li>
+                        <li><a href="#testimonials" class="hover:text-[#00E5FF] transition">Depoimentos</a></li>
+                        <li><a href="#location" class="hover:text-[#00E5FF] transition">Localização</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Serviços</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-[#00E5FF] transition">Corte de Cabelo</a></li>
+                        <li><a href="#" class="hover:text-[#00E5FF] transition">Barba</a></li>
+                        <li><a href="#" class="hover:text-[#00E5FF] transition">Pigmentação</a></li>
+                        <li><a href="#" class="hover:text-[#00E5FF] transition">Design de Barba</a></li>
+                        <li><a href="#" class="hover:text-[#00E5FF] transition">Tratamentos</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Contato</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            <span>Rua da Barbearia, 123 - SP</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-2"></i>
+                            <span>(11) 9999-9999</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2"></i>
+                            <span>contato@barbearia.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-[#111111] border-opacity-20 mt-12 pt-8 text-center">
+                <p>&copy; 2023 Barbearia Moderna. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Gallery Modal -->
+    <div id="gallery-modal" class="modal fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center opacity-0 invisible transition-opacity duration-300">
+        <div class="modal-content bg-[#222222] rounded-xl max-w-4xl w-full mx-4 overflow-hidden transition-transform duration-300">
+            <div class="relative">
+                <button id="close-modal" class="absolute top-4 right-4 bg-[#FFD700] text-[#111111] w-10 h-10 rounded-full flex items-center justify-center z-50 hover:bg-[#FFC000]">
+                    &times;
+                </button>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2">
+                    <div class="h-64 lg:h-full">
+                        <img id="modal-image" src="" alt="" class="w-full h-full object-cover">
+                    </div>
+                    
+                    <div class="p-8">
+                        <h3 id="modal-title" class="text-2xl font-bold mb-4 text-[#FFD700]"></h3>
+                        <p id="modal-description" class="text-[#F2F2F2] mb-6"></p>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-bold text-[#00E5FF] mb-2">Indicado para:</h4>
+                            <p id="modal-indication" class="text-[#F2F2F2]"></p>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-bold text-[#00E5FF] mb-2">Tempo médio:</h4>
+                            <p id="modal-time" class="text-[#F2F2F2]"></p>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <span id="modal-price" class="text-2xl font-bold text-[#FFD700]"></span>
+                            <a href="#location" class="bg-[#FFD700] text-[#111111] font-bold py-2 px-6 rounded-full hover:bg-[#FFC000] transition">Agendar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Font Awesome for icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    
+    <script>
+        // Navbar scroll behavior
+        let lastScroll = 0;
+        const navbar = document.getElementById('navbar');
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll <= 0) {
+                navbar.classList.remove('navbar-hidden');
+                navbar.classList.add('navbar-visible');
+                return;
+            }
+            
+            if (currentScroll > lastScroll && !navbar.classList.contains('navbar-hidden')) {
+                // Scroll down
+                navbar.classList.remove('navbar-visible');
+                navbar.classList.add('navbar-hidden');
+            } else if (currentScroll < lastScroll && navbar.classList.contains('navbar-hidden')) {
+                // Scroll up
+                navbar.classList.remove('navbar-hidden');
+                navbar.classList.add('navbar-visible');
+            }
+            
+            lastScroll = currentScroll;
+        });
+        
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const closeMenu = document.getElementById('close-menu');
+        const menuOverlay = document.getElementById('menu-overlay');
+        
+        menuBtn.addEventListener('click', () => {
+            menuBtn.classList.toggle('hamburger-active');
+            menuOverlay.classList.toggle('active');
+        });
+        
+        closeMenu.addEventListener('click', () => {
+            menuBtn.classList.remove('hamburger-active');
+            menuOverlay.classList.remove('active');
+        });
+        
+        // Close menu when clicking on a link
+        const menuLinks = document.querySelectorAll('#menu-overlay a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuBtn.classList.remove('hamburger-active');
+                menuOverlay.classList.remove('active');
+            });
+        });
+        
+        // Initialize Swiper for gallery
+        const gallerySwiper = new Swiper('.gallery-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                },
+                1024: {
+                    slidesPerView: 3,
+                },
+            }
+        });
+        
+        // Mirror Virtual functionality
+        const startCameraBtn = document.getElementById('start-camera');
+        const captureBtn = document.getElementById('capture-btn');
+        const resetBtn = document.getElementById('reset-btn');
+        const likeStyleBtn = document.getElementById('like-style');
+        const video = document.getElementById('video');
+        const canvas = document.getElementById('canvas');
+        const mirrorPlaceholder = document.getElementById('mirror-placeholder');
+        const hairOptions = document.querySelectorAll('.hair-option');
+        
+        let currentStream = null;
+        let selectedStyle = null;
+        
+        // Start camera
+        startCameraBtn.addEventListener('click', async () => {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+                video.srcObject = stream;
+                currentStream = stream;
+                
+                video.classList.remove('hidden');
+                mirrorPlaceholder.classList.add('hidden');
+                startCameraBtn.classList.add('hidden');
+                captureBtn.classList.remove('hidden');
+                resetBtn.classList.remove('hidden');
+                
+                // Show hair options
+                hairOptions.forEach(option => {
+                    option.style.opacity = '1';
+                    option.style.pointerEvents = 'auto';
+                });
+            } catch (err) {
+                console.error("Error accessing camera:", err);
+                alert("Não foi possível acessar a câmera. Por favor, verifique as permissões.");
+            }
+        });
+        
+        // Capture photo
+        captureBtn.addEventListener('click', () => {
+            const context = canvas.getContext('2d');
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+            
+            video.classList.add('hidden');
+            canvas.classList.remove('hidden');
+            captureBtn.classList.add('hidden');
+            likeStyleBtn.classList.remove('hidden');
+            
+            // Stop camera stream
+            if (currentStream) {
+                currentStream.getTracks().forEach(track => track.stop());
+                currentStream = null;
+            }
+        });
+        
+        // Reset mirror
+        resetBtn.addEventListener('click', () => {
+            if (currentStream) {
+                currentStream.getTracks().forEach(track => track.stop());
+                currentStream = null;
+            }
+            
+            video.classList.add('hidden');
+            canvas.classList.add('hidden');
+            mirrorPlaceholder.classList.remove('hidden');
+            startCameraBtn.classList.remove('hidden');
+            captureBtn.classList.add('hidden');
+            resetBtn.classList.add('hidden');
+            likeStyleBtn.classList.add('hidden');
+            
+            // Reset hair options
+            selectedStyle = null;
+            hairOptions.forEach(option => {
+                option.style.opacity = '0.5';
+                option.style.pointerEvents = 'none';
+            });
+        });
+        
+        // Select hair style
+        hairOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                // Remove active class from all options
+                hairOptions.forEach(opt => {
+                    opt.classList.remove('bg-[#FFD700]');
+                    opt.classList.add('bg-[#222222]');
+                });
+                
+                // Add active class to selected option
+                this.classList.remove('bg-[#222222]');
+                this.classList.add('bg-[#FFD700]');
+                
+                selectedStyle = this.getAttribute('data-style');
+            });
+        });
+        
+        // Like style and redirect to WhatsApp
+        likeStyleBtn.addEventListener('click', () => {
+            if (selectedStyle) {
+                // In a real implementation, this would redirect to WhatsApp with the selected style
+                alert(`Você selecionou o estilo ${selectedStyle}. Redirecionando para o WhatsApp...`);
+                // window.location.href = `https://wa.me/5511999999999?text=Gostei%20do%20estilo%20${selectedStyle}%20e%20quero%20agendar%20um%20horário!`;
+            } else {
+                alert('Por favor, selecione um estilo antes de continuar.');
+            }
+        });
+        
+        // Gallery modal functionality
+        function openModal(styleId) {
+            // In a real implementation, this would fetch the correct data based on the styleId
+            const modal = document.getElementById('gallery-modal');
+            const modalImage = document.getElementById('modal-image');
+            const modalTitle = document.getElementById('modal-title');
+            const modalDescription = document.getElementById('modal-description');
+            const modalIndication = document.getElementById('modal-indication');
+            const modalTime = document.getElementById('modal-time');
+            const modalPrice = document.getElementById('modal-price');
+            
+            // Set modal content based on styleId
+            switch(styleId) {
+                case 'style1':
+                    modalImage.src = 'https://via.placeholder.com/600x800/FFD700/111111?text=Style1';
+                    modalTitle.textContent = 'Undercut Moderno';
+                    modalDescription.textContent = 'Corte com laterais bem aparadas e topo mais longo para um visual moderno e despojado. Ideal para quem busca um visual jovem e atual.';
+                    modalIndication.textContent = 'Cabelos lisos ou ondulados, de médio a longo comprimento.';
+                    modalTime.textContent = '40-50 minutos';
+                    modalPrice.textContent = 'R$ 60,00';
+                    break;
+                case 'style2':
+                    modalImage.src = 'https://via.placeholder.com/600x800/FFD700/111111?text=Style2';
+                    modalTitle.textContent = 'Fade Degradê';
+                    modalDescription.textContent = 'Degradê suave dos lados para um visual limpo e profissional. Transição perfeita entre os comprimentos.';
+                    modalIndication.textContent = 'Todos os tipos de cabelo, especialmente indicado para cabelos crespos.';
+                    modalTime.textContent = '50-60 minutos';
+                    modalPrice.textContent = 'R$ 70,00';
+                    break;
+                case 'style3':
+                    modalImage.src = 'https://via.placeholder.com/600x800/FFD700/111111?text=Style3';
+                    modalTitle.textContent = 'Pompadour Clássico';
+                    modalDescription.textContent = 'Estilo retro com volume no topo e laterais aparadas. Um clássico que nunca sai de moda.';
+                    modalIndication.textContent = 'Cabelos médios a longos, com boa estrutura para volume.';
+                    modalTime.textContent = '60-70 minutos';
+                    modalPrice.textContent = 'R$ 80,00';
+                    break;
+                case 'style4':
+                    modalImage.src = 'https://via.placeholder.com/600x800/FFD700/111111?text=Style4';
+                    modalTitle.textContent = 'Corte Militar';
+                    modalDescription.textContent = 'Corte curto e prático, ideal para quem busca praticidade e um visual clean.';
+                    modalIndication.textContent = 'Todos os tipos de cabelo, especialmente para quem prefere pouco volume.';
+                    modalTime.textContent = '30-40 minutos';
+                    modalPrice.textContent = 'R$ 50,00';
+                    break;
+                case 'style5':
+                    modalImage.src = 'https://via.placeholder.com/600x800/FFD700/111111?text=Style5';
+                    modalTitle.textContent = 'Corte com Design';
+                    modalDescription.textContent = 'Corte personalizado com desenhos e detalhes exclusivos. Destaque-se com um visual único.';
+                    modalIndication.textContent = 'Cabelos curtos a médios, ideal para quem quer se destacar.';
+                    modalTime.textContent = '70-90 minutos';
+                    modalPrice.textContent = 'R$ 90,00';
+                    break;
+            }
+            
+            modal.classList.add('active');
+        }
+        
+        // Close modal
+        const closeModal = document.getElementById('close-modal');
+        const modal = document.getElementById('gallery-modal');
+        
+        closeModal.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+        
+        // Close modal when clicking outside content
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // GSAP animations
+        document.addEventListener('DOMContentLoaded', () => {
+            // Animate hero elements
+            gsap.from('#home h1', {
+                duration: 1,
+                y: -50,
+                opacity: 0,
+                ease: 'power3.out'
+            });
+            
+            gsap.from('#home p', {
+                duration: 1,
+                y: 50,
+                opacity: 0,
+                delay: 0.5,
+                ease: 'power3.out'
+            });
+            
+            gsap.from('#home a', {
+                duration: 1,
+                y: 50,
+                opacity: 0,
+                delay: 1,
+                ease: 'power3.out'
+            });
+            
+            // Animate sections on scroll
+            const sections = document.querySelectorAll('section');
+            sections.forEach((section, index) => {
+                if (index > 0) { // Skip hero section
+                    gsap.from(section, {
+                        scrollTrigger: {
+                            trigger: section,
+                            start: 'top 80%',
+                            toggleActions: 'play none none none'
+                        },
+                        y: 50,
+                        opacity: 0,
+                        duration: 1,
+                        ease: 'power3.out'
+                    });
+                }
+            });
+            
+            // Animate navbar items
+            const navItems = document.querySelectorAll('.nav-link');
+            navItems.forEach((item, index) => {
+                gsap.from(item, {
+                    duration: 0.5,
+                    x: -20,
+                    opacity: 0,
+                    delay: 0.1 * index,
+                    ease: 'power2.out'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
