@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbearia Premium | Estilo e Tradição</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav id="navbar"
+        class="fixed w-full z-50 transition-all duration-300 navbar-blur bg-opacity-90 bg-[var(--primary-bg)]">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <i class="fas fa-cut text-2xl text-[var(--gold)] mr-2"></i>
+                <span class="text-xl font-bold text-[var(--white)]">Barbearia Premium</span>
+            </div>
+
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#home" class="text-[var(--light-gray)] hover:text-[var(--gold)] transition">Início</a>
+                <a href="#services" class="text-[var(--light-gray)] hover:text-[var(--gold)] transition">Serviços</a>
+                <a href="#gallery" class="text-[var(--light-gray)] hover:text-[var(--gold)] transition">Galeria</a>
+                <a href="#booking" class="text-[var(--light-gray)] hover:text-[var(--gold)] transition">Agendamento</a>
+                <a href="#contact" class="text-[var(--light-gray)] hover:text-[var(--gold)] transition">Contato</a>
+                <button id="bookNowBtn"
+                    class="bg-[var(--gold)] text-black px-4 py-2 rounded font-medium hover:bg-[var(--hover-gold)] transition ripple">
+                    Agende Agora
+                </button>
+            </div>
+
+            <button id="mobileMenuBtn" class="md:hidden hamburger">
+                <span class="block w-6 h-0.5 bg-[var(--light-gray)] mb-1.5"></span>
+                <span class="block w-6 h-0.5 bg-[var(--light-gray)] mb-1.5"></span>
+                <span class="block w-6 h-0.5 bg-[var(--light-gray)]"></span>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="md:hidden hidden bg-[var(--secondary-bg)] w-full">
+            <div class="container mx-auto px-4 py-3 flex flex-col space-y-4">
+                <a href="#home" class="text-[var(--light-gray)] hover:text-[var(--gold)] transition py-2">Início</a>
+                <a href="#services"
+                    class="text-[var(--light-gray)] hover:text-[var(--gold)] transition py-2">Serviços</a>
+                <a href="#gallery" class="text-[var(--light-gray)] hover:text-[var(--gold)] transition py-2">Galeria</a>
+                <a href="#booking"
+                    class="text-[var(--light-gray)] hover:text-[var(--gold)] transition py-2">Agendamento</a>
+                <a href="#contact" class="text-[var(--light-gray)] hover:text-[var(--gold)] transition py-2">Contato</a>
+                <button id="mobileBookNowBtn"
+                    class="bg-[var(--gold)] text-black px-4 py-2 rounded font-medium hover:bg-[var(--hover-gold)] transition w-full ripple">
+                    Agende Agora
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 hero-video">
+            <video id="hero-video" autoplay muted class="w-full h-full object-cover">
+                <!-- Aqui já definimos o primeiro vídeo -->
+                <source src="video/mixkit-barber-cutting-a-mans-beard-43227-4k.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="relative z-10 text-center px-4">
+            <h1 class="text-4xl md:text-6xl font-bold text-[var(--white)] mb-4">
+                Estilo e Tradição em Cada Corte
+            </h1>
+            <p class="text-xl md:text-2xl text-[var(--light-gray)] mb-8">
+                Barbearia Premium para Homens Exigentes
+            </p>
+            <div class="text-2xl md:text-3xl text-[var(--gold)] mb-8 h-10">
+                <span id="typewriter" class="typewriter"></span>
+            </div>
+            <button
+                class="bg-[var(--gold)] text-black px-8 py-3 rounded font-bold hover:bg-[var(--hover-gold)] transition ripple">
+                Quero meu horário
+            </button>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-[var(--primary-bg)]">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-[var(--white)] mb-4">Nossos Serviços</h2>
+            <p class="text-center text-[var(--light-gray)] max-w-2xl mx-auto mb-12">
+                Oferecemos serviços exclusivos com a qualidade que você merece. Cada detalhe é pensado para sua
+                experiência.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="service-card bg-[var(--secondary-bg)] p-8 rounded-lg transition hover:shadow-lg">
+                    <div class="service-icon text-4xl text-[var(--gold)] mb-4 transition">
+                        <i class="fas fa-cut"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-[var(--white)] mb-2">Corte de Cabelo</h3>
+                    <p class="text-[var(--light-gray)] mb-4">
+                        Corte profissional com técnicas modernas e produtos de alta qualidade para um visual impecável.
+                    </p>
+                    <button class="text-[var(--gold)] hover:text-[var(--hover-gold)] transition ripple"
+                        onclick="openModal('corteModal')">
+                        Saiba mais →
+                    </button>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-card bg-[var(--secondary-bg)] p-8 rounded-lg transition hover:shadow-lg">
+                    <div class="service-icon text-4xl text-[var(--gold)] mb-4 transition">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-[var(--white)] mb-2">Barba com Toalha Quente</h3>
+                    <p class="text-[var(--light-gray)] mb-4">
+                        Tratamento completo para barba com toalha quente, óleos essenciais e finalização com navalha.
+                    </p>
+                    <button class="text-[var(--gold)] hover:text-[var(--hover-gold)] transition ripple"
+                        onclick="openModal('barbaModal')">
+                        Saiba mais →
+                    </button>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card bg-[var(--secondary-bg)] p-8 rounded-lg transition hover:shadow-lg">
+                    <div class="service-icon text-4xl text-[var(--gold)] mb-4 transition">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-[var(--white)] mb-2">Tratamento Capilar</h3>
+                    <p class="text-[var(--light-gray)] mb-4">
+                        Hidratação e tratamento para cabelo com produtos premium que revitalizam e fortalecem os fios.
+                    </p>
+                    <button class="text-[var(--gold)] hover:text-[var(--hover-gold)] transition ripple"
+                        onclick="openModal('tratamentoModal')">
+                        Saiba mais →
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-[var(--secondary-bg)]">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-[var(--white)] mb-4">Galeria</h2>
+            <p class="text-center text-[var(--light-gray)] max-w-2xl mx-auto mb-12">
+                Confira nosso trabalho e ambiente exclusivo. Cada imagem conta uma história de estilo e tradição.
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Gallery items will be added here by JavaScript -->
+            </div>
+
+            <div class="text-center mt-8">
+                <button id="loadMoreBtn"
+                    class="bg-[var(--gold)] text-black px-6 py-2 rounded font-medium hover:bg-[var(--hover-gold)] transition ripple">
+                    Carregar mais
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="py-20 bg-[var(--primary-bg)]">
+        <div class="container mx-auto px-4">
+            <div class="bg-[var(--secondary-bg)] rounded-lg p-8 md:p-12 flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                    <div class="text-4xl text-[var(--gold)] mb-4">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-[var(--white)] mb-4">Agende seu horário</h2>
+                    <p class="text-[var(--light-gray)] mb-6">
+                        Garanta seu horário com nossos especialistas. Oferecemos um ambiente exclusivo e atendimento
+                        personalizado.
+                    </p>
+                    <div class="flex flex-col space-y-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-clock text-[var(--gold)] mr-3"></i>
+                            <span class="text-[var(--light-gray)]">Seg-Sex: 9h - 20h | Sáb: 9h - 18h</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone text-[var(--gold)] mr-3"></i>
+                            <span class="text-[var(--light-gray)]">(11) 98765-4321</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:w-1/2 text-center">
+                    <h3 class="text-2xl font-bold text-[var(--white)] mb-6">Garanta seu horário</h3>
+                    <a href="https://wa.me/5511987654321?text=Olá, gostaria de agendar um horário!" target="_blank"
+                        class="inline-block bg-[var(--gold)] text-black px-8 py-3 rounded font-bold hover:bg-[var(--hover-gold)] transition ripple">
+                        <i class="fab fa-whatsapp mr-2"></i> Agendar pelo WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-[var(--secondary-bg)]">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-[var(--white)] mb-4">Depoimentos</h2>
+            <p class="text-center text-[var(--light-gray)] max-w-2xl mx-auto mb-12">
+                Veja o que nossos clientes dizem sobre a experiência na Barbearia Premium.
+            </p>
+
+            <div class="relative max-w-4xl mx-auto">
+                <div id="testimonialSlider" class="overflow-hidden">
+                    <!-- Testimonials will be added here by JavaScript -->
+                </div>
+
+                <button id="prevTestimonial"
+                    class="absolute left-0 top-1/2 transform -translate-y-1/2 -ml-4 bg-[var(--gold)] text-black w-10 h-10 rounded-full flex items-center justify-center hover:bg-[var(--hover-gold)] transition">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+
+                <button id="nextTestimonial"
+                    class="absolute right-0 top-1/2 transform -translate-y-1/2 -mr-4 bg-[var(--gold)] text-black w-10 h-10 rounded-full flex items-center justify-center hover:bg-[var(--hover-gold)] transition">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="contact" class="py-20 bg-[var(--primary-bg)]">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                    <h2 class="text-3xl md:text-4xl font-bold text-[var(--white)] mb-4">Localização</h2>
+                    <p class="text-[var(--light-gray)] mb-6">
+                        Estamos localizados no coração da cidade, com fácil acesso e estacionamento conveniente.
+                    </p>
+
+                    <div class="mb-6">
+                        <div class="flex items-start mb-4">
+                            <i class="fas fa-map-marker-alt text-[var(--gold)] mt-1 mr-3"></i>
+                            <div>
+                                <h4 class="font-bold text-[var(--white)]">Endereço</h4>
+                                <p class="text-[var(--light-gray)]">Rua Premium, 123 - Centro, São Paulo - SP</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start mb-4">
+                            <i class="fas fa-clock text-[var(--gold)] mt-1 mr-3"></i>
+                            <div>
+                                <h4 class="font-bold text-[var(--white)]">Horário de Funcionamento</h4>
+                                <p class="text-[var(--light-gray)]">Segunda a Sexta: 9h às 20h</p>
+                                <p class="text-[var(--light-gray)]">Sábado: 9h às 18h</p>
+                                <p class="text-[var(--light-gray)]">Domingo: Fechado</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <i class="fas fa-phone text-[var(--gold)] mt-1 mr-3"></i>
+                            <div>
+                                <h4 class="font-bold text-[var(--white)]">Telefone</h4>
+                                <p class="text-[var(--light-gray)]">(11) 98765-4321</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://maps.google.com" target="_blank"
+                        class="inline-block bg-[var(--gold)] text-black px-6 py-2 rounded font-medium hover:bg-[var(--hover-gold)] transition ripple">
+                        <i class="fas fa-map-marked-alt mr-2"></i> Ver rota no mapa
+                    </a>
+                </div>
+
+                <div class="md:w-1/2">
+                    <div class="h-80 md:h-full rounded-lg overflow-hidden">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.197584455625!2d-46.65867598502212!3d-23.56140918468293!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0xd59f9431f2c9776a!2sAv.%20Paulista%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1629915437976!5m2!1spt-BR!2sbr"
+                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[var(--primary-bg)] py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+                <div class="flex items-center mb-6 md:mb-0">
+                    <i class="fas fa-cut text-2xl text-[var(--gold)] mr-2"></i>
+                    <span class="text-xl font-bold text-[var(--white)]">Barbearia Premium</span>
+                </div>
+
+                <div class="flex space-x-4">
+                    <a href="#" class="text-[var(--light-gray)] hover:text-[var(--gold)] transition text-xl">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-[var(--light-gray)] hover:text-[var(--gold)] transition text-xl">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://wa.me/5511987654321" target="_blank"
+                        class="text-[var(--light-gray)] hover:text-[var(--gold)] transition text-xl">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="border-t border-[var(--secondary-bg)] pt-6 text-center text-[var(--light-gray)]">
+                <p>&copy; 2025 Barbearia Premium. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div id="corteModal"
+        class="modal fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 opacity-0 invisible">
+        <div class="bg-[var(--secondary-bg)] rounded-lg p-8 max-w-md w-full relative">
+            <button onclick="closeModal('corteModal')"
+                class="absolute top-4 right-4 text-[var(--light-gray)] hover:text-[var(--gold)]">
+                <i class="fas fa-times"></i>
+            </button>
+            <h3 class="text-2xl font-bold text-[var(--white)] mb-4">Corte de Cabelo</h3>
+            <p class="text-[var(--light-gray)] mb-4">
+                Nosso corte de cabelo premium inclui lavagem, corte com técnicas modernas, finalização com produtos de
+                alta qualidade e aconselhamento de estilo personalizado.
+            </p>
+            <p class="text-[var(--light-gray)] mb-4">
+                Duração: 45 minutos<br>
+                Preço: R$ 80,00
+            </p>
+            <button
+                class="bg-[var(--gold)] text-black px-6 py-2 rounded font-medium hover:bg-[var(--hover-gold)] transition ripple">
+                Agendar este serviço
+            </button>
+        </div>
+    </div>
+
+    <div id="barbaModal"
+        class="modal fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 opacity-0 invisible">
+        <div class="bg-[var(--secondary-bg)] rounded-lg p-8 max-w-md w-full relative">
+            <button onclick="closeModal('barbaModal')"
+                class="absolute top-4 right-4 text-[var(--light-gray)] hover:text-[var(--gold)]">
+                <i class="fas fa-times"></i>
+            </button>
+            <h3 class="text-2xl font-bold text-[var(--white)] mb-4">Barba com Toalha Quente</h3>
+            <p class="text-[var(--light-gray)] mb-4">
+                Tratamento completo para barba que inclui limpeza profunda, aplicação de toalha quente para abrir os
+                poros, modelagem com navalha e finalização com óleo e bálsamo para barba.
+            </p>
+            <p class="text-[var(--light-gray)] mb-4">
+                Duração: 60 minutos<br>
+                Preço: R$ 70,00
+            </p>
+            <button
+                class="bg-[var(--gold)] text-black px-6 py-2 rounded font-medium hover:bg-[var(--hover-gold)] transition ripple">
+                Agendar este serviço
+            </button>
+        </div>
+    </div>
+
+    <div id="tratamentoModal"
+        class="modal fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 opacity-0 invisible">
+        <div class="bg-[var(--secondary-bg)] rounded-lg p-8 max-w-md w-full relative">
+            <button onclick="closeModal('tratamentoModal')"
+                class="absolute top-4 right-4 text-[var(--light-gray)] hover:text-[var(--gold)]">
+                <i class="fas fa-times"></i>
+            </button>
+            <h3 class="text-2xl font-bold text-[var(--white)] mb-4">Tratamento Capilar</h3>
+            <p class="text-[var(--light-gray)] mb-4">
+                Hidratação profunda com produtos premium que nutrem e revitalizam os fios, indicado para todos os tipos
+                de cabelo. Inclui massagem capilar para ativar a circulação.
+            </p>
+            <p class="text-[var(--light-gray)] mb-4">
+                Duração: 30 minutos<br>
+                Preço: R$ 50,00
+            </p>
+            <button
+                class="bg-[var(--gold)] text-black px-6 py-2 rounded font-medium hover:bg-[var(--hover-gold)] transition ripple">
+                Agendar este serviço
+            </button>
+        </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center hidden">
+        <button id="closeLightbox" class="absolute top-6 right-6 text-[var(--white)] text-3xl">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="relative max-w-4xl w-full px-4">
+            <img id="lightboxImage" src="" alt="" class="w-full h-auto max-h-[80vh] object-contain">
+            <p id="lightboxCaption" class="text-center text-[var(--white)] mt-4"></p>
+        </div>
+    </div>
+
+    <script src="script/script.js"></script>
+</body>
+
+</html>
