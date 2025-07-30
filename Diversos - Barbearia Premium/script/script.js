@@ -1,33 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
-        const videoEl = document.getElementById('hero-video');
-        // Liste aqui os dois arquivos na ordem desejada
-        const arquivos = [
+    const videoEl = document.getElementById('hero-video');
+    const arquivos = [
         '../video/mixkit-barber-cutting-a-mans-beard-43227-4k.mp4',
         '../video/mixkit-barber-equipment-271-full-hd.mp4',
         '../video/mixkit-barber-cutting-hair-357-hd-ready.mp4'
-        ];
-        let idx = 0;
+    ];
+    let idx = 0;
 
-        // Quando o vídeo acabar, troca para o próximo e reinicia
-        videoEl.addEventListener('ended', () => {
+    videoEl.addEventListener('ended', () => {
         idx = (idx + 1) % arquivos.length;
         const fonte = videoEl.querySelector('source');
         fonte.src = arquivos[idx];
         videoEl.load();
-        videoEl.play();
-        });
+
+        // Espera até que o vídeo possa ser reproduzido antes de tocar
+        videoEl.addEventListener('canplay', () => {
+            videoEl.play();
+        }, { once: true });
     });
-
-videoEl.addEventListener('ended', () => {
-    idx = (idx + 1) % arquivos.length;
-    const fonte = videoEl.querySelector('source');
-    fonte.src = arquivos[idx];
-    videoEl.load();
-
-    // Espera até que o vídeo esteja pronto para tocar
-    videoEl.addEventListener('canplay', () => {
-        videoEl.play();
-    }, { once: true });
 });
 
 // Navbar scroll effect
