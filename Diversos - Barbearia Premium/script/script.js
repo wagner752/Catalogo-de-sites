@@ -18,6 +18,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+videoEl.addEventListener('ended', () => {
+    idx = (idx + 1) % arquivos.length;
+    const fonte = videoEl.querySelector('source');
+    fonte.src = arquivos[idx];
+    videoEl.load();
+
+    // Espera até que o vídeo esteja pronto para tocar
+    videoEl.addEventListener('canplay', () => {
+        videoEl.play();
+    }, { once: true });
+});
+
 // Navbar scroll effect
         window.addEventListener('scroll', function() {
             const navbar = document.getElementById('navbar');
