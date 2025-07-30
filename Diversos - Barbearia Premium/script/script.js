@@ -9,16 +9,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     videoEl.addEventListener('ended', () => {
         idx = (idx + 1) % arquivos.length;
-        const fonte = videoEl.querySelector('source');
-        fonte.src = arquivos[idx];
-        videoEl.load();
 
-        // Espera até que o vídeo possa ser reproduzido antes de tocar
+        // Remove todos os <source> antigos
+        videoEl.innerHTML = '';
+
+        // Cria um novo <source>
+        const novoSource = document.createElement('source');
+        novoSource.src = arquivos[idx];
+        novoSource.type = 'video/mp4';
+        videoEl.appendChild(novoSource);
+
+        // Recarrega e reproduz o novo vídeo
+        videoEl.load();
         videoEl.addEventListener('canplay', () => {
             videoEl.play();
         }, { once: true });
     });
-});
 
 // Navbar scroll effect
         window.addEventListener('scroll', function() {
