@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
             videoEl.play();
         }, { once: true });
     });
-
+});
 // Navbar scroll effect
         window.addEventListener('scroll', function() {
             const navbar = document.getElementById('navbar');
