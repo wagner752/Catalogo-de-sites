@@ -1,0 +1,44 @@
+ body {
+      font-family: 'Playfair Display', serif;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .script-font {
+      font-family: 'Parisienne', cursive;
+      font-size: 2.2rem;
+    }
+    .btn-hover:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .social-icon:hover {
+      transform: scale(1.1);
+    }
+    .profile-container {
+      position: relative;
+    }
+    .profile-bg {
+      position: absolute;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+    }
+    .profile-img {
+      position: relative;
+      z-index: 1;
+      border: 3px solid white;
+    }
+    .palette-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 2px solid #ccc;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .palette-btn:hover {
+      transform: scale(1.1);
+    }
