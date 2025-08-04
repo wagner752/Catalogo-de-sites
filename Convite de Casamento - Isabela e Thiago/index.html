@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isabela & Thiago - Convite de Casamento</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap"
+        rel="stylesheet">
+    <style>
+        .great-vibes {
+            font-family: 'Great Vibes', cursive;
+        }
+
+        .playfair-italic {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .playfair-regular {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Transição suave para troca de cores */
+        .color-transition {
+            transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
+        }
+
+        /* Efeito de flutuação suave */
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+
+<body class="color-transition bg-[#fff5f8] text-[#4b2c3a] min-h-screen">
+    <!-- Seletor de Cores -->
+    <div class="fixed bottom-4 right-4 z-50 flex space-x-2 bg-white/80 p-2 rounded-full shadow-lg">
+        <button onclick="changeTheme('rose')"
+            class="w-8 h-8 rounded-full bg-[#fff5f8] border-2 border-[#e8c6cb] focus:ring-2 focus:ring-[#4b2c3a]"></button>
+        <button onclick="changeTheme('gold')"
+            class="w-8 h-8 rounded-full bg-[#ffffff] border-2 border-[#d9c173] focus:ring-2 focus:ring-[#5b4e00]"></button>
+        <button onclick="changeTheme('blue')"
+            class="w-8 h-8 rounded-full bg-[#f0f6fb] border-2 border-[#a6c7de] focus:ring-2 focus:ring-[#243b53]"></button>
+        <button onclick="changeTheme('green')"
+            class="w-8 h-8 rounded-full bg-[#f4f7f5] border-2 border-[#a3bcb6] focus:ring-2 focus:ring-[#3e5e52]"></button>
+    </div>
+
+    <!-- Convite Principal -->
+    <div class="container mx-auto px-4 py-8 max-w-md">
+        <!-- Cabeçalho com nomes -->
+        <header class="text-center mb-12 mt-8">
+            <h1 class="great-vibes text-5xl md:text-6xl mb-2">Isabela</h1>
+            <div class="playfair-italic text-xl mb-4">&</div>
+            <h1 class="great-vibes text-5xl md:text-6xl mb-6">Thiago</h1>
+            <div class="border-t border-b border-[#e8c6cb] py-2 playfair-italic text-sm md:text-base">
+                Temos a alegria de convidar você para nosso casamento
+            </div>
+        </header>
+
+        <!-- Imagem Decorativa -->
+        <div class="relative mb-12 overflow-hidden rounded-lg" style="height: 200px;">
+            <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                alt="Noivos"
+                class="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity duration-500">
+            <div class="absolute inset-0 bg-black/20"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+                <div
+                    class="great-vibes text-white text-3xl text-center px-4 py-2 rounded-lg backdrop-blur-sm bg-white/10">
+                    Nosso Grande Dia
+                </div>
+            </div>
+        </div>
+
+        <!-- Data e Local -->
+        <div class="text-center mb-16">
+            <div class="floating inline-block mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
+                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+            </div>
+            <p class="playfair-regular text-lg mb-1">15 de Junho de 2024</p>
+            <p class="playfair-italic text-sm mb-4">às 16 horas</p>
+            <p class="playfair-regular">Jardim Botânico</p>
+            <p class="playfair-italic text-sm">Rua das Flores, 1000 - Curitiba/PR</p>
+        </div>
+
+        <!-- Navegação -->
+        <nav class="flex justify-center space-x-4 mb-12">
+            <a href="#cerimonia"
+                class="playfair-italic px-3 py-1 border-b border-transparent hover:border-current">Cerimônia</a>
+            <a href="#presentes"
+                class="playfair-italic px-3 py-1 border-b border-transparent hover:border-current">Presentes</a>
+            <a href="#mensagem"
+                class="playfair-italic px-3 py-1 border-b border-transparent hover:border-current">Mensagem</a>
+        </nav>
+
+        <!-- Seção Cerimônia -->
+        <section id="cerimonia" class="mb-16 opacity-0 transition-opacity duration-500">
+            <h2 class="great-vibes text-3xl text-center mb-6">Nossa Cerimônia</h2>
+            <div class="playfair-regular text-center space-y-4">
+                <p>Será um momento especial sob as árvores centenárias do Jardim Botânico, celebrando nosso amor com as
+                    pessoas mais importantes de nossas vidas.</p>
+                <p class="playfair-italic">A cerimônia terá início pontualmente às 16h, seguida por um coquetel ao pôr
+                    do sol.</p>
+                <p>Contamos com sua presença para tornar este dia ainda mais memorável.</p>
+            </div>
+        </section>
+
+        <!-- Seção Presentes -->
+        <section id="presentes" class="mb-16 opacity-0 transition-opacity duration-500">
+            <h2 class="great-vibes text-3xl text-center mb-6">Lista de Presentes</h2>
+            <div class="playfair-regular text-center space-y-4">
+                <p>Sua presença é o presente mais importante para nós.</p>
+                <p>Mas se desejar nos presentear, criamos uma lista em algumas lojas:</p>
+
+                <div class="flex justify-center space-x-4 mt-6">
+                    <a href="#"
+                        class="border rounded-full px-4 py-2 text-sm playfair-italic hover:bg-opacity-20 hover:bg-current">Ricardo
+                        Eletro</a>
+                    <a href="#"
+                        class="border rounded-full px-4 py-2 text-sm playfair-italic hover:bg-opacity-20 hover:bg-current">Casa
+                        & Vídeo</a>
+                </div>
+
+                <p class="playfair-italic text-sm mt-6">Ou se preferir, aceitamos contribuições para nossa lua de mel.
+                </p>
+            </div>
+        </section>
+
+        <!-- Seção Mensagem Final -->
+        <section id="mensagem" class="mb-16 opacity-0 transition-opacity duration-500">
+            <h2 class="great-vibes text-3xl text-center mb-6">Nossa Gratidão</h2>
+            <div class="playfair-regular text-center space-y-4">
+                <p>Queridos familiares e amigos,</p>
+                <p class="playfair-italic">Cada um de vocês fez parte da história que nos trouxe até aqui.</p>
+                <p>É uma alegria poder compartilhar este momento tão especial com as pessoas que amamos.</p>
+                <p>Contamos com vocês no dia 15 de Junho para celebrar o início desta nova jornada juntos.</p>
+                <p class="great-vibes text-2xl mt-8">Isabela & Thiago</p>
+            </div>
+        </section>
+
+        <!-- Rodapé -->
+        <footer class="text-center playfair-italic text-sm py-8 border-t">
+            <p>Confirmação de presença até 01 de Junho</p>
+            <p class="mt-2">Isabela: (41) 99999-9999 • Thiago: (41) 98888-8888</p>
+        </footer>
+    </div>
+
+    <script>
+        // Criar corações flutuantes
+        function createFloatingHearts() {
+            const colors = ['#e8c6cb', '#d9c173', '#a6c7de', '#a3bcb6'];
+            const container = document.querySelector('body');
+
+            for (let i = 0; i < 8; i++) {
+                const heart = document.createElement('div');
+                heart.innerHTML = '❤';
+                heart.className = 'fixed text-xl opacity-20 pointer-events-none';
+                heart.style.position = 'fixed'; // necessário para posicionamento
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.top = Math.random() * 100 + 'vh';
+                heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+                heart.style.animation = `floatHeart ${5 + Math.random() * 10}s linear infinite`; // corrigido uso de template string
+                container.appendChild(heart);
+            }
+        }
+
+        // Adicionar estilo para animação de corações
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @keyframes floatHeart {
+                0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+                10% { opacity: 0.2; }
+                90% { opacity: 0.2; }
+                100% { transform: translate(${Math.random() * 100 - 50}px, -100vh) rotate(360deg); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Função para trocar as cores do tema
+        function changeTheme(theme) {
+            const body = document.body;
+
+            switch (theme) {
+                case 'rose':
+                    body.className = 'color-transition bg-[#fff5f8] text-[#4b2c3a] min-h-screen';
+                    document.querySelectorAll('nav a, section, header div').forEach(el => {
+                        el.classList.remove('border-[#d9c173]', 'border-[#a6c7de]', 'border-[#a3bcb6]');
+                        el.classList.add('border-[#e8c6cb]');
+                    });
+                    break;
+
+                case 'gold':
+                    body.className = 'color-transition bg-[#ffffff] text-[#5b4e00] min-h-screen';
+                    document.querySelectorAll('nav a, section, header div').forEach(el => {
+                        el.classList.remove('border-[#e8c6cb]', 'border-[#a6c7de]', 'border-[#a3bcb6]');
+                        el.classList.add('border-[#d9c173]');
+                    });
+                    break;
+
+                case 'blue':
+                    body.className = 'color-transition bg-[#f0f6fb] text-[#243b53] min-h-screen';
+                    document.querySelectorAll('nav a, section, header div').forEach(el => {
+                        el.classList.remove('border-[#e8c6cb]', 'border-[#d9c173]', 'border-[#a3bcb6]');
+                        el.classList.add('border-[#a6c7de]');
+                    });
+                    break;
+
+                case 'green':
+                    body.className = 'color-transition bg-[#f4f7f5] text-[#3e5e52] min-h-screen';
+                    document.querySelectorAll('nav a, section, header div').forEach(el => {
+                        el.classList.remove('border-[#e8c6cb]', 'border-[#d9c173]', 'border-[#a6c7de]');
+                        el.classList.add('border-[#a3bcb6]');
+                    });
+                    break;
+            }
+        }
+
+        // Inicializar efeitos
+        document.addEventListener('DOMContentLoaded', () => {
+            createFloatingHearts();
+
+            // Observar seções para animação de fade-in
+            const sections = document.querySelectorAll('section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('opacity-100');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+
+        // Suavizar rolagem para âncoras
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
